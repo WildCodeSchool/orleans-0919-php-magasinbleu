@@ -4,3 +4,10 @@
 *.cache
 db.php
 .idea
+/magbleu_db.sql
+/src/View/Home/index.html.twig
+/src/View/Home/_universe.html.twig
+/src/View/Home/
+/public/assets/css/Home/universe.css
+/public/assets/css/Home/index.css
+/public/assets/css/Home/

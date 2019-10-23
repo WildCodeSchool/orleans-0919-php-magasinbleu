@@ -1,0 +1,12 @@
+.universe {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    border-color: var(--color-primary);
+}
+
+.card-body {
+    color: var(--color-primary);
+}
