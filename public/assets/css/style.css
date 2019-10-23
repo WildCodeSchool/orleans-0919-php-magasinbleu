@@ -1,0 +1,13 @@
+:root {
+    --color-light: #e3eaf2;
+    --color-light-blue: #62bfed;
+    --color-md-blue: #3590f3;
+    --color-primary: #0066cc;
+    --color-somber: #03080f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
