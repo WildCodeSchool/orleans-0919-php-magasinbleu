@@ -8,15 +8,30 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
-    {% block stylesheet %}{% endblock %}
+    {% block stylesheet %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% endblock %}
     <link rel="icon" href="/assets/images/favicon.png">
 </head>
 
 <body>
 
+{% block navbar %}
+    {%  include 'Include/_navbar.html.twig' %}
+{% endblock %}
+
 {% block content %}{% endblock %}
-{% block javascript %}{% endblock %}
+
+{% block footer %}
+    {%  include 'Include/_footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    </script>
+{% endblock %}
+
 </body>
 </html>
-
-
