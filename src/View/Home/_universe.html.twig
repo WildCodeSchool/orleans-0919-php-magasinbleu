@@ -1,19 +1,16 @@
 {% block content %}
 
-    <div class="container universe">
-
-        <div class="card-deck">
+        <div class="row card-deck universe">
             {%  for universe in universes %}
-            <div class="card">
-                <img src={{ '/assets/images/' ~ universe.image }} class="card-img-top" alt="...">
+            <div class="col-lg-6 col-md-6 col-sm-12 card">
+                <img src={{ '/assets/images/' ~ universe.image }} class="card-img-top" alt={{ universe.name }}>
                 <div class="card-body">
-                    <h5 class="card-title">{{ universe.name}}</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{ universe.name }}</h5>
+                    <p class="card-text">{{ universe.description }}</p>
                 </div>
             </div>
             {% endfor %}
         </div>
 
-    </div>
 
 {% endblock %}

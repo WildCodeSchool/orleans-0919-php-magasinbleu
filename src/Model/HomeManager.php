@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class UniverseManager extends AbstractManager
+class HomeManager extends AbstractManager
 {
     /**
      *

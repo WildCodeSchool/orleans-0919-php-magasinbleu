@@ -10,3 +10,8 @@
 .card-body {
     color: var(--color-primary);
 }
+
+.card:hover {
+    cursor: pointer;
+    background-color: var(--color-light);
+}

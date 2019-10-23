@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Model\UniverseManager;
+use App\Model\HomeManager;
 
-class UniverseController extends AbstractController
+class HomeController extends AbstractController
 {
     public function index()
     {
-        $universeManager = new UniverseManager();
+        $universeManager = new HomeManager();
         $universes = $universeManager->selectAll();
         return $this->twig->render('Home/index.html.twig', ['universes' => $universes]);
     }
