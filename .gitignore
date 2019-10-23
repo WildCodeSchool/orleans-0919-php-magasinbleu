@@ -4,3 +4,10 @@
 *.cache
 db.php
 .idea
+/public/assets/css/Include/
+/public/assets/css/Home/
+/src/View/Home/_universe.html.twig
+/src/View/Home/_news.html.twig
+/src/View/Home/_info.html.twig
+/src/View/Home/_carousel.html.twig
+/src/View/Include/
