@@ -1,3 +1,4 @@
+
 .navbar {
     background-color: var(--color-md-blue);
     color: var(--color-light);
@@ -21,6 +22,7 @@
 .nav-item{
     margin-right: 30px;
 }
+
 .btn-info {
     float: right;
 }
