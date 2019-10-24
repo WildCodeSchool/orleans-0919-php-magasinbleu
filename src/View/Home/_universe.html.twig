@@ -1,16 +1,14 @@
-{% block content %}
-
-        <div class="row card-deck universe">
+       <div class="row card-deck">
             {%  for universe in universes %}
-            <div class="col-lg-6 col-md-6 col-sm-12 card">
-                <img src={{ '/assets/images/' ~ universe.image }} class="card-img-top" alt={{ universe.name }}>
-                <div class="card-body">
-                    <h5 class="card-title">{{ universe.name }}</h5>
-                    <p class="card-text">{{ universe.description }}</p>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 columns">
+                    <div class="card">
+                        <img src={{ '/assets/images/' ~ universe.image }} class="card-img-top" alt={{ universe.name }}>
+                        <div class="card-body">
+                            <h4 class="card-title">{{ universe.name }}</h4>
+                            <p class="card-text">{{ universe.description }}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
-
-
-{% endblock %}
+       
