@@ -1,14 +1,14 @@
 footer {
-    color:#E3EAF2;
-    background-color:#0066CC;
+    color:var(--color-light);
+    background-color:var(--color-primary);
 }
 
 a{
-    color:#E3EAF2;
+    color:var(--color-light);
 }
 
 a:hover{
-    color:#E3EAF2;
+    color:var(--color-light);
 }
 
 h5{
