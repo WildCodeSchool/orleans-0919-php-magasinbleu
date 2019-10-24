@@ -17,11 +17,11 @@
 
 .card-body {
     color: var(--color-primary);
-    height: 30vh;
 }
 
 .card-title {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-title);
+    overflow: hidden;
 }
 
 .card:hover {
