@@ -1,5 +1,17 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+    Au p'tit magasin bleu
+{%  endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Home/index.css">
+{% endblock %}
+
 {% block navbar %}
     {% include 'Home/nav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    {% include '/Home/_universe.html.twig' %}
 {% endblock %}
