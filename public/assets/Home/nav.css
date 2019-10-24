@@ -1,0 +1,26 @@
+.navbar {
+    background-color: var(--color-md-blue);
+    color: var(--color-light);
+}
+
+.navbar-brand{
+    font-size: 2rem ;
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.collapse navbar-collapse{
+    display: flex;
+}
+
+.navbar-nav{
+    font-size: 25px ;
+    display: flex;
+}
+
+.nav-item{
+    margin-right: 30px;
+}
+.btn-info {
+    float: right;
+}
