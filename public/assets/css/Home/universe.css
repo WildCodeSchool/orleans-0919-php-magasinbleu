@@ -1,0 +1,34 @@
+.card-deck {
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.columns {
+    height: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    border-color: var(--color-primary);
+    height: 50vh;
+}
+
+.card-body {
+    color: var(--color-primary);
+}
+
+.card-title {
+    font-family: var(--font-title);
+    overflow: hidden;
+}
+
+.card:hover {
+    cursor: pointer;
+    background-color: var(--color-light);
+}
+
+.cardLink:link {
+    text-decoration: none;
+}
