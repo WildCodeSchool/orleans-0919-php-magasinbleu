@@ -2,33 +2,64 @@
     justify-content: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
-}
-
-.columns {
-    height: 100%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    background-color: var(--color-light-blue);
+    border-radius: 1rem;
+    padding: 10px;
+    position: relative;
 }
 
 .card {
     border-color: var(--color-primary);
     height: 50vh;
-}
-
-.card-body {
-    color: var(--color-primary);
-}
-
-.card-title {
-    font-family: var(--font-title);
-    overflow: hidden;
+    border-radius: 1rem;
+    transition: box-shadow .3s ease-in-out;
 }
 
 .card:hover {
     cursor: pointer;
     background-color: var(--color-light);
+    box-shadow: 0 0 20px 12px var(--color-somber);
+}
+
+.card-body {
+    color: var(--color-primary);
+    overflow: visible;
+    z-index: 2;
+}
+
+.card-title {
+    font-family: var(--font-title);
+    font-size: var(--size-font-title);
+    text-align: center;
+    overflow: visible;
+
+}
+.card-text {
+    color: var(--color-somber);
 }
 
 .cardLink:link {
     text-decoration: none;
+    margin: 16px;
+}
+
+.blue_rails {
+    width: 100vw;
+    height: 100px;
+    object-fit: cover;
+}
+
+.steam_train_img {
+    width: 16rem;
+    height: 16rem;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 768px) {
+    .steam_train_img {
+        display: none;
+    }
 }
