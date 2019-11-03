@@ -13,23 +13,46 @@
 {% endblock %}
 
 {% block content %}
+    <h1 class="titleProductUniverse">Les différents Produits: {{ products[0].universe_name }}</h1>
+    <p class="avail">
+        {{ countProducts }} produits disponible
+    </p>
+
     <div class="container-fluid">
         <div class="card-deck">
             {% for product in products %}
-            <a class="cardLink" href="#">
-                <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12 columns">
-                    <img src="{{ '/assets/' ~ product.image }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ product.name|capitalize}}</h4>
-                        <p class="card-text">{{ product.description }}</p>
-                        <p class="card-text">{{ product.price }}</p>
-                        <p class="card-text">{{ product.availabity }}</p>
-                        <a href="#" class="btn btn-primary">Voir le produit</a>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 flex-wrap">
+                    <div class="card">
+                        <img src="{{ '/assets/images/' ~ product.image }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ product.name|capitalize}}</h4>
+                            <p class="card-text">Prix: {{ product.price }} €</p>
+                            <p class="card-text">
+                                Disponibilité:
+                                {% if product.availabity == 1 %}
+                                    En stock
+                                {% else %}
+                                    Rupture de stock
+                                {% endif %}
+                            </p>
+                            <a href="#" class="btn btn-primary">Voir le produit</a>
+                        </div>
                     </div>
                 </div>
-            </a>
             {% endfor %}
         </div>
+
+        <nav aria-label="Page navigation example" class="navPage">
+            <ul class="pagination">
+                {% if countPages == 1 %}
+                    <li class="page-item"><a class="page-link" href="./1">1</a></li>
+                {% elseif countPages > 1 %}
+                    {%  for i in 1..countPages %}
+                        <li class="page-item"><a class="page-link" href="./{{ i }}">{{ i }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </nav>
     </div>
 {% endblock %}
 

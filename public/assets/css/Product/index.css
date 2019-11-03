@@ -1,0 +1,67 @@
+@import "../Home/nav.css";
+@import "../Home/footer.css";
+
+.titleProductUniverse {
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: var(--size-font-title);
+}
+
+.avail {
+    color: var(--color-somber);
+}
+
+.card-deck {
+    justify-content: center;
+    border-radius: 1rem;
+    margin: 2rem;
+}
+
+.flex-wrap {
+    margin: 0;
+    padding: 0;
+}
+
+.card-deck .card {
+    border-color: var(--color-primary);
+    height: 50vh;
+    border-radius: 1rem;
+    margin: 2rem;
+}
+
+.card-img-top {
+    height: 20vh;
+    object-fit: fill;
+}
+
+.card-body {
+    color: var(--color-somber);
+    overflow: visible;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    height: 10vh;
+    font-size: 3rem;
+    text-align: center;
+    overflow: visible;
+
+}
+.card-text {
+    color: var(--color-somber);
+    overflow: visible;
+
+}
+
+.btn {
+    align-self: end;
+}
+
+.navPage {
+    display: flex;
+    justify-content: center;
+}

@@ -6,6 +6,10 @@ use App\Model\ProductManager;
 
 class ProductController extends AbstractController
 {
+
+    const PRODUCTS_BY_PAGES = 12;
+
+
     public function index()
     {
         $productManager = new ProductManager();
@@ -13,11 +17,16 @@ class ProductController extends AbstractController
         return $this->twig->render('Product/index.html.twig', ['products' => $products]);
     }
 
-    public function indexUniverse(string $universe)
+    public function indexUniverse(string $universe, int $page)
     {
         $productManager = new ProductManager();
-        $products = $productManager->selectUniverse($universe);
-        var_dump($products);
-        return $this->twig->render('Product/index.html.twig', ['products' => $products]);
+        $countProducts = $productManager->countProducts($universe);
+        $countPages = (int)($countProducts/12+1);
+        $products = $productManager->selectUniverse($universe, $page, self::PRODUCTS_BY_PAGES);
+        return $this->twig->render('Product/index.html.twig', ['products' => $products,
+                                                                        'page' => $page,
+                                                                        'countPages' => $countPages,
+                                                                        'countProducts' => $countProducts
+                                                                    ]);
     }
 }
