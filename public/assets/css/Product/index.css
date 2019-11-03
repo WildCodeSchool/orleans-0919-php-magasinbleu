@@ -13,7 +13,6 @@
 
 .card-deck {
     justify-content: center;
-    border-radius: 1rem;
     margin: 2rem;
 }
 
@@ -25,7 +24,6 @@
 .card-deck .card {
     border-color: var(--color-primary);
     height: 50vh;
-    border-radius: 1rem;
     margin: 2rem;
 }
 
