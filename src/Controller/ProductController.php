@@ -9,15 +9,7 @@ class ProductController extends AbstractController
 
     const PRODUCTS_BY_PAGES = 12;
 
-
-    public function index()
-    {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAll();
-        return $this->twig->render('Product/index.html.twig', ['products' => $products]);
-    }
-
-    public function indexUniverse(string $universe, int $page)
+    public function indexUniverse(string $universe, int $page = 1)
     {
         $productManager = new ProductManager();
         $countProducts = $productManager->countProducts($universe);
