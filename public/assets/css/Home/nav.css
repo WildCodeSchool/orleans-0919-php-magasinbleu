@@ -1,12 +1,11 @@
 .navbar {
-    background-color: var(--color-md-blue);
+    background-color: var(--color-primary);
 }
 
 .navbar-brand{
     font-size: 2rem ;
     margin-left: 10px;
     margin-right: 30px;
-    color: var(--color-light);
 
 }
 
