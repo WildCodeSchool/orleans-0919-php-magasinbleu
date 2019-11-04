@@ -5,10 +5,12 @@
     color: var(--color-primary);
     font-family: var(--font-title);
     font-size: var(--size-font-title);
+    margin-left: 4vw;
 }
 
 .avail {
     color: var(--color-somber);
+    margin-left: 4vw;
 }
 
 .card-deck {
