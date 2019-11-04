@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\HomeManager;
+use App\Model\ProductManager;
 
 class HomeController extends AbstractController
 {
@@ -10,6 +11,8 @@ class HomeController extends AbstractController
     {
         $universeManager = new HomeManager();
         $universes = $universeManager->selectAll();
-        return $this->twig->render('Home/index.html.twig', ['universes' => $universes]);
+        $productManager = new ProductManager();
+        $products = $productManager->selectAll();
+        return $this->twig->render('Home/index.html.twig', ['universes' => $universes, 'products' => $products]);
     }
 }
