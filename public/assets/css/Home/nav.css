@@ -1,12 +1,13 @@
 .navbar {
     background-color: var(--color-md-blue);
-    color: var(--color-light);
 }
 
 .navbar-brand{
     font-size: 2rem ;
     margin-left: 10px;
     margin-right: 30px;
+    color: var(--color-light);
+
 }
 
 .collapse navbar-collapse{
@@ -21,7 +22,6 @@
 .nav-item{
     margin-right: 30px;
 }
-.btn-info {
+.list-inline-item-nav{
     float: right;
-    background-color: var(--color-md-blue);
 }
