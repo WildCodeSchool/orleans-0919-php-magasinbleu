@@ -1,7 +1,6 @@
 
 {% block navbar %}
-
-    <nav class="navbar navbar-expand-md navbar-light">
+    <nav class="navbar navbar-expand-md navbar-dark">
         <a class="navbar-brand" href="#">Au p'tit magasin bleu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,11 +18,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Jouet</a>
                 </li>
+
             </ul>
-            <a class="btn-info btn-lg">
-                <span class="glyphicon glyphicon-envelope"></span> Contact
-            </a>
+            <div class="list-inline-item-nav">
+                <a href="#!" class="btn btn-primary btn-ripple btn-lg">Contact</a>
+            </div>
         </div>
     </nav>
-
 {% endblock %}
