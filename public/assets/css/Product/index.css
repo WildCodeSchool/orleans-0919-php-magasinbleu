@@ -16,6 +16,10 @@
 .card-deck {
     justify-content: center;
     margin: 2rem;
+    background-color: var(--color-light-blue);
+    border-radius: 1rem;
+    padding: 10px;
+    position: relative;
 }
 
 .flex-wrap {
@@ -27,6 +31,14 @@
     border-color: var(--color-primary);
     height: 50vh;
     margin: 2rem;
+    border-radius: 1rem;
+    transition: box-shadow .3s ease-in-out;
+}
+
+.card:hover {
+    cursor: pointer;
+    background-color: var(--color-light);
+    box-shadow: 0 0 1px 1px var(--color-somber);
 }
 
 .card-img-top {
