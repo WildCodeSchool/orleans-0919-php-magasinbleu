@@ -29,6 +29,8 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{ product.name|capitalize}}</h4>
                                 <p class="card-text">Prix: {{ product.price }} €</p>
+                                <p class="card-text">Catégorie: {{ product.category_name }}</p>
+                                <p class="card-text">Marque: {{ product.brand_name }}</p>
                                 <p class="card-text">
                                     Disponibilité:
                                     {% if product.availabity == 1 %}
