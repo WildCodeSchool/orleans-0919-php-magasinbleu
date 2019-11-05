@@ -1,4 +1,3 @@
-@import "Home/nav.css";
 :root {
     --color-light: #e3eaf2;
     --color-light-blue: #a2c9ff;
@@ -19,4 +18,10 @@
     overflow: auto;
     font-family: var(--font-primary);
     font-size: var(--size-font-primary);
+}
+
+.blue_rails {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
 }
