@@ -6,3 +6,7 @@ db.php
 .idea
 /magbleu_db.sql
 /magbleu.sql
+/public/assets/images/interlaced.svg
+/public/assets/images/interlaced.png
+/public/assets/uploads/
+!/public/assets/uploads/.gitkeep
