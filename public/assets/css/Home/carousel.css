@@ -1,0 +1,37 @@
+.text-defile {
+    color: white;
+    font-size: 2.8em;
+    align-self: flex-end;
+    margin-bottom: 50px;
+}
+
+.carousel {
+    background: url("../../images/background_carousel.jpg") center;
+    background-size: cover;
+    width: 100%;
+    margin-top: -20px;
+    border-bottom: var(--color-light-blue) 10px solid;
+}
+
+.view {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+
+}
+
+.imageFilter {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-control-next, .carousel-control-prev {
+    display: none !important;
+}
+
+
+@media screen and (max-width: 980px)
+{
+    .carousel{
+        display: none;
+    }
+}
