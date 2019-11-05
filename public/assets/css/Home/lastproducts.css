@@ -1,0 +1,27 @@
+.lastproducts {
+}
+
+.title {
+    text-align: center;
+    padding: 20px;
+}
+
+.row {
+    height: 100%;
+    padding: 10px;
+}
+
+.lastproducts h1 {
+    display: block;
+    font-family: var(--font-title);
+    overflow: hidden;
+}
+
+.lastproducts h5 {
+    font-size: 30px;
+    text-align: left;
+}
+
+.col-md-4 {
+    align-self: center;
+}
