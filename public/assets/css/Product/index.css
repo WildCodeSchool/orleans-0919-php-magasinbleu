@@ -1,6 +1,36 @@
 @import "../Home/nav.css";
 @import "../Home/footer.css";
 
+.productDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+.filterMenu {
+    width: 20vh;
+    margin: 2rem;
+    padding: 10px;
+    border-style: solid;
+    border-color: var(--color-somber);
+    border-radius: 2rem;
+}
+
+.filterMenuTitle {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--color-primary);
+
+}
+
+.filterLinks {
+    text-decoration: none;
+    color: var(--color-somber);
+}
+
+.container-fluid {
+    padding: 0;
+}
+
 .titleProductUniverse {
     color: var(--color-primary);
     font-family: var(--font-title);
@@ -44,7 +74,7 @@
 
 .card-img-top {
     height: 20vh;
-    object-fit: fill;
+    object-fit: scale-down;
 }
 
 .card-body {
@@ -83,6 +113,10 @@
 @media only screen and (max-width: 768px) {
     .container-fluid {
         padding: 0;
+    }
+
+    .filterMenu {
+        display: none;
     }
 
     .card-deck {

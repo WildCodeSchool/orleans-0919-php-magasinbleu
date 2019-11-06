@@ -14,54 +14,93 @@
 
 {% block content %}
     {% set universe = products[0].universe_name %}
+    {% set urlStart = '/product/indexUniverse/' %}
     <h1 class="titleProductUniverse">Les différents produits: {{ universe }}</h1>
     <p class="avail">
         {{ countProducts }} produits disponible
     </p>
 
-    <div class="container-fluid">
-        <div class="card-deck">
-            {% for product in products %}
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 flex-wrap">
-                    <a class="cardLink" href="#">
-                        <div class="card">
-                            <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ product.name|capitalize}}</h4>
-                                <p class="card-text">Prix: {{ product.price }} €</p>
-                                <p class="card-text">Catégorie: {{ product.category_name }}</p>
-                                <p class="card-text">Marque: {{ product.brand_name }}</p>
-                                <p class="card-text">
-                                    Disponibilité:
-                                    {% if product.availabity == 1 %}
-                                        En stock
-                                    {% else %}
-                                        Rupture de stock
-                                    {% endif %}
-                                </p>
-                                <a href="#" class="btn btn-primary">Voir le produit</a>
-                            </div>
-                        </div>
+    <div class="productDisplay">
+
+        <div class="filterMenu">
+            <a href="{{ urlStart ~ actualFilter.universe ~ '/%/' ~ actualFilter.category }}">
+                <h2 class="filterMenuTitle">Marques:</h2>
+            </a>
+            <ul>
+                {% for brand in brands %}
+                    <a href=
+                       "{{ urlStart ~ actualFilter.universe ~
+                       '/' ~ brand.brand_name ~ '/' ~ actualFilter.category }}"
+                       class="filterLinks"
+                    >
+                        <li>{{ brand.brand_name }}</li>
                     </a>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </ul>
+            <a href="{{ urlStart ~ actualFilter.universe ~ '/' ~ actualFilter.brand ~ '/%' }}">
+                <h2 class="filterMenuTitle">Categories:</h2>
+            </a>
+            <ul>
+                {% for category in categories %}
+                    <a href=
+                       "{{ urlStart ~ actualFilter.universe ~
+                       '/' ~ actualFilter.brand ~ '/' ~ category.category_name }}"
+                       class="filterLinks"
+                    >
+                        <li>{{ category.category_name }}</li>
+                    </a>
+                {% endfor %}
+            </ul>
+
         </div>
 
-        <nav aria-label="Page navigation example" class="navPage">
-            <ul class="pagination">
-                {% if countPages == 1 %}
-                    <li class="page-item"><a class="page-link" href="./{{ universe }}">1</a></li>
-                {% elseif countPages > 1 %}
-                    {%  for i in 1..countPages %}
-                        <li class="page-item">
-                            <a class="page-link" href="/product/indexUniverse/{{ universe }}/{{ i }}">{{ i }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-        </nav>
+        <div class="container-fluid">
+            <div class="card-deck">
+                {% for product in products %}
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 flex-wrap">
+                        <a class="cardLink" href="#">
+                            <div class="card">
+                                <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ product.name|capitalize}}</h4>
+                                    <p class="card-text">Prix: {{ product.price }} €</p>
+                                    <p class="card-text">Catégorie: {{ product.category_name }}</p>
+                                    <p class="card-text">Marque: {{ product.brand_name }}</p>
+                                    <p class="card-text">
+                                        Disponibilité:
+                                        {% if product.availabity == 1 %}
+                                            En stock
+                                        {% else %}
+                                            Rupture de stock
+                                        {% endif %}
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Voir le produit</a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="Page navigation example" class="navPage">
+                <ul class="pagination">
+                    {% if countPages == 1 %}
+                        <li class="page-item"><a class="page-link" href="./{{ universe }}">1</a></li>
+                    {% elseif countPages > 1 %}
+                        {%  for i in 1..countPages %}
+                            <li class="page-item">
+                                <a class="page-link" href=
+                                "{{ urlStart ~ universe ~'/' ~ actualFilter.brand ~
+                                '/' ~ actualFilter.category ~ '/' ~ i }}">{{ i }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+
     </div>
+
 {% endblock %}
 
 {% block footer %}
