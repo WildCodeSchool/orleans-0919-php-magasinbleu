@@ -18,7 +18,7 @@
 .card:hover {
     cursor: pointer;
     background-color: var(--color-light);
-    box-shadow: 0 0 20px 12px var(--color-somber);
+    box-shadow: 0 0 1px 1px var(--color-somber);
 }
 
 .card-body {
@@ -41,12 +41,6 @@
 .cardLink:link {
     text-decoration: none;
     margin: 16px;
-}
-
-.blue_rails {
-    width: 100vw;
-    height: 100px;
-    object-fit: cover;
 }
 
 .steam_train_img {

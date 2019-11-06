@@ -1,0 +1,100 @@
+@import "../Home/nav.css";
+@import "../Home/footer.css";
+
+.titleProductUniverse {
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: var(--size-font-title);
+    margin-left: 4vw;
+    overflow: visible;
+    word-spacing: 0.3rem;
+}
+
+.avail {
+    color: var(--color-somber);
+    margin-left: 4vw;
+}
+
+.card-deck {
+    justify-content: center;
+    margin: 2rem;
+    background-color: var(--color-light-blue);
+    border-radius: 1rem;
+    padding: 10px;
+    position: relative;
+}
+
+.flex-wrap {
+    margin: 0;
+    padding: 0;
+}
+
+.card-deck .card {
+    border-color: var(--color-primary);
+    margin: 2rem;
+    border-radius: 1rem;
+    transition: box-shadow .3s ease-in-out;
+}
+
+.card:hover {
+    cursor: pointer;
+    background-color: var(--color-light);
+    box-shadow: 0 0 1px 1px var(--color-somber);
+}
+
+.card-img-top {
+    height: 20vh;
+    object-fit: fill;
+}
+
+.card-body {
+    color: var(--color-somber);
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.card-title {
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 3rem;
+    text-align: center;
+    overflow: visible;
+    word-spacing: 0.3rem;
+
+}
+.card-text {
+    color: var(--color-somber);
+
+}
+
+.btn {
+    align-self: end;
+
+}
+
+.navPage {
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .container-fluid {
+        padding: 0;
+    }
+
+    .card-deck {
+        margin: 0;
+        width: 100%;
+    }
+
+    .card-body {
+        height: 40vh;
+    }
+
+    .card-deck .card {
+        margin: 5px;
+    }
+}

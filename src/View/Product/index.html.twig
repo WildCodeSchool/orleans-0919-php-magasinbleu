@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Au p'tit magasin bleu - Produits
+{%  endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Product/index.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'Home/nav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    {% set universe = products[0].universe_name %}
+    <h1 class="titleProductUniverse">Les différents produits: {{ universe }}</h1>
+    <p class="avail">
+        {{ countProducts }} produits disponible
+    </p>
+
+    <div class="container-fluid">
+        <div class="card-deck">
+            {% for product in products %}
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 flex-wrap">
+                    <a class="cardLink" href="#">
+                        <div class="card">
+                            <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ product.name|capitalize}}</h4>
+                                <p class="card-text">Prix: {{ product.price }} €</p>
+                                <p class="card-text">Catégorie: {{ product.category_name }}</p>
+                                <p class="card-text">Marque: {{ product.brand_name }}</p>
+                                <p class="card-text">
+                                    Disponibilité:
+                                    {% if product.availabity == 1 %}
+                                        En stock
+                                    {% else %}
+                                        Rupture de stock
+                                    {% endif %}
+                                </p>
+                                <a href="#" class="btn btn-primary">Voir le produit</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <nav aria-label="Page navigation example" class="navPage">
+            <ul class="pagination">
+                {% if countPages == 1 %}
+                    <li class="page-item"><a class="page-link" href="./{{ universe }}">1</a></li>
+                {% elseif countPages > 1 %}
+                    {%  for i in 1..countPages %}
+                        <li class="page-item">
+                            <a class="page-link" href="/product/indexUniverse/{{ universe }}/{{ i }}">{{ i }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "/Home/footer.html.twig" %}
+{% endblock %}
