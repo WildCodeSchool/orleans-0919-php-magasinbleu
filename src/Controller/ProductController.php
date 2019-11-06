@@ -9,12 +9,16 @@ class ProductController extends AbstractController
 
     const PRODUCTS_BY_PAGES = 12;
 
-    public function indexUniverse(string $universe, int $page = 1)
+    public function indexUniverse(string $universe, string $brand = '%', string $category = '%', int $page = 1)
     {
+        $filterPage = ['universe' =>$universe,
+                        'brand' => $brand,
+                        'category' => $category,
+                        ];
         $productManager = new ProductManager();
-        $countProducts = $productManager->countProducts($universe);
+        $countProducts = $productManager->countProducts($filterPage);
         $countPages = (int)($countProducts/12+1);
-        $products = $productManager->selectUniverse($universe, $page, self::PRODUCTS_BY_PAGES);
+        $products = $productManager->selectUniverse($filterPage, $page, self::PRODUCTS_BY_PAGES);
         return $this->twig->render('Product/index.html.twig', ['products' => $products,
                                                                         'page' => $page,
                                                                         'countPages' => $countPages,
