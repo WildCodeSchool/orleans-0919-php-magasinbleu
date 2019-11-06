@@ -6,7 +6,7 @@
     padding: 20px;
 }
 
-.row {
+.lastproducts row {
     height: 100%;
     padding: 10px;
 }
@@ -24,4 +24,31 @@
 
 .productimage {
     align-self: center;
+}
+
+/* MOBILE VERSION */
+@media screen and (max-width: 768px) {
+
+    .lastproducts {
+        order:-1;
+    }
+
+    .productimage {
+        order:2;
+        text-align: center;
+    }
+
+    .card-img {
+        height: 50%;
+        width: auto;
+    }
+
+    .lastproducts h5 {
+        text-align: center;
+    }
+
+    .lastproducts p {
+        text-align: center;
+    }
+
 }

@@ -2,7 +2,7 @@
 
 {% block title %}
     Au p'tit magasin bleu
-{%  endblock %}
+{% endblock %}
 
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/Home/index.css">
@@ -13,6 +13,7 @@
 {% endblock %}
 
 {% block content %}
+    <div class="flexbox">
 
     <div class="container">
         {% include '/Home/_universe.html.twig' %}
@@ -22,7 +23,7 @@
         {% include '/Home/lastproducts.html.twig' %}
     </div>
 
-{% endblock %}
+    </div>{% endblock %}
 
 {% block footer %}
     {% include "/Home/footer.html.twig" %}
