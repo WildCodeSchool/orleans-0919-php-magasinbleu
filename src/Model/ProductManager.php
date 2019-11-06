@@ -6,7 +6,6 @@ class ProductManager extends AbstractManager
 {
     const TABLE = 'product';
     const TABLE_UNIVERSE = 'universe';
-
     const TABLE_CATEGORY = 'category';
     const TABLE_BRAND = 'brand';
 
