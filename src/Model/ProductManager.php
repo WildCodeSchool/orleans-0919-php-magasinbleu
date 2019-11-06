@@ -77,4 +77,14 @@ class ProductManager extends AbstractManager
         $statement->execute();
         return (int)$statement->fetch()['count'];
     }
+
+    public function sortArrayTable(array $toSort): array
+    {
+        $sorted = [];
+        foreach ($toSort as $array) {
+            $sorted[] = array_values($array);
+        }
+        sort($sorted);
+        return $sorted;
+    }
 }
