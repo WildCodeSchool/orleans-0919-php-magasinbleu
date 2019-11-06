@@ -112,4 +112,9 @@ class ItemController extends AbstractController
         $itemManager->delete($id);
         header('Location:/item/index');
     }
+
+    public function describe()
+    {
+        return $this->twig->render('Item/describe.html.twig');
+    }
 }

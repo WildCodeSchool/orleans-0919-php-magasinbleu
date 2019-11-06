@@ -1,0 +1,17 @@
+@import "../Home/footer.css";
+
+.describeProduct{
+    margin-bottom:18px;
+    pointer-events: none;
+}
+
+.descriptionTitle{
+    overflow:hidden;
+}
+
+.sizeInfo, h2
+{
+    font-size: 14px;
+    font-weight:bold;
+    text-decoration: underline;
+}

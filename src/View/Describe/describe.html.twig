@@ -1,13 +1,31 @@
-{% extends 'layout.html.twig' %}
+{% extends 'Home/index.html.twig' %}
+
 {% block content %}
 
-<section>
-
-
-
-
-
-</section>
-
+    <section class="describeProduct">
+        <div class="container-fluid">
+            <div class="row justify-content-around">
+                <div class="col-lg-3 align-self-center">
+                    <img src="https://via.placeholder.com/300" alt="image qui représente le produit sélectionné" class="img-thumbnail">
+                </div>
+                <div class="col-lg-6">
+                     <div class="card h-auto p-4">
+                        <div class="card-body">
+                            <div class="cardDescribe">
+                                <h1 class="descriptionTitle">Description</h1>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cupiditate explicabo laborum ratione saepe. Accusantium aut, ducimus facilis hic inventore itaque maxime odio? Cupiditate, dolorem est in quas quod voluptates.</p>
+                            <div class="sizeInfo">
+                                <h2>Marque : </h2>
+                                <h2>Catégorie : </h2>
+                                <h2>Référence : </h2>
+                                <h2>Prix : </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
