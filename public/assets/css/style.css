@@ -6,6 +6,7 @@
     --color-md-blue: #60adf3;
     --color-primary: #0066cc;
     --color-somber: #00264D;
+    --color-filter-image: rgba(0, 0, 0, .4);
     --font-primary: 'Lato', sans-serif;
     --font-secondary: 'Roboto', sans-serif;
     --font-title: 'Spicy Rice', cursive;
