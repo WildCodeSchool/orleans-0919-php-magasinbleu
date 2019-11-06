@@ -13,7 +13,12 @@
 {% endblock %}
 
 {% block content %}
-    {% include '/Home/_universe.html.twig' %}
+    <div class="container">
+        {% include '/Home/_universe.html.twig' %}
+    </div>
+    <div class="container container-map-hours">
+    {% include '/Home/mapHours.html.twig' %}
+    </div>
 {% endblock %}
 
 {% block footer %}

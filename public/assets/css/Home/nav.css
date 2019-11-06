@@ -6,7 +6,7 @@
     font-size: 2rem ;
     margin-left: 10px;
     margin-right: 30px;
-
+    font-family: var(--font-title);
 }
 
 .collapse navbar-collapse{
@@ -21,6 +21,11 @@
 .nav-item{
     margin-right: 30px;
 }
+
+.nav-link{
+    font-family: var(--font-title);
+}
+
 .list-inline-item-nav{
     float: right;
 }

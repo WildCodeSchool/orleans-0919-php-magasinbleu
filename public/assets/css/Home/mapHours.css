@@ -1,0 +1,39 @@
+
+.container-map-hours{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.frame-map{
+    border-radius: 1rem;
+    border-color: var(--color-primary);
+}
+
+.card-hours:hover{
+    background-color: var(--color-light);
+    box-shadow: 0 0 0px 0px var(--color-somber);
+}
+.hours{
+}
+.card-hours{
+    width: 30%;
+    height: 200%;
+}
+
+.card-body-hours{
+}
+
+.card-title-hours{
+}
+
+.card-text-hours{
+    margin: 5%;
+    text-align: center;
+}
+
+
+
+
