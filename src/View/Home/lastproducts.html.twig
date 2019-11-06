@@ -2,7 +2,7 @@
     <div class="col-12 title"><h1>Nos derniers produits</h1></div>
     {% for product in products %}
         <div class="card mb-3" style="max-width: 540px; max-height: 250px;">
-            <a href="#"><div class="row no-gutters">
+            <div class="row no-gutters">
                 <div class="col-md-4 productimage">
                     <img src={{ '/assets/uploads/' ~ product.image }} class="card-img" alt="...">
                 </div>
@@ -16,6 +16,6 @@
                     </div>
                 </div>
             </div>
-        </div></a>
+        </div>
     {% endfor %}
 </div>

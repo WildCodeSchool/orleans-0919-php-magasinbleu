@@ -6,11 +6,6 @@
     padding: 20px;
 }
 
-.lastproducts row {
-    height: 100%;
-    padding: 10px;
-}
-
 .lastproducts h1 {
     display: block;
     font-family: var(--font-title);
@@ -20,6 +15,10 @@
 .lastproducts h5 {
     font-size: 30px;
     text-align: left;
+}
+
+.row.no-gutters {
+    height: 100%;
 }
 
 .productimage {
@@ -39,7 +38,7 @@
     }
 
     .card-img {
-        height: 50%;
+        height: 30vh;
         width: auto;
     }
 
