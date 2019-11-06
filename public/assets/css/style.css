@@ -1,12 +1,15 @@
-@import "Home/nav.css";
 :root {
     --color-light: #e3eaf2;
-    --color-light-blue: #62bfed;
-    --color-md-blue: #3590f3;
+    --color-light-blue: #a2c9ff;
+    --color-md-blue: #60adf3;
     --color-primary: #0066cc;
-    --color-somber: #03080f;
+    --color-somber: #00264D;
+    --color-filter-image: rgba(0, 0, 0, .4);
     --font-primary: 'Lato', sans-serif;
-    --font-title: 'Roboto', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --font-title: 'Spicy Rice', cursive;
+    --size-font-primary: 2rem;
+    --size-font-title: 4rem;
 }
 
 * {
@@ -15,4 +18,11 @@
     box-sizing: border-box;
     overflow: auto;
     font-family: var(--font-primary);
+    font-size: var(--size-font-primary);
+}
+
+.blue_rails {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
 }
