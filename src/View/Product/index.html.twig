@@ -29,6 +29,8 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{ product.name|capitalize}}</h4>
                                 <p class="card-text">Prix: {{ product.price }} €</p>
+                                <p class="card-text">Catégorie: {{ product.category_name }}</p>
+                                <p class="card-text">Marque: {{ product.brand_name }}</p>
                                 <p class="card-text">
                                     Disponibilité:
                                     {% if product.availabity == 1 %}
@@ -51,7 +53,10 @@
                     <li class="page-item"><a class="page-link" href="./{{ universe }}">1</a></li>
                 {% elseif countPages > 1 %}
                     {%  for i in 1..countPages %}
-                        <li class="page-item"><a class="page-link" href="./{{ universe }}/{{ i }}">{{ i }}</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="/product/indexUniverse/{{ universe }}/{{ i }}">{{ i }}
+                            </a>
+                        </li>
                     {% endfor %}
                 {% endif %}
             </ul>

@@ -13,8 +13,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="flexbox">
+    {% include '/Home/_carousel.html.twig' %}
 
+    <div class="flexbox">
     <div class="container">
         {% include '/Home/_universe.html.twig' %}
     </div>
@@ -23,7 +24,8 @@
         {% include '/Home/lastproducts.html.twig' %}
     </div>
 
-    </div>{% endblock %}
+    </div>
+{% endblock %}
 
 {% block footer %}
     {% include "/Home/footer.html.twig" %}
