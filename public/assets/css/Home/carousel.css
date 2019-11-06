@@ -1,5 +1,5 @@
 .text-defile {
-    color: white;
+    color: var(--color-light);
     font-size: 2.8em;
     align-self: flex-end;
     margin-bottom: 50px;
@@ -17,21 +17,12 @@
     height: 50vh;
     display: flex;
     justify-content: center;
-
 }
 
 .imageFilter {
-    background-color: rgba(0, 0, 0, 0.3);
+    background: var(--color-filter-image);
 }
 
 .carousel-control-next, .carousel-control-prev {
     display: none;
-}
-
-
-@media screen and (max-width: 980px)
-{
-    .carousel{
-        display: none;
-    }
 }
