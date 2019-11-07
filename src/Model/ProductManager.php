@@ -4,6 +4,7 @@ namespace App\Model;
 
 class ProductManager extends AbstractManager
 {
+    const NB_LAST_PRODUCTS = 3;
     const TABLE = 'product';
     const TABLE_UNIVERSE = 'universe';
     const TABLE_CATEGORY = 'category';
@@ -22,7 +23,7 @@ class ProductManager extends AbstractManager
         $query = 'SELECT p.*, c.name AS category_name, b.name AS brand_name FROM ' . $this->table .
                     ' p JOIN ' . self::TABLE_CATEGORY . ' c ON p.category_id = c.id 
                         JOIN ' . self::TABLE_BRAND . ' b ON p.brand_id = b.id 
-                        ORDER BY p.id DESC LIMIT 3 ';
+                        ORDER BY p.id DESC LIMIT ' . self::NB_LAST_PRODUCTS;
         return $this->pdo->query($query)->fetchAll();
     }
 
