@@ -48,7 +48,13 @@ class ProductManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('universe', $universe, \PDO::PARAM_STR);
         $statement->execute();
-        return $statement->fetchAll();
+        $brands = $statement->fetchAll();
+        $sortedBrands = [];
+        foreach ($brands as $brand) {
+            $sortedBrands[] = $brand['brand_name'];
+        }
+        sort($sortedBrands);
+        return $sortedBrands;
     }
 
     public function selectCategoryFromUniverse(string $universe): array
@@ -60,7 +66,13 @@ class ProductManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('universe', $universe, \PDO::PARAM_STR);
         $statement->execute();
-        return $statement->fetchAll();
+        $categories = $statement->fetchAll();
+        $sortedCategories = [];
+        foreach ($categories as $category) {
+            $sortedCategories[] = $category['category_name'];
+        }
+        sort($sortedCategories);
+        return $sortedCategories;
     }
 
     public function countProducts(array $filterPage): int
@@ -76,15 +88,5 @@ class ProductManager extends AbstractManager
         $statement->bindValue('category', $filterPage['category'], \PDO::PARAM_STR);
         $statement->execute();
         return (int)$statement->fetch()['count'];
-    }
-
-    public function sortArrayTable(array $toSort): array
-    {
-        $sorted = [];
-        foreach ($toSort as $array) {
-            $sorted[] = array_values($array);
-        }
-        sort($sorted);
-        return $sorted;
     }
 }
