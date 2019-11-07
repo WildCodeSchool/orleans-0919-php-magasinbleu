@@ -17,8 +17,7 @@ class ProductManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    /* 3 last products Hmepage */
-    public function selectAll(): array
+    public function lastProduct(): array
     {
         $query = 'SELECT p.*, c.name AS category_name, b.name AS brand_name FROM ' . $this->table .
                     ' p JOIN ' . self::TABLE_CATEGORY . ' c ON p.category_id = c.id 
