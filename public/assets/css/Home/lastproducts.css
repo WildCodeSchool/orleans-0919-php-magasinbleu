@@ -1,0 +1,53 @@
+.lastproducts {
+}
+
+.title {
+    text-align: center;
+    padding: 20px;
+}
+
+.lastproducts h1 {
+    display: block;
+    font-family: var(--font-title);
+    overflow: hidden;
+}
+
+.lastproducts h5 {
+    font-size: 30px;
+    text-align: left;
+}
+
+.row.no-gutters {
+    height: 100%;
+}
+
+.productimage {
+    align-self: center;
+}
+
+/* MOBILE VERSION */
+@media screen and (max-width: 768px) {
+
+    .lastproducts {
+        order:-1;
+    }
+
+    .productimage {
+        order:2;
+        text-align: center;
+    }
+
+    .card-img {
+        height: 30vh;
+        width: auto;
+    }
+
+    .lastproducts h5 {
+        text-align: center;
+    }
+
+    .lastproducts p {
+        text-align: center;
+    }
+
+}
