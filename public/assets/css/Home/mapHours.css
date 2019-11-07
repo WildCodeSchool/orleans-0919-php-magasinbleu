@@ -6,8 +6,9 @@
 }
 
 .frame-map{
+    margin: 2%;
     border-radius: 1rem;
-    border-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
 }
 
 .card-hours:hover{
@@ -16,6 +17,7 @@
 }
 
 .card-hours{
+    margin:2%;
     width: 30%;
     height: 200%;
 }
@@ -23,4 +25,14 @@
 .card-text-hours{
     margin: 5%;
     text-align: center;
+}
+
+
+@media screen and (max-width:992px){
+    .container-map-hours{
+        flex-direction: column;
+    }
+    .card-hours{
+        width: 100%;
+    }
 }
