@@ -56,4 +56,8 @@
     .steam_train_img {
         display: none;
     }
+
+    .card-img-top {
+        height: 400px;
+    }
 }

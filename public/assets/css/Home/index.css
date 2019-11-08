@@ -1,4 +1,11 @@
+@import "carousel.css";
 @import "nav.css";
 @import 'universe.css';
+@import "lastproducts.css";
 @import "footer.css";
-@import "carousel.css";
+@import "mapHours.css";
+
+.flexbox {
+    display: flex;
+    flex-direction: column;
+}
