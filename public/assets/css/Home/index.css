@@ -3,6 +3,7 @@
 @import 'universe.css';
 @import "lastproducts.css";
 @import "footer.css";
+@import "mapHours.css";
 
 .flexbox {
     display: flex;
