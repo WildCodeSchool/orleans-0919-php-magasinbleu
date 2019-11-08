@@ -4,10 +4,11 @@ namespace App\Model;
 
 class ProductManager extends AbstractManager
 {
+    const NB_LAST_PRODUCTS = 3;
     const TABLE = 'product';
     const TABLE_UNIVERSE = 'universe';
-    const TABLE_BRAND = 'brand';
     const TABLE_CATEGORY = 'category';
+    const TABLE_BRAND = 'brand';
 
     /**
      *  Initializes this class.
@@ -15,6 +16,15 @@ class ProductManager extends AbstractManager
     public function __construct()
     {
         parent::__construct(self::TABLE);
+    }
+
+    public function lastProduct(): array
+    {
+        $query = 'SELECT p.*, c.name AS category_name, b.name AS brand_name FROM ' . $this->table .
+                    ' p JOIN ' . self::TABLE_CATEGORY . ' c ON p.category_id = c.id 
+                        JOIN ' . self::TABLE_BRAND . ' b ON p.brand_id = b.id 
+                        ORDER BY p.id DESC LIMIT ' . self::NB_LAST_PRODUCTS;
+        return $this->pdo->query($query)->fetchAll();
     }
 
     /**

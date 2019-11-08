@@ -1,0 +1,21 @@
+<div class="row card-deck">
+    <div class="col-12 title"><h1>Nos derniers produits</h1></div>
+    {% for product in products %}
+        <div class="card mb-3" style="max-width: 540px; max-height: 250px;">
+            <div class="row no-gutters">
+                <div class="col-md-4 productimage">
+                    <img src={{ '/assets/uploads/' ~ product.image }} class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.category_name }}<br>
+                            {{ product.brand_name }}<br>
+                            {{ product.price }} €</p>
+                        <p class="card-text"><small class="text-muted">En savoir plus...</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
