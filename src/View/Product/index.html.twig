@@ -30,10 +30,10 @@
                 {% for brand in brands %}
                     <a href=
                        "{{ urlStart ~ actualFilter.universe ~
-                       '/' ~ brand ~ '/' ~ actualFilter.category }}"
+                       '/' ~ brand.name ~ '/' ~ actualFilter.category }}"
                        class="filterLinks"
                     >
-                        <li>{{ brand }}</li>
+                        <li>{{ brand.name }}</li>
                     </a>
                 {% endfor %}
             </ul>
@@ -44,10 +44,10 @@
                 {% for category in categories %}
                     <a href=
                        "{{ urlStart ~ actualFilter.universe ~
-                       '/' ~ actualFilter.brand ~ '/' ~ category }}"
+                       '/' ~ actualFilter.brand ~ '/' ~ category.name }}"
                        class="filterLinks"
                     >
-                        <li>{{ category }}</li>
+                        <li>{{ category.name }}</li>
                     </a>
                 {% endfor %}
             </ul>

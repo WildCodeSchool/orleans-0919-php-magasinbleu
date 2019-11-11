@@ -49,42 +49,6 @@ class ProductManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function selectBrandFromUniverse(string $universe): array
-    {
-        $query = 'SELECT DISTINCT b.name AS brand_name FROM ' . $this->table . ' p 
-                    JOIN ' . self::TABLE_UNIVERSE . ' u ON p.universe_id = u.id 
-                    JOIN ' . self::TABLE_BRAND . ' b ON p.brand_id = b.id 
-                    WHERE u.name = :universe';
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue('universe', $universe, \PDO::PARAM_STR);
-        $statement->execute();
-        $brands = $statement->fetchAll();
-        $sortedBrands = [];
-        foreach ($brands as $brand) {
-            $sortedBrands[] = $brand['brand_name'];
-        }
-        sort($sortedBrands);
-        return $sortedBrands;
-    }
-
-    public function selectCategoryFromUniverse(string $universe): array
-    {
-        $query = 'SELECT DISTINCT c.name AS category_name FROM ' . $this->table . ' p 
-                    JOIN ' . self::TABLE_UNIVERSE . ' u ON p.universe_id = u.id 
-                    JOIN ' . self::TABLE_CATEGORY . ' c ON p.category_id = c.id 
-                    WHERE u.name = :universe';
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue('universe', $universe, \PDO::PARAM_STR);
-        $statement->execute();
-        $categories = $statement->fetchAll();
-        $sortedCategories = [];
-        foreach ($categories as $category) {
-            $sortedCategories[] = $category['category_name'];
-        }
-        sort($sortedCategories);
-        return $sortedCategories;
-    }
-
     public function countProducts(array $filterPage): int
     {
         $query = 'SELECT COUNT(p.id) AS count FROM ' . $this->table . ' p 

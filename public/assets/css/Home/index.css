@@ -1,9 +1,9 @@
-@import "carousel.css";
 @import "nav.css";
+@import "carousel.css";
+@import "mapHours.css";
 @import 'universe.css';
 @import "lastproducts.css";
 @import "footer.css";
-@import "mapHours.css";
 
 .flexbox {
     display: flex;

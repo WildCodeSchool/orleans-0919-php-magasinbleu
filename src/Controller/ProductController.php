@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\BrandManager;
+use App\Model\CategoryManager;
 use App\Model\ProductManager;
 
 class ProductController extends AbstractController
@@ -16,10 +18,12 @@ class ProductController extends AbstractController
                         'category' => $category,
                         ];
         $productManager = new ProductManager();
+        $brandManager = new BrandManager();
+        $categoryManager = new CategoryManager();
         $countProducts = $productManager->countProducts($filterPage);
         $countPages = (int)($countProducts/12+1);
-        $brands = $productManager->selectBrandFromUniverse($universe);
-        $categories = $productManager->selectCategoryFromUniverse($universe);
+        $brands = $brandManager->selectAll();
+        $categories = $categoryManager->selectAll();
         $products = $productManager->selectUniverse($filterPage, $page, self::PRODUCTS_BY_PAGES);
         return $this->twig->render('Product/index.html.twig', ['products' => $products,
                                                                         'page' => $page,

@@ -8,6 +8,7 @@
 
 .filterMenu {
     width: 20vh;
+    height: max-content;
     margin: 2rem;
     padding: 10px;
     border-style: solid;
