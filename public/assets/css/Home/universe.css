@@ -1,9 +1,17 @@
+.tltleDeck {
+    text-align: center;
+    padding: 20px;
+    display: block;
+    font-family: var(--font-title);
+    font-size: var(--size-font-title);
+    color: var(--color-primary);
+    overflow: hidden;
+}
+
 .card-deck {
     justify-content: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    background-color: var(--color-light-blue);
-    border-radius: 1rem;
     padding: 10px;
     position: relative;
 }

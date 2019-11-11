@@ -22,8 +22,8 @@ class ProductController extends AbstractController
         $categoryManager = new CategoryManager();
         $countProducts = $productManager->countProducts($filterPage);
         $countPages = (int)($countProducts/12+1);
-        $brands = $brandManager->selectAll();
-        $categories = $categoryManager->selectAll();
+        $brands = $brandManager->selectFromUniverse($universe);
+        $categories = $categoryManager->selectFromUniverse($universe);
         $products = $productManager->selectUniverse($filterPage, $page, self::PRODUCTS_BY_PAGES);
         return $this->twig->render('Product/index.html.twig', ['products' => $products,
                                                                         'page' => $page,
