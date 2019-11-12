@@ -8,6 +8,8 @@ class DescribeController extends AbstractController
 {
     public function describe()
     {
-        return $this->twig->render('Describe/describe.html.twig');
+        $productManager = new ProductManager();
+        $products = $productManager->selectAll();
+        return $this->twig->render('Describe/describe.html.twig', ['products' => $products]);
     }
 }

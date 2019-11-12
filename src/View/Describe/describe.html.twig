@@ -14,13 +14,15 @@
                             <div class="cardDescribe">
                                 <h1 class="descriptionTitle">Description</h1>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cupiditate explicabo laborum ratione saepe. Accusantium aut, ducimus facilis hic inventore itaque maxime odio? Cupiditate, dolorem est in quas quod voluptates.</p>
+                            {% for product in products %}
+                            <p>{{ product.id }}. {{ product.description}}</p>
                             <div class="sizeInfo">
-                                <h2>Marque : </h2>
-                                <h2>Catégorie : </h2>
-                                <h2>Référence : </h2>
-                                <h2>Prix : </h2>
+                                <p>Marque : {{ brand.id }}. {{ brand.name }}</p>
+                                <p>Catégorie : {{ category.id }}. {{ category.name }}</p>
+                                <p>Référence : {{ product.id }}. {{ product.reference }}</p>
+                                <p>Prix : {{ product.id }}. {{ product.price }}</p>
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

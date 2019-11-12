@@ -46,4 +46,16 @@ class ProductManager extends AbstractManager
         $statement->execute();
         return (int)$statement->fetch()['count'];
     }
+
+    public function describe(array $products): int
+    {
+        $query = 'SELECT p.name, p.description, b.name, c.name, p.reference, p.price, p.image
+                  FROM ' . $this->table . ' p
+                  JOIN ' . self::TABLE_CATEGORY . ' c ON p.category_id = c.id
+                  JOIN ' . self::TABLE_BRAND . ' b ON p.brand_id = b.id ';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('products', $products, \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetch();
+    }
 }

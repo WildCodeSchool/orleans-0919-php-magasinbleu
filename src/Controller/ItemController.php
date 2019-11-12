@@ -113,8 +113,4 @@ class ItemController extends AbstractController
         header('Location:/item/index');
     }
 
-    public function describe()
-    {
-        return $this->twig->render('Item/describe.html.twig');
-    }
 }
