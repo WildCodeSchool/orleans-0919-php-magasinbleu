@@ -126,7 +126,7 @@
     }
 
     .card-body {
-        height: 40vh;
+        height: auto;
     }
 
     .card-deck .card {

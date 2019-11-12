@@ -29,6 +29,11 @@
     box-shadow: 0 0 1px 1px var(--color-somber);
 }
 
+.card-img-top {
+    height: 400px;
+    height: 30vh;
+}
+
 .card-body {
     color: var(--color-primary);
     overflow: visible;
