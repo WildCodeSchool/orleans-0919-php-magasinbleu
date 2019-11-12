@@ -13,14 +13,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
-    {% block stylesheet %}{% endblock %}
+    {% block stylesheet %}
+    {% endblock %}
 </head>
 
 <body>
 {% block navbar %}{% endblock %}
 
 {% block content %}{% endblock %}
-<img src="/assets/images/blue_rails.svg" class="blue_rails">
+
 {% block footer %}{% endblock %}
 
 {% block javascripts %}
