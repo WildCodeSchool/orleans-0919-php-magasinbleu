@@ -13,7 +13,7 @@
     padding: 10px;
     border-style: solid;
     border-color: var(--color-somber);
-    border-radius: 2rem;
+    border-radius: 1rem;
 }
 
 .filterMenuTitle {
@@ -26,6 +26,11 @@
 .filterLinks {
     text-decoration: none;
     color: var(--color-somber);
+}
+
+.filterLinks:hover {
+    text-decoration: none;
+    color: var(--color-md-blue);
 }
 
 .container-fluid {
