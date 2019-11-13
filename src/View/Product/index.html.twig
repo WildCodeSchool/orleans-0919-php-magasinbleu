@@ -24,35 +24,44 @@
     <div class="productDisplay">
 
         <div class="filterMenu">
-            <a href="{{ urlStart ~ actualFilter.universe }}{% if actualFilter.category is defined %}{{ '?category=' ~ actualFilter.category }}{% endif %}">
+            <a href=
+               "{{- urlStart ~ actualFilter.universe -}}
+                {%- if actualFilter.category is defined -%}
+                {{- '?category=' ~ actualFilter.category -}}
+                {%- endif -%}">
                 <h2 class="filterMenuTitle">Marques :</h2>
             </a>
             <ul>
                 {% for brand in brands %}
                     <a href=
-                       "{{ urlStart ~ actualFilter.universe ~
-                       '?brand=' ~ brand.brand_name }}{% if actualFilter.category is defined %}{{ '&category=' ~ actualFilter.category }}{% endif %}"
-                       class="filterLinks"
-                    >
+                       "{{- urlStart ~ actualFilter.universe ~ '?brand=' ~ brand.brand_name -}}
+                        {%- if actualFilter.category is defined -%}
+                        {{- '&category=' ~ actualFilter.category -}}
+                        {%- endif -%}"
+                       class="filterLinks">
                         <li>{{ brand.brand_name }}</li>
                     </a>
                 {% endfor %}
             </ul>
-            <a href="{{ urlStart ~ actualFilter.universe}}{% if actualFilter.brand  is defined %}{{ '?brand=' ~ actualFilter.brand }}{% endif %}">
+            <a href=
+               "{{- urlStart ~ actualFilter.universe -}}
+               {%- if actualFilter.brand  is defined -%}
+               {{- '?brand=' ~ actualFilter.brand -}}
+               {%- endif -%}">
                 <h2 class="filterMenuTitle">Categories :</h2>
             </a>
             <ul>
                 {% for category in categories %}
                     <a href=
-                       "{{ urlStart ~ actualFilter.universe ~
-                       '?category=' ~ category.category_name }}{% if actualFilter.brand  is defined %}{{ '&brand=' ~ actualFilter.brand }}{% endif %}"
-                       class="filterLinks"
-                    >
+                       "{{- urlStart ~ actualFilter.universe ~ '?category=' ~ category.category_name -}}
+                        {%- if actualFilter.brand  is defined -%}
+                        {{- '&brand=' ~ actualFilter.brand -}}
+                        {%- endif -%}"
+                       class="filterLinks">
                         <li>{{ category.category_name }}</li>
                     </a>
                 {% endfor %}
             </ul>
-
         </div>
 
         <div class="container-fluid">
@@ -88,8 +97,14 @@
                         {%  for i in 1..countPages %}
                             <li class="page-item">
                                 <a class="page-link" href=
-                                "{{ urlStart ~ universe ~ '/' ~ i  ~'?brand=' ~ actualFilter.brand ~
-                                '&category=' ~ actualFilter.category }}">{{ i }}
+                                "{{- urlStart ~ universe ~ '/' ~ i -}}
+                                {%- if actualFilter.brand  is defined and actualFilter.category is defined -%}
+                                    {{- '?brand=' ~ actualFilter.brand ~ '&category=' ~ actualFilter.category -}}
+                                 {%- elseif actualFilter.brand  is defined -%}
+                                    {{- '?brand=' ~ actualFilter.brand -}}
+                                {%- elseif actualFilter.category is defined -%}
+                                    {{- '?category=' ~ actualFilter.category -}}
+                                {%- endif -%}">{{ i }}
                                 </a>
                             </li>
                         {% endfor %}

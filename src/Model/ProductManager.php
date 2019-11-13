@@ -39,7 +39,7 @@ class ProductManager extends AbstractManager
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id 
-                    WHERE u.name = :universe AND b.name LIKE :brand and c.name LIKE :category
+                    WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category 
                     LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('universe', $filterPage['universe'], \PDO::PARAM_STR);
@@ -55,7 +55,7 @@ class ProductManager extends AbstractManager
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE . ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id 
-                    WHERE u.name = :universe AND b.name LIKE :brand and c.name LIKE :category';
+                    WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('universe', $filterPage['universe'], \PDO::PARAM_STR);
         $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
