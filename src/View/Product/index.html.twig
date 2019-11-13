@@ -27,7 +27,7 @@
                         <div class="card">
                             <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h4 class="card-title">{{ product.name|capitalize}}</h4>
+                                <h4 class="card-title">{{ product.name|capitalize }}</h4>
                                 <p class="card-text">Prix: {{ product.price }} €</p>
                                 <p class="card-text">Catégorie: {{ product.category_name }}</p>
                                 <p class="card-text">Marque: {{ product.brand_name }}</p>
@@ -39,7 +39,7 @@
                                         Rupture de stock
                                     {% endif %}
                                 </p>
-                                <a href="#" class="btn btn-primary">Voir le produit</a>
+                                <a href="/Product/describe/{{ product.id }}" class="btn btn-primary">Voir le produit</a>
                             </div>
                         </div>
                     </a>
