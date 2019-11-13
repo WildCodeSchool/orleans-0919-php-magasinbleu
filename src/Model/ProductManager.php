@@ -61,7 +61,7 @@ class ProductManager extends AbstractManager
     public function selectOneById(int $id)
     {
         $query = 'SELECT p.*, b.name AS brand_name, c.name AS category_name 
-                    FROM ' . $this->table . ' p 
+                    FROM ' . self::TABLE . ' p 
                     JOIN ' . self::TABLE_CATEGORY . ' c ON p.category_id = c.id 
                     JOIN ' . self::TABLE_BRAND . ' b ON p.brand_id = b.id 
                   WHERE p.id=:id';
