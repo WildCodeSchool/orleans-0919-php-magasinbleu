@@ -1,11 +1,21 @@
-@import "carousel.css";
 @import "nav.css";
+@import "carousel.css";
 @import 'universe.css';
 @import "lastproducts.css";
-@import "footer.css";
 @import "mapHours.css";
+@import "footer.css";
 
 .flexbox {
     display: flex;
     flex-direction: column;
+}
+
+.btn-ripple{
+    background-color: var(--color-primary);
+    border-color: var(--color-light);
+}
+.btn-ripple:hover{
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 }
