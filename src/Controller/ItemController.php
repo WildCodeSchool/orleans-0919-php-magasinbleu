@@ -112,5 +112,4 @@ class ItemController extends AbstractController
         $itemManager->delete($id);
         header('Location:/item/index');
     }
-
 }

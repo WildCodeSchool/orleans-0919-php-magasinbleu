@@ -70,5 +70,4 @@ class ItemManager extends AbstractManager
 
         return $statement->execute();
     }
-
 }
