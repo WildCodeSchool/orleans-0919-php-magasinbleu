@@ -21,7 +21,7 @@ class ProductController extends AbstractController
         $brandManager = new BrandManager();
         $categoryManager = new CategoryManager();
         $countProducts = $productManager->countProducts($filterPage);
-        $countPages = (int)($countProducts/12+1);
+        $countPages = (int)($countProducts/self::PRODUCTS_BY_PAGES+1);
         $brands = $brandManager->selectFromUniverse($universe);
         $categories = $categoryManager->selectFromUniverse($universe);
         $products = $productManager->selectUniverse($filterPage, $page, self::PRODUCTS_BY_PAGES);

@@ -9,7 +9,6 @@ class ProductManager extends AbstractManager
 {
     const NB_LAST_PRODUCTS = 3;
     const TABLE = 'product';
-    const TABLE_UNIVERSE = 'universe';
 
     /**
      *  Initializes this class.
@@ -21,7 +20,7 @@ class ProductManager extends AbstractManager
 
     public function lastProduct(): array
     {
-        $query = 'SELECT p.*, c.name AS category_name, b.name AS brand_name FROM ' . $this->table .
+        $query = 'SELECT p.*, c.name AS category_name, b.name AS brand_name FROM ' . self::TABLE .
                     ' p JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id 
                         JOIN ' . BrandManager::TABLE . ' b ON p.brand_id = b.id 
                         ORDER BY p.id DESC LIMIT ' . self::NB_LAST_PRODUCTS;
@@ -36,8 +35,8 @@ class ProductManager extends AbstractManager
     public function selectUniverse(array $filterPage, int $page, int $productByPage): array
     {
         $query = 'SELECT p.*, u.name AS universe_name, b.name AS brand_name, c.name AS category_name 
-                    FROM ' . $this->table . ' p 
-                    JOIN ' . self::TABLE_UNIVERSE . ' u ON p.universe_id = u.id 
+                    FROM ' . self::TABLE . ' p 
+                    JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id 
                     WHERE u.name = :universe AND b.name LIKE :brand and c.name LIKE :category
@@ -52,8 +51,8 @@ class ProductManager extends AbstractManager
 
     public function countProducts(array $filterPage): int
     {
-        $query = 'SELECT COUNT(p.id) AS count FROM ' . $this->table . ' p 
-                    JOIN ' . self::TABLE_UNIVERSE . ' u ON p.universe_id = u.id 
+        $query = 'SELECT COUNT(p.id) AS count FROM ' . self::TABLE . ' p 
+                    JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE . ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id 
                     WHERE u.name = :universe AND b.name LIKE :brand and c.name LIKE :category';
