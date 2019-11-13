@@ -13,14 +13,18 @@ class ProductController extends AbstractController
 
     public function indexUniverse(string $universe, string $page = '1')
     {
-        $filterPage['brand'] = (isset($_GET['brand'])) ? $_GET['brand'] : '%';
-        $filterPage['category'] = (isset($_GET['category'])) ? $_GET['category'] : '%';
+
+        if (isset($_GET['brand'])) {
+            $filterPage['brand'] = $_GET['brand'];
+        }
+        if (isset($_GET['category'])) {
+            $filterPage['category'] = $_GET['category'];
+        }
+
         $filterPage['universe'] = (strpos($universe, '?'))
             ? substr($universe, 0, strpos($universe, '?')) : $universe;
-
         $pageNumber = (strpos($page, '?')) ? substr($page, 0, strpos($page, '?')) : $page;
         $pageNumber = (int)$pageNumber;
-
         $productManager = new ProductManager();
         $brandManager = new BrandManager();
         $categoryManager = new CategoryManager();

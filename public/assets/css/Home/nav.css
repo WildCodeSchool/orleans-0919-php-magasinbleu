@@ -30,3 +30,7 @@
 .list-inline-item-nav{
     float: right;
 }
+
+.selectedUniverse {
+    color: red;
+}

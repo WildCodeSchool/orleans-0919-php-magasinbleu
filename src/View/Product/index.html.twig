@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="/assets/css/Product/index.css">
 {% endblock %}
 
+{% set universe = products[0].universe_name %}
+{% set urlStart = '/product/indexUniverse/' %}
+
 {% block navbar %}
     {% include 'Home/nav.html.twig' %}
 {% endblock %}
 
 {% block content %}
-    {% set universe = products[0].universe_name %}
-    {% set urlStart = '/product/indexUniverse/' %}
     <h1 class="titleProductUniverse">Les différents produits : {{ universe }}</h1>
     <p class="avail">
         {{ countProducts }} produits disponible
@@ -23,28 +24,28 @@
     <div class="productDisplay">
 
         <div class="filterMenu">
-            <a href="{{ urlStart ~ actualFilter.universe ~ '?category=' ~ actualFilter.category }}">
+            <a href="{{ urlStart ~ actualFilter.universe }}{% if actualFilter.category is defined %}{{ '?category=' ~ actualFilter.category }}{% endif %}">
                 <h2 class="filterMenuTitle">Marques :</h2>
             </a>
             <ul>
                 {% for brand in brands %}
                     <a href=
                        "{{ urlStart ~ actualFilter.universe ~
-                       '?brand=' ~ brand.brand_name ~ '&category=' ~ actualFilter.category }}"
+                       '?brand=' ~ brand.brand_name }}{% if actualFilter.category is defined %}{{ '&category=' ~ actualFilter.category }}{% endif %}"
                        class="filterLinks"
                     >
                         <li>{{ brand.brand_name }}</li>
                     </a>
                 {% endfor %}
             </ul>
-            <a href="{{ urlStart ~ actualFilter.universe ~ '?brand=' ~ actualFilter.brand }}">
+            <a href="{{ urlStart ~ actualFilter.universe}}{% if actualFilter.brand  is defined %}{{ '?brand=' ~ actualFilter.brand }}{% endif %}">
                 <h2 class="filterMenuTitle">Categories :</h2>
             </a>
             <ul>
                 {% for category in categories %}
                     <a href=
                        "{{ urlStart ~ actualFilter.universe ~
-                       '?brand=' ~ actualFilter.brand ~ '&category=' ~ category.category_name }}"
+                       '?category=' ~ category.category_name }}{% if actualFilter.brand  is defined %}{{ '&brand=' ~ actualFilter.brand }}{% endif %}"
                        class="filterLinks"
                     >
                         <li>{{ category.category_name }}</li>
@@ -63,18 +64,16 @@
                                 <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ product.name|capitalize}}</h4>
-                                    <p class="card-text">Prix: {{ product.price }} €</p>
+                                    <p class="card-text">{{ product.price }} €</p>
                                     <p class="card-text">Catégorie: {{ product.category_name }}</p>
                                     <p class="card-text">Marque: {{ product.brand_name }}</p>
-                                    <p class="card-text">
-                                        Disponibilité:
-                                        {% if product.availabity == 1 %}
-                                            En stock
-                                        {% else %}
+                                    <p class="card-text inStock">
+                                        {% if product.availability == 0 %}
                                             Rupture de stock
+                                        {% else %}
+                                            Disponible
                                         {% endif %}
                                     </p>
-                                    <a href="#" class="btn btn-primary">Voir le produit</a>
                                 </div>
                             </div>
                         </a>

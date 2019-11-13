@@ -80,7 +80,7 @@
 
 .card-img-top {
     height: 20vh;
-    object-fit: scale-down;
+    object-fit: contain;
 }
 
 .card-body {
@@ -106,14 +106,14 @@
 
 }
 
-.btn {
-    align-self: end;
-
-}
-
 .navPage {
     display: flex;
     justify-content: center;
+}
+
+.inStock {
+    font-weight: bolder;
+    font-style: oblique;
 }
 
 @media only screen and (max-width: 768px) {

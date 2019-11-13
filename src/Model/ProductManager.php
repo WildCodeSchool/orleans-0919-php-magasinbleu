@@ -43,8 +43,8 @@ class ProductManager extends AbstractManager
                     LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('universe', $filterPage['universe'], \PDO::PARAM_STR);
-        $statement->bindValue('brand', $filterPage['brand'], \PDO::PARAM_STR);
-        $statement->bindValue('category', $filterPage['category'], \PDO::PARAM_STR);
+        $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
+        $statement->bindValue('category', $filterPage['category'] ?? '%', \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetchAll();
     }
@@ -58,8 +58,8 @@ class ProductManager extends AbstractManager
                     WHERE u.name = :universe AND b.name LIKE :brand and c.name LIKE :category';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('universe', $filterPage['universe'], \PDO::PARAM_STR);
-        $statement->bindValue('brand', $filterPage['brand'], \PDO::PARAM_STR);
-        $statement->bindValue('category', $filterPage['category'], \PDO::PARAM_STR);
+        $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
+        $statement->bindValue('category', $filterPage['category'] ?? '%', \PDO::PARAM_STR);
         $statement->execute();
         return (int)$statement->fetch()['count'];
     }
