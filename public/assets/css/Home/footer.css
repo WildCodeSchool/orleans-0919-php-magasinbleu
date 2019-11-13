@@ -5,6 +5,7 @@ footer {
 
 a{
     color:var(--color-light);
+    font-size:17px;
 }
 
 a:hover{
@@ -13,4 +14,9 @@ a:hover{
 
 h2{
     font-size:16px;
+    overflow:hidden;
+}
+
+.btn.btn-primary.btn-ripple {
+    padding-bottom: 8px;
 }
