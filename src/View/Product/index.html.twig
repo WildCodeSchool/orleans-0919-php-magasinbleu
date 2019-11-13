@@ -15,7 +15,7 @@
 {% block content %}
     {% set universe = products[0].universe_name %}
     {% set urlStart = '/product/indexUniverse/' %}
-    <h1 class="titleProductUniverse">Les différents produits: {{ universe }}</h1>
+    <h1 class="titleProductUniverse">Les différents produits : {{ universe }}</h1>
     <p class="avail">
         {{ countProducts }} produits disponible
     </p>
@@ -23,28 +23,28 @@
     <div class="productDisplay">
 
         <div class="filterMenu">
-            <a href="{{ urlStart ~ actualFilter.universe ~ '/%/' ~ actualFilter.category }}">
-                <h2 class="filterMenuTitle">Marques:</h2>
+            <a href="{{ urlStart ~ actualFilter.universe ~ '?category=' ~ actualFilter.category }}">
+                <h2 class="filterMenuTitle">Marques :</h2>
             </a>
             <ul>
                 {% for brand in brands %}
                     <a href=
                        "{{ urlStart ~ actualFilter.universe ~
-                       '/' ~ brand.brand_name ~ '/' ~ actualFilter.category }}"
+                       '?brand=' ~ brand.brand_name ~ '&category=' ~ actualFilter.category }}"
                        class="filterLinks"
                     >
                         <li>{{ brand.brand_name }}</li>
                     </a>
                 {% endfor %}
             </ul>
-            <a href="{{ urlStart ~ actualFilter.universe ~ '/' ~ actualFilter.brand ~ '/%' }}">
-                <h2 class="filterMenuTitle">Categories:</h2>
+            <a href="{{ urlStart ~ actualFilter.universe ~ '?brand=' ~ actualFilter.brand }}">
+                <h2 class="filterMenuTitle">Categories :</h2>
             </a>
             <ul>
                 {% for category in categories %}
                     <a href=
                        "{{ urlStart ~ actualFilter.universe ~
-                       '/' ~ actualFilter.brand ~ '/' ~ category.category_name }}"
+                       '?brand=' ~ actualFilter.brand ~ '&category=' ~ category.category_name }}"
                        class="filterLinks"
                     >
                         <li>{{ category.category_name }}</li>
@@ -89,8 +89,8 @@
                         {%  for i in 1..countPages %}
                             <li class="page-item">
                                 <a class="page-link" href=
-                                "{{ urlStart ~ universe ~'/' ~ actualFilter.brand ~
-                                '/' ~ actualFilter.category ~ '/' ~ i }}">{{ i }}
+                                "{{ urlStart ~ universe ~ '/' ~ i  ~'?brand=' ~ actualFilter.brand ~
+                                '&category=' ~ actualFilter.category }}">{{ i }}
                                 </a>
                             </li>
                         {% endfor %}
