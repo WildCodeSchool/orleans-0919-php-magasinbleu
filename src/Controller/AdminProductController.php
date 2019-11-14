@@ -55,7 +55,7 @@ class AdminProductController extends AbstractController
         if (empty($data['name'])) {
             $errors['name'] = 'Le nom du produit est requis';
         } elseif (strlen($data['name']) > 150) {
-            $errors['name'] = 'Le nom du produit est trop  long';
+            $errors['name'] = 'Le nom du produit est trop long';
         }
         if (empty($data['image'])) {
             $errors['image'] = 'Une image est requise';
@@ -63,12 +63,12 @@ class AdminProductController extends AbstractController
             $errors['image'] = 'Le lien  de l\'image est trop long';
         }
         if (empty($data['reference'])) {
-            $errors['reference'] = 'Une reference est requise';
+            $errors['reference'] = 'Une référence est requise';
         } elseif (strlen($data['reference']) > 45) {
             $errors['reference'] = 'Le nom de référence est trop long';
         }
         if (empty($data['price'])) {
-            $errors['price'] = 'Le prix doit être renseigner';
+            $errors['price'] = 'Le prix doit être renseigné';
         } elseif ($data['price'] < 0) {
             $errors['price'] = 'Le prix doit être positif';
         }
