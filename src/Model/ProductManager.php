@@ -34,14 +34,20 @@ class ProductManager extends AbstractManager
      */
     public function selectUniverse(array $filterPage, int $page, int $productByPage): array
     {
-        $query = 'SELECT p.*, u.name AS universe_name, b.name AS brand_name, c.name AS category_name 
+        $queryJoin = 'SELECT p.*, u.name AS universe_name, b.name AS brand_name, c.name AS category_name 
                     FROM ' . self::TABLE . ' p 
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
-                    JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id 
-                    WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category 
-                    ORDER BY p.id ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
-        $statement = $this->pdo->prepare($query);
+                    JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
+        $queryOrder = 'ORDER BY p.id ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
+        if (isset($filterPage['available'])) {
+            $queryFilter =
+                'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
+        } else {
+            $queryFilter = 'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category';
+        }
+
+        $statement = $this->pdo->prepare($queryJoin . ' ' . $queryFilter . ' ' . $queryOrder);
         $statement->bindValue('universe', $filterPage['universe'], \PDO::PARAM_STR);
         $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
         $statement->bindValue('category', $filterPage['category'] ?? '%', \PDO::PARAM_STR);
@@ -51,12 +57,18 @@ class ProductManager extends AbstractManager
 
     public function countProducts(array $filterPage): int
     {
-        $query = 'SELECT COUNT(p.id) AS count FROM ' . self::TABLE . ' p 
+        $queryJoin = 'SELECT COUNT(p.id) AS count FROM ' . self::TABLE . ' p 
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE . ' b ON p.brand_id = b.id 
-                    JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id 
-                    WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category';
-        $statement = $this->pdo->prepare($query);
+                    JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
+        if (isset($filterPage['available'])) {
+            $queryFilter =
+                'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
+        } else {
+            $queryFilter = 'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category';
+        }
+
+        $statement = $this->pdo->prepare($queryJoin . ' ' . $queryFilter);
         $statement->bindValue('universe', $filterPage['universe'], \PDO::PARAM_STR);
         $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
         $statement->bindValue('category', $filterPage['category'] ?? '%', \PDO::PARAM_STR);

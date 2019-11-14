@@ -25,8 +25,8 @@
 
         <div class="filterMenu">
             <a href=
-               "{{- urlStart ~ actualFilter.universe -}}
-                {%- if actualFilter.category is defined -%}
+               "{{- urlStart ~ actualFilter.universe ~ '/1/' -}}
+                {%- if actualFilter.category is not null -%}
                 {{- '?category=' ~ actualFilter.category -}}
                 {%- endif -%}">
                 <h2 class="filterMenuTitle">Marques :</h2>
@@ -34,9 +34,12 @@
             <ul>
                 {% for brand in brands %}
                     <a href=
-                       "{{- urlStart ~ actualFilter.universe ~ '?brand=' ~ brand.brand_name -}}
-                        {%- if actualFilter.category is defined -%}
+                       "{{- urlStart ~ actualFilter.universe ~ '/1/' ~ '?brand=' ~ brand.brand_name -}}
+                        {%- if actualFilter.category is not null -%}
                         {{- '&category=' ~ actualFilter.category -}}
+                        {%- endif -%}
+                        {%- if actualFilter.available  is not null -%}
+                        {{- '&available=' ~ actualFilter.available -}}
                         {%- endif -%}"
                        class="filterLinks">
                         <li>{{ brand.brand_name }}</li>
@@ -44,8 +47,8 @@
                 {% endfor %}
             </ul>
             <a href=
-               "{{- urlStart ~ actualFilter.universe -}}
-               {%- if actualFilter.brand  is defined -%}
+               "{{- urlStart ~ actualFilter.universe ~ '/1/' -}}
+               {%- if actualFilter.brand  is not null -%}
                {{- '?brand=' ~ actualFilter.brand -}}
                {%- endif -%}">
                 <h2 class="filterMenuTitle">Categories :</h2>
@@ -53,15 +56,35 @@
             <ul>
                 {% for category in categories %}
                     <a href=
-                       "{{- urlStart ~ actualFilter.universe ~ '?category=' ~ category.category_name -}}
-                        {%- if actualFilter.brand  is defined -%}
+                       "{{- urlStart ~ actualFilter.universe ~ '/1/' ~ '?category=' ~ category.category_name -}}
+                        {%- if actualFilter.brand  is not null -%}
                         {{- '&brand=' ~ actualFilter.brand -}}
+                        {%- endif -%}
+                        {%- if actualFilter.available  is not null -%}
+                        {{- '&available=' ~ actualFilter.available -}}
                         {%- endif -%}"
                        class="filterLinks">
                         <li>{{ category.category_name }}</li>
                     </a>
                 {% endfor %}
             </ul>
+            <a href="{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
+                {%- if actualFilter.available is null and actualFilter|length >= 1 %}
+                    {{- 'available=' ~ 'true&' -}}
+                {%- endif -%}
+                {%- if actualFilter.brand is not null -%}
+                    {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
+                {%- endif -%}
+                {%- if actualFilter.category is not null -%}
+                    {{- 'category=' ~ actualFilter.category ~ '&' -}}
+                {%- endif -%}
+                ">
+                <h2 class="filterMenuTitle">
+                    {%- if actualFilter.available is null -%}Produits en stock
+                    {%- else -%}Tous les produits
+                    {%- endif -%}
+                </h2>
+            </a>
         </div>
 
         <div class="container-fluid">
@@ -76,8 +99,6 @@
                                     <p class="card-text">{{ product.price }} €</p>
                                     <p class="card-text">Catégorie: {{ product.category_name }}</p>
                                     <p class="card-text">Marque: {{ product.brand_name }}</p>
-                                    <p class="card-text">ID: {{ product.id }}</p>
-
                                     <p class="card-text inStock">
                                         {% if product.availability == 0 %}
                                             Rupture de stock
@@ -99,13 +120,18 @@
                         {%  for i in 1..countPages %}
                             <li class="page-item">
                                 <a class="page-link" href=
-                                "{{- urlStart ~ universe ~ '/' ~ i -}}
-                                {%- if actualFilter.brand  is defined and actualFilter.category is defined -%}
-                                    {{- '?brand=' ~ actualFilter.brand ~ '&category=' ~ actualFilter.category -}}
-                                 {%- elseif actualFilter.brand  is defined -%}
-                                    {{- '?brand=' ~ actualFilter.brand -}}
-                                {%- elseif actualFilter.category is defined -%}
-                                    {{- '?category=' ~ actualFilter.category -}}
+                                "{{- urlStart ~ universe ~ '/' ~ i ~ '/' -}}
+                                {%- if actualFilter|length > 1 %}
+                                    {{- '?' -}}
+                                    {%- if actualFilter.brand is not null -%}
+                                        {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
+                                    {%- endif -%}
+                                    {%- if actualFilter.category is not null -%}
+                                        {{- 'category=' ~ actualFilter.category ~ '&' -}}
+                                    {%- endif -%}
+                                    {%- if actualFilter.available is not null -%}
+                                        {{- 'available=' ~ actualFilter.available ~ '&' -}}
+                                    {%- endif -%}
                                 {%- endif -%}">{{ i }}
                                 </a>
                             </li>
