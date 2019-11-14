@@ -6,15 +6,27 @@
     padding: 20px;
 }
 
-.lastproducts h1 {
+.lastproducts h2 {
     display: block;
     font-family: var(--font-title);
+    font-size: var(--size-font-title);
+    color: var(--color-primary);
     overflow: hidden;
 }
 
 .lastproducts h5 {
     font-size: 30px;
     text-align: left;
+}
+
+.card_deck_last {
+    background-color: var(--color-light-blue);
+    border-radius: 1rem;
+}
+
+.card_deck_last .card {
+    max-width: 540px;
+    max-height: 250px;
 }
 
 .row.no-gutters {
