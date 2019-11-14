@@ -4,7 +4,7 @@ namespace App\Model;
 
 class ProductManager extends AbstractManager
 {
-    const NB_LAST_PRODUCTS = 3;
+    const NB_LAST_PRODUCTS = 5;
     const TABLE = 'product';
     const TABLE_UNIVERSE = 'universe';
     const TABLE_CATEGORY = 'category';

@@ -1,4 +1,6 @@
 .lastproducts {
+    background-color: var(--color-light-blue);
+    padding-bottom: 2em;
 }
 
 .title {

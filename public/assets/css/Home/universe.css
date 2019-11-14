@@ -2,8 +2,6 @@
     justify-content: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    background-color: var(--color-light-blue);
-    border-radius: 1rem;
     padding: 10px;
     position: relative;
 }
