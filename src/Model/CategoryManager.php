@@ -2,11 +2,10 @@
 
 namespace App\Model;
 
-use App\Model\ProductManager;
-
 class CategoryManager extends AbstractManager
 {
-    const TABLE = 'brand';
+    
+    const TABLE = 'category';
 
     public function __construct()
     {
