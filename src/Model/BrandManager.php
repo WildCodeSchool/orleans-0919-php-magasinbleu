@@ -1,29 +1,27 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sylvain
- * Date: 07/03/18
- * Time: 18:20
- * PHP version 7
- */
 
 namespace App\Model;
 
-/**
- *
- */
 class BrandManager extends AbstractManager
 {
-    /**
-     *
-     */
+
     const TABLE = 'brand';
 
-    /**
-     *  Initializes this class.
-     */
     public function __construct()
     {
         parent::__construct(self::TABLE);
+    }
+  
+    public function selectFromUniverse(string $universe): array
+    {
+        $query = 'SELECT DISTINCT b.name AS brand_name FROM ' . ProductManager::TABLE . ' p 
+                    JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
+                    JOIN ' . self::TABLE . ' b ON p.brand_id = b.id 
+                    WHERE u.name = :universe ORDER BY b.name ASC';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('universe', $universe, \PDO::PARAM_STR);
+        $statement->execute();
+        $brands = $statement->fetchAll();
+        return $brands;
     }
 }
