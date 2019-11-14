@@ -17,6 +17,6 @@ h2{
     overflow:hidden;
 }
 
-#contactFooter {
+.btn.btn-primary.btn-ripple {
     padding-bottom: 8px;
 }

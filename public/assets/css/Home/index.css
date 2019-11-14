@@ -5,6 +5,7 @@
 @import "footer.css";
 @import "mapHours.css";
 
+
 .flexbox {
     display: flex;
     flex-direction: column;
