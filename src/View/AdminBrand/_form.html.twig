@@ -2,7 +2,7 @@
     <div class="form-row">
         <input type="hidden" name="id" value="{{ brand.id }}">
         <div class="form-group col-md-4 col-md-offset-1">
-            <label for="name">Nom :</label>
+            <label for="name">Marque :</label>
             <input type="text" class="form-control" name="name" value="{{ data.name ?? brand.name }}" >
             {% if errors.name is defined %}
                 {{ errors.name }}
