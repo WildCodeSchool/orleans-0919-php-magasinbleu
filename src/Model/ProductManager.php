@@ -57,4 +57,23 @@ class ProductManager extends AbstractManager
         $statement->execute();
         return (int)$statement->fetch()['count'];
     }
+
+    public function insert(array $data)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE  . "
+               (name, image, reference, price, description, availability, universe_id, brand_id, category_id)
+               VALUES (:name, :image, :reference, :price, :description, :availability, :universe, :brand, :category)
+           ");
+        $statement->bindValue('name', $data['name'], \PDO::PARAM_STR);
+        $statement->bindValue('image', $data['image'], \PDO::PARAM_STR);
+        $statement->bindValue('reference', $data['reference'], \PDO::PARAM_STR);
+        $statement->bindValue('price', $data['price'], \PDO::PARAM_INT);
+        $statement->bindValue('description', $data['description'], \PDO::PARAM_STR);
+        $statement->bindValue('availability', $data['availability'], \PDO::PARAM_BOOL);
+        $statement->bindValue('universe', $data['universe'], \PDO::PARAM_INT);
+        $statement->bindValue('brand', $data['brand'], \PDO::PARAM_INT);
+        $statement->bindValue('category', $data['category'], \PDO::PARAM_INT);
+        $statement->bindValue('id', $data['id'], \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
