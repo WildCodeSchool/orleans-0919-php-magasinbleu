@@ -19,19 +19,6 @@
     text-align: left;
 }
 
-.card_deck_last {
-    border-radius: 1rem;
-}
-
-.card_deck_last .card {
-    max-width: 540px;
-    max-height: 250px;
-}
-
-.row.no-gutters {
-    height: 100%;
-}
-
 .productimage {
     align-self: center;
 }
