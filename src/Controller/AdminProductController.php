@@ -17,6 +17,14 @@ use App\Model\CategoryManager;
 
 class AdminProductController extends AbstractController
 {
+    public function index()
+    {
+        $productManager = new ProductManager();
+        $products = $productManager->selectAll();
+
+        return $this->twig->render('AdminProduct/index.html.twig', ['products' => $products]);
+    }
+
     public function edit($id): string
     {
         $errors = [];
@@ -73,5 +81,12 @@ class AdminProductController extends AbstractController
             $errors['price'] = 'Le prix doit être positif';
         }
         return $errors ?? [];
+    }
+
+    public function delete($id)
+    {
+        $productManager = new ProductManager();
+        $productManager->delete($id);
+        header('Location:/AdminProduct/index');
     }
 }
