@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-use App\Model\ProductManager;
-
 class BrandManager extends AbstractManager
 {
     const TABLE = 'brand';
@@ -12,7 +10,6 @@ class BrandManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
     public function selectFromUniverse(string $universe): array
     {
         $query = 'SELECT DISTINCT b.name AS brand_name FROM ' . ProductManager::TABLE . ' p 

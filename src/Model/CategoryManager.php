@@ -6,7 +6,7 @@ use App\Model\ProductManager;
 
 class CategoryManager extends AbstractManager
 {
-    const TABLE = 'category';
+    const TABLE = 'brand';
 
     public function __construct()
     {

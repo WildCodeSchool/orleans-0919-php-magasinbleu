@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Model;
 
 class UniverseManager extends AbstractManager
