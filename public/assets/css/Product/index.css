@@ -9,7 +9,7 @@
 .filterMenu {
     width: 20vh;
     height: max-content;
-    margin: 2rem;
+    margin: calc(2rem + 10px);
     padding: 10px;
     border-style: solid;
     border-color: var(--color-somber);
@@ -52,8 +52,9 @@
 
 .card-deck {
     justify-content: center;
-    margin: 2rem;
-    background-color: var(--color-light-blue);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    /*background-color: var(--color-light-blue);*/
     border-radius: 1rem;
     padding: 10px;
     position: relative;
