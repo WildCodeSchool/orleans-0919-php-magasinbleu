@@ -2,7 +2,7 @@
     <div class="col-12 title"><h2>Nos derniers produits</h2></div>
     {% for product in products %}
         <div class="col-xl-2 col-l-3">
-            <div class="card card-last-products">
+            <a href="/Product/describe/{{ product.id }}" class="card card-last-products">
                 <div class="row no-gutters img-product">
                     <img src={{ '/assets/uploads/' ~ product.image }} class="card-img-top" alt="...">
                 </div>
@@ -12,7 +12,7 @@
                         {{ product.category_name }}<br>
                         {{ product.brand_name }}</p>
                 </div>
-            </div>
+            </a>
         </div>
     {% endfor %}
 </div>
