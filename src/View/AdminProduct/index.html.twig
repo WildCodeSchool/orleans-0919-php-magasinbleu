@@ -14,18 +14,19 @@
         <a class="btn btn-primary" href="/AdminProduct/add">Ajouter</a>
     </div>
 
-    {% for product in products %}
-        <div class="product">
-            <div class="product-infos">{{ product.name }}<br>{{ product.reference }}</div>
+    <div class="column">
+        {% for product in products %}
+            <div class="product">
+                <div class="product-infos">{{ product.name }}<br>{{ product.reference }}</div>
 
-            <div class="buttons">
-                <a class="btn btn-success" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
-                <a class="btn btn-danger" href="/AdminProduct/delete/{{ product.id }}"
-                   OnClick="return confirm('Souhaitez-vous vraiment supprimer {{ product.name }} ?');">Supprimer</a>
+                <div class="buttons">
+                    <a class="btn btn-success" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
+                    <a class="btn btn-danger" href="/AdminProduct/delete/{{ product.id }}"
+                       OnClick="return confirm('Souhaitez-vous vraiment supprimer {{ product.name }} ?');">Supprimer</a>
+                </div>
             </div>
-        </div>
-    {% else %}
-        <li>Nothing to display</li>
+        {% else %}
+            <li>Nothing to display</li>
 
-    {% endfor %}
+        {% endfor %}</div>
 {% endblock %}
