@@ -63,7 +63,7 @@ class AdminProductController extends AbstractController
                 // insert en bdd si pas d'erreur
                 $productManager->insert($data);
                 // redirection en GET
-                header('Location: /adminProduct/list');
+                header('Location: /adminProduct/index');
             }
         }
         return $this->twig->render('AdminProduct/add.html.twig', [
