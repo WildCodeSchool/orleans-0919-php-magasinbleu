@@ -40,7 +40,7 @@ class ProductManager extends AbstractManager
                     JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id 
                     WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category 
-                    LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
+                    ORDER BY p.id ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('universe', $filterPage['universe'], \PDO::PARAM_STR);
         $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);

@@ -32,6 +32,7 @@ class ProductController extends AbstractController
         $categories = $categoryManager->selectFromUniverse($filterPage['universe']);
         $products = $productManager->selectUniverse($filterPage, $pageNumber, self::PRODUCTS_BY_PAGES);
 
+
         return $this->twig->render('Product/index.html.twig', ['products' => $products,
                                                                         'page' => $pageNumber,
                                                                         'countPages' => $countPages,

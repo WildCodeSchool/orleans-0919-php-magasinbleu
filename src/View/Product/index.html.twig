@@ -76,6 +76,8 @@
                                     <p class="card-text">{{ product.price }} €</p>
                                     <p class="card-text">Catégorie: {{ product.category_name }}</p>
                                     <p class="card-text">Marque: {{ product.brand_name }}</p>
+                                    <p class="card-text">ID: {{ product.id }}</p>
+
                                     <p class="card-text inStock">
                                         {% if product.availability == 0 %}
                                             Rupture de stock

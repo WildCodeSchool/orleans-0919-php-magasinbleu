@@ -31,6 +31,9 @@
     float: right;
 }
 
-.selectedUniverse {
-    color: red;
+.navbar-dark .navbar-nav .selectedUniverse {
+    color: var(--color-light);
+    border-style: solid;
+    border-color: var(--color-md-blue);
+    border-radius: 1rem;
 }
