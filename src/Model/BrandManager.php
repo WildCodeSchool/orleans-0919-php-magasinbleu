@@ -5,7 +5,7 @@ namespace App\Model;
 class BrandManager extends AbstractManager
 {
 
-  const TABLE = 'brand';
+    const TABLE = 'brand';
 
     public function __construct()
     {
