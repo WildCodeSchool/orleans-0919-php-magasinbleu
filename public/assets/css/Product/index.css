@@ -1,6 +1,41 @@
 @import "../Home/nav.css";
 @import "../Home/footer.css";
 
+.productDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+.filterMenu {
+    width: 20vh;
+    height: max-content;
+    margin: 2rem;
+    padding: 10px;
+    border-style: solid;
+    border-color: var(--color-somber);
+    border-radius: 1rem;
+}
+
+.filterMenuTitle {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--color-primary);
+
+}
+
+.filterLinks {
+    text-decoration: none;
+    color: var(--color-somber);
+}
+
+.filterLinks:hover {
+    text-decoration: none;
+    color: var(--color-md-blue);
+}
+.container-fluid {
+    padding: 0;
+}
+
 .titleProductUniverse {
     color: var(--color-primary);
     font-family: var(--font-title);
@@ -44,7 +79,7 @@
 
 .card-img-top {
     height: 20vh;
-    object-fit: fill;
+    object-fit: contain;
 }
 
 .card-body {
@@ -70,19 +105,23 @@
 
 }
 
-.btn {
-    align-self: end;
-
-}
-
 .navPage {
     display: flex;
     justify-content: center;
 }
 
+.inStock {
+    font-weight: bolder;
+    font-style: oblique;
+}
+
 @media only screen and (max-width: 768px) {
     .container-fluid {
         padding: 0;
+    }
+
+    .filterMenu {
+        display: none;
     }
 
     .card-deck {
@@ -91,7 +130,7 @@
     }
 
     .card-body {
-        height: 40vh;
+        height: auto;
     }
 
     .card-deck .card {

@@ -3,7 +3,7 @@
 
 :root {
     --color-light: #e3eaf2;
-    --color-light-blue: #a2c9ff;
+    --color-light-blue: rgba(0, 102, 204, 0.11);
     --color-md-blue: #60adf3;
     --color-primary: #0066cc;
     --color-somber: #00264D;
