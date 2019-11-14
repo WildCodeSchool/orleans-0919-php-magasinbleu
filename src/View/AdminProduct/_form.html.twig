@@ -11,10 +11,10 @@
         <div class="form-group col-md-4 col-md-offset-1">
             <label for="image">Image :</label>
             <input type="text" class="form-control" name="image" value="{{ data.image ?? product.image }}">
-        </div>
         {% if errors.image is defined %}
             {{ errors.image }}
         {% endif %}
+        </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-4 col-md-offset-1">
