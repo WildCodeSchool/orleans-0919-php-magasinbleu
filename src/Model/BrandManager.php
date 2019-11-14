@@ -14,10 +14,7 @@ namespace App\Model;
  */
 class BrandManager extends AbstractManager
 {
-    /**
-     *
-     */
-    const TABLE = 'item';
+    const TABLE = 'brand';
 
     /**
      *  Initializes this class.

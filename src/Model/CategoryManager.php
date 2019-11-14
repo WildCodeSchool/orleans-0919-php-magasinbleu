@@ -14,10 +14,7 @@ namespace App\Model;
  */
 class CategoryManager extends AbstractManager
 {
-    /**
-     *
-     */
-    const TABLE = 'item';
+    const TABLE = 'category';
 
     /**
      *  Initializes this class.

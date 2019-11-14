@@ -14,11 +14,7 @@ namespace App\Model;
  */
 class UniverseManager extends AbstractManager
 {
-    /**
-     *
-     */
-    const TABLE = 'item';
-
+    const TABLE = 'universe';
     /**
      *  Initializes this class.
      */

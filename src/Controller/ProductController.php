@@ -21,4 +21,11 @@ class ProductController extends AbstractController
                                                                         'countProducts' => $countProducts
                                                                     ]);
     }
+
+    public function describe(int $id): string
+    {
+        $productManager = new ProductManager();
+        $product = $productManager->selectOneById($id);
+        return $this->twig->render('Product/describe.html.twig', ['product' => $product]);
+    }
 }

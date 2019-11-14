@@ -58,9 +58,43 @@ class ProductManager extends AbstractManager
         return (int)$statement->fetch()['count'];
     }
 
+
+    public function selectOneById(int $id)
+    {
+        $query = 'SELECT p.*, b.name AS brand_name, c.name AS category_name 
+                    FROM ' . self::TABLE . ' p 
+                    JOIN ' . self::TABLE_CATEGORY . ' c ON p.category_id = c.id 
+                    JOIN ' . self::TABLE_BRAND . ' b ON p.brand_id = b.id 
+                  WHERE p.id=:id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetch();
+    }
+
+    public function update(array $data)
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE  . "
+                SET name=:name, image=:image, reference=:reference, price=:price, description=:description,
+                availability=:availability, universe_id=:universe, brand_id=:brand, category_id=:category            
+                WHERE id=:id
+            ");
+        $statement->bindValue('name', $data['name'], \PDO::PARAM_STR);
+        $statement->bindValue('image', $data['image'], \PDO::PARAM_STR);
+        $statement->bindValue('reference', $data['reference'], \PDO::PARAM_STR);
+        $statement->bindValue('price', $data['price'], \PDO::PARAM_INT);
+        $statement->bindValue('description', $data['description'], \PDO::PARAM_STR);
+        $statement->bindValue('availability', $data['availability'], \PDO::PARAM_BOOL);
+        $statement->bindValue('universe', $data['universe'], \PDO::PARAM_INT);
+        $statement->bindValue('brand', $data['brand'], \PDO::PARAM_INT);
+        $statement->bindValue('category', $data['category'], \PDO::PARAM_INT);
+        $statement->bindValue('id', $data['id'], \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
     public function insert(array $data)
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE  . "
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "
                (name, image, reference, price, description, availability, universe_id, brand_id, category_id)
                VALUES (:name, :image, :reference, :price, :description, :availability, :universe, :brand, :category)
            ");
@@ -73,7 +107,6 @@ class ProductManager extends AbstractManager
         $statement->bindValue('universe', $data['universe'], \PDO::PARAM_INT);
         $statement->bindValue('brand', $data['brand'], \PDO::PARAM_INT);
         $statement->bindValue('category', $data['category'], \PDO::PARAM_INT);
-        $statement->bindValue('id', $data['id'], \PDO::PARAM_INT);
         $statement->execute();
     }
 }
