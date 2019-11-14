@@ -37,6 +37,8 @@
     border-style: solid;
     border-color: var(--color-md-blue);
     border-radius: 1rem;
+    width: max-content;
+    height: max-content;
 }
 
 .search {
