@@ -113,7 +113,7 @@ class AdminProductController extends AbstractController
             $productManager = new ProductManager();
             $productManager->delete($id);
 
-            header('Location:/AdminProduct/index');
+            header('Location:/adminProduct/index');
         }
     }
 }
