@@ -4,7 +4,6 @@
 .describeProduct{
     pointer-events: none;
     margin: 9rem;
-    background-color: var(--color-light-blue);
     border-radius: 1rem;
     padding: 15px;
     position: relative;

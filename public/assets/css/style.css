@@ -24,3 +24,8 @@
     font-family: var(--font-primary);
     font-size: var(--size-font-primary);
 }
+
+body {
+    background-image: url("/assets/images/interlaced.png");
+    z-index: -1;
+}

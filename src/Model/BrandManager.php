@@ -12,7 +12,6 @@ class BrandManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
     public function update(array $data)
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . "
@@ -24,7 +23,6 @@ class BrandManager extends AbstractManager
         $statement->execute();
     }
 
-  
     public function selectFromUniverse(string $universe): array
     {
         $query = 'SELECT DISTINCT b.name AS brand_name FROM ' . ProductManager::TABLE . ' p 
