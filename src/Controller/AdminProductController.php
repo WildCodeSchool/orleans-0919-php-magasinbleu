@@ -22,7 +22,6 @@ class AdminProductController extends AbstractController
         $universes = $universeManager->selectAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
-            $data = array_map('htmlentities', $data);
             $errors = $this->validate($data);
             if (empty($errors)) {
                 // update en bdd si pas d'erreur
@@ -63,7 +62,7 @@ class AdminProductController extends AbstractController
                 // insert en bdd si pas d'erreur
                 $productManager->insert($data);
                 // redirection en GET
-                header('Location: /adminProduct/list');
+                header('Location: /adminProduct/index');
             }
         }
         return $this->twig->render('AdminProduct/add.html.twig', [

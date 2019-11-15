@@ -8,60 +8,140 @@
     <link rel="stylesheet" href="/assets/css/Product/index.css">
 {% endblock %}
 
+{% set universe = products[0].universe_name %}
+{% set urlStart = '/product/indexUniverse/' %}
+
 {% block navbar %}
     {% include 'Home/nav.html.twig' %}
 {% endblock %}
 
 {% block content %}
-    {% set universe = products[0].universe_name %}
-    <h1 class="titleProductUniverse">Les différents produits: {{ universe }}</h1>
+    <h1 class="titleProductUniverse">Les différents produits : {{ universe }}</h1>
     <p class="avail">
         {{ countProducts }} produits disponible
     </p>
 
-    <div class="container-fluid">
-        <div class="card-deck">
-            {% for product in products %}
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 flex-wrap">
-                    <a class="cardLink" href="#">
-                        <div class="card">
-                            <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ product.name|capitalize }}</h4>
-                                <p class="card-text">Prix: {{ product.price }} €</p>
-                                <p class="card-text">Catégorie: {{ product.category_name }}</p>
-                                <p class="card-text">Marque: {{ product.brand_name }}</p>
-                                <p class="card-text">
-                                    Disponibilité:
-                                    {% if product.availability == 1 %}
-                                        En stock
-                                    {% else %}
-                                        Rupture de stock
-                                    {% endif %}
-                                </p>
-                                <a href="/Product/describe/{{ product.id }}" class="btn btn-primary">Voir le produit</a>
-                            </div>
-                        </div>
+    <div class="productDisplay">
+        <div class="filterMenu bg-white">
+            <a href=
+               "{{- urlStart ~ actualFilter.universe ~ '/1/' -}}
+                {%- if actualFilter.category is not null -%}
+                {{- '?category=' ~ actualFilter.category -}}
+                {%- endif -%}">
+                <h2 class="filterMenuTitle">Marques :</h2>
+            </a>
+            <ul>
+                {% for brand in brands %}
+                    <a href=
+                       "{{- urlStart ~ actualFilter.universe ~ '/1/' ~ '?brand=' ~ brand.brand_name -}}
+                        {%- if actualFilter.category is not null -%}
+                        {{- '&category=' ~ actualFilter.category -}}
+                        {%- endif -%}
+                        {%- if actualFilter.available  is not null -%}
+                        {{- '&available=' ~ actualFilter.available -}}
+                        {%- endif -%}"
+                       class="filterLinks">
+                        <li>{{ brand.brand_name }}</li>
                     </a>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </ul>
+            <a href=
+               "{{- urlStart ~ actualFilter.universe ~ '/1/' -}}
+               {%- if actualFilter.brand  is not null -%}
+               {{- '?brand=' ~ actualFilter.brand -}}
+               {%- endif -%}">
+                <h2 class="filterMenuTitle">Categories :</h2>
+            </a>
+            <ul>
+                {% for category in categories %}
+                    <a href=
+                       "{{- urlStart ~ actualFilter.universe ~ '/1/' ~ '?category=' ~ category.category_name -}}
+                        {%- if actualFilter.brand  is not null -%}
+                        {{- '&brand=' ~ actualFilter.brand -}}
+                        {%- endif -%}
+                        {%- if actualFilter.available  is not null -%}
+                        {{- '&available=' ~ actualFilter.available -}}
+                        {%- endif -%}"
+                       class="filterLinks">
+                        <li>{{ category.category_name }}</li>
+                    </a>
+                {% endfor %}
+            </ul>
+            <a href="{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
+                {%- if actualFilter.available is null and actualFilter|length >= 1 %}
+                    {{- 'available=' ~ 'true&' -}}
+                {%- endif -%}
+                {%- if actualFilter.brand is not null -%}
+                    {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
+                {%- endif -%}
+                {%- if actualFilter.category is not null -%}
+                    {{- 'category=' ~ actualFilter.category ~ '&' -}}
+                {%- endif -%}
+                ">
+                <h2 class="filterMenuTitle">
+                    {%- if actualFilter.available is null -%}Produits en stock
+                    {%- else -%}Tous les produits
+                    {%- endif -%}
+                </h2>
+            </a>
         </div>
 
-        <nav aria-label="Page navigation example" class="navPage">
-            <ul class="pagination">
-                {% if countPages == 1 %}
-                    <li class="page-item"><a class="page-link" href="./{{ universe }}">1</a></li>
-                {% elseif countPages > 1 %}
-                    {%  for i in 1..countPages %}
-                        <li class="page-item">
-                            <a class="page-link" href="/product/indexUniverse/{{ universe }}/{{ i }}">{{ i }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-        </nav>
+        <div class="container-fluid">
+            <div class="card-deck">
+                {% for product in products %}
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 flex-wrap">
+                        <a class="cardLink" href="/Product/describe/{{ product.id }}">
+                            <div class="card">
+                                <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ product.name|capitalize}}</h4>
+                                    <p class="card-text">{{ product.price }} €</p>
+                                    <p class="card-text">Catégorie: {{ product.category_name }}</p>
+                                    <p class="card-text">Marque: {{ product.brand_name }}</p>
+                                    <p class="card-text inStock">
+                                        {% if product.availability == 0 %}
+                                            Rupture de stock
+                                        {% else %}
+                                            Disponible
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="Page navigation example" class="navPage">
+                <ul class="pagination">
+                    {% if countPages == 1 %}
+                        <li class="page-item"><a class="page-link" href="./{{ universe }}">1</a></li>
+                    {% elseif countPages > 1 %}
+                        {%  for i in 1..countPages %}
+                            <li class="page-item">
+                                <a class="page-link" href=
+                                "{{- urlStart ~ universe ~ '/' ~ i ~ '/' -}}
+                                {%- if actualFilter|length > 1 %}
+                                    {{- '?' -}}
+                                    {%- if actualFilter.brand is not null -%}
+                                        {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
+                                    {%- endif -%}
+                                    {%- if actualFilter.category is not null -%}
+                                        {{- 'category=' ~ actualFilter.category ~ '&' -}}
+                                    {%- endif -%}
+                                    {%- if actualFilter.available is not null -%}
+                                        {{- 'available=' ~ actualFilter.available ~ '&' -}}
+                                    {%- endif -%}
+                                {%- endif -%}">{{ i }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+
     </div>
+
 {% endblock %}
 
 {% block footer %}

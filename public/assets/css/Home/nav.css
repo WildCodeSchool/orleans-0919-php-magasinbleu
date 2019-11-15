@@ -29,4 +29,57 @@
 
 .list-inline-item-nav{
     float: right;
+    margin-left: 2rem;
+}
+
+.navbar-dark .navbar-nav .selectedUniverse {
+    color: var(--color-light);
+    border-style: solid;
+    border-color: var(--color-md-blue);
+    border-radius: 1rem;
+    width: max-content;
+    height: max-content;
+}
+
+.search {
+    width: 20vw;
+    display: flex;
+    border-radius: 5px 0 0 5px;
+    float: right;
+}
+
+.searchTerm {
+    width: 80%;
+    height: 40px;
+    border: 2px solid var(--color-md-blue);
+    border-right: none;
+    padding: 4px;
+    outline: none;
+}
+
+.searchTerm:focus{
+    color: var(--color-md-blue);
+}
+
+.searchButton {
+    width: 20%;
+    height: 40px;
+    border: 1px solid var(--color-md-blue);
+    background: var(--color-md-blue);
+    text-align: center;
+    color: var(--color-light);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .search {
+        float: left;
+        width: 100%;
+    }
+
+    .list-inline-item-nav {
+        margin-bottom: 2rem;
+    }
 }

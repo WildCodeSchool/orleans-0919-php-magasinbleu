@@ -6,19 +6,17 @@
     padding: 20px;
 }
 
-.lastproducts h1 {
+.lastproducts h2 {
     display: block;
     font-family: var(--font-title);
+    font-size: var(--size-font-title);
+    color: var(--color-primary);
     overflow: hidden;
 }
 
 .lastproducts h5 {
     font-size: 30px;
     text-align: left;
-}
-
-.row.no-gutters {
-    height: 100%;
 }
 
 .productimage {
