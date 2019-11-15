@@ -90,7 +90,6 @@ class AdminProductController extends AbstractController
             $productManager->delete($id);
 
             header('Location:/AdminProduct/index');
-            exit();
         }
     }
 }
