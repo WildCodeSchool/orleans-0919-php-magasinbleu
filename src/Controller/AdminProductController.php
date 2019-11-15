@@ -1,13 +1,4 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 11/10/17
- * Time: 16:07
- * PHP version 7
- */
-
 namespace App\Controller;
 
 use App\Model\ProductManager;
@@ -17,6 +8,7 @@ use App\Model\CategoryManager;
 
 class AdminProductController extends AbstractController
 {
+
     public function edit($id): string
     {
         $errors = [];
@@ -39,12 +31,46 @@ class AdminProductController extends AbstractController
             }
         }
         return $this->twig->render('AdminProduct/edit.html.twig', [
-            'product'  => $product,
-            'data'  => $data ?? [],
+            'product' => $product,
+            'data' => $data ?? [],
             'errors' => $errors,
             'brands' => $brands,
             'categories' => $categories,
             'universes' => $universes,
+        ]);
+    }
+
+    public function add(): string
+    {
+        $errors = [];
+
+        $productManager = new ProductManager();
+
+        $brandManager = new BrandManager();
+        $brand = $brandManager->selectAll();
+
+        $categoriesManager = new CategoryManager();
+        $categories = $categoriesManager->selectAll();
+
+        $universeManager = new UniverseManager();
+        $universe = $universeManager->selectAll();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = array_map('trim', $_POST);
+            $errors = $this->validate($data);
+            if (empty($errors)) {
+                // insert en bdd si pas d'erreur
+                $productManager->insert($data);
+                // redirection en GET
+                header('Location: /adminProduct/index');
+            }
+        }
+        return $this->twig->render('AdminProduct/add.html.twig', [
+             'data'  => $data ?? [],
+             'errors' => $errors,
+             'brands' => $brand,
+             'categories' => $categories,
+             'universes' => $universe,
         ]);
     }
 
