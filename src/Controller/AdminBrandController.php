@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Model\BrandManager;
+use App\Model\ProductManager;
 
 class AdminBrandController extends AbstractController
 {
@@ -45,5 +46,23 @@ class AdminBrandController extends AbstractController
             $errors['name'] = 'Le nom de la marque est trop long';
         }
         return $errors ?? [];
+    }
+
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $brandManager = new BrandManager();
+            $brandManager->delete($id);
+
+            header('Location:/adminBrand/index');
+        }
+    }
+
+    public function index()
+    {
+        $brandManager = new BrandManager();
+        $brands = $brandManager->selectAll();
+
+        return $this->twig->render('AdminBrand/index.html.twig', ['brands' => $brands]);
     }
 }
