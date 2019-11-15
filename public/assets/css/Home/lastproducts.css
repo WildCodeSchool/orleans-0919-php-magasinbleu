@@ -54,6 +54,7 @@
 .lastproducts .card-text {
     text-align: center;
     margin-top: 2em;
+
 }
 
 /* MOBILE VERSION */
@@ -85,4 +86,9 @@
     .lastproducts h5 {
         text-align: center;
     }
+
+    .lastproducts p {
+        text-align: center;
+    }
+
 }

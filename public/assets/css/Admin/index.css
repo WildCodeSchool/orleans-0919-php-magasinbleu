@@ -54,6 +54,10 @@ body {
     align-items: center;
 }
 
+.buttons {
+    display: flex;
+}
+
 .btn {
     margin-right: 2em;
 }

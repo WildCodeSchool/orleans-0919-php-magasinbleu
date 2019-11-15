@@ -1,4 +1,5 @@
 @import "Describe/describe.css";
+@import "Contact/contact.css";
 
 :root {
     --color-light: #e3eaf2;
@@ -22,4 +23,9 @@
     overflow-x: hidden;
     font-family: var(--font-primary);
     font-size: var(--size-font-primary);
+}
+
+body {
+    background-image: url("/assets/images/interlaced.png");
+    z-index: -1;
 }
