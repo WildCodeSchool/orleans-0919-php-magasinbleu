@@ -47,7 +47,7 @@ class ContactController extends AbstractController
             }
         }
         {
-            return $this->twig->render('Contact/contact.html.twig', [
+            return $this->twig->render('/Contact/contact.html.twig', [
                 'errors' => $errors ?? []]);
         }
     }
