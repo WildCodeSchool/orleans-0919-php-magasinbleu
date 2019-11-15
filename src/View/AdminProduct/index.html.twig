@@ -21,8 +21,10 @@
 
                 <div class="buttons">
                     <a class="btn btn-success" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
-                    <a class="btn btn-danger" href="/AdminProduct/delete/{{ product.id }}"
-                       OnClick="return confirm('Souhaitez-vous vraiment supprimer {{ product.name }} ?');">Supprimer</a>
+                    <form method="post">
+                        <a class="btn btn-danger" href="/AdminProduct/delete/{{ product.id }}"
+                           OnClick="return confirm('Souhaitez-vous vraiment supprimer {{ product.name }} ?');">Supprimer</a>
+                    </form>
                 </div>
             </div>
         {% else %}

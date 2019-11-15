@@ -48,8 +48,8 @@ class AdminProductController extends AbstractController
             }
         }
         return $this->twig->render('AdminProduct/edit.html.twig', [
-            'product'  => $product,
-            'data'  => $data ?? [],
+            'product' => $product,
+            'data' => $data ?? [],
             'errors' => $errors,
             'brands' => $brands,
             'categories' => $categories,
@@ -57,7 +57,7 @@ class AdminProductController extends AbstractController
         ]);
     }
 
-    private function validate(array $data) :array
+    private function validate(array $data): array
     {
         // verif coté serveur
         if (empty($data['name'])) {
@@ -85,8 +85,12 @@ class AdminProductController extends AbstractController
 
     public function delete($id)
     {
-        $productManager = new ProductManager();
-        $productManager->delete($id);
-        header('Location:/AdminProduct/index');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productManager = new ProductManager();
+            $productManager->delete($id);
+
+            header('Location:/AdminProduct/index');
+            exit();
+        }
     }
 }
