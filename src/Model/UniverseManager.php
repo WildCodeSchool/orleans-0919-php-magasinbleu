@@ -4,6 +4,7 @@ namespace App\Model;
 
 class UniverseManager extends AbstractManager
 {
+
     const TABLE = 'universe';
 
     public function __construct()
