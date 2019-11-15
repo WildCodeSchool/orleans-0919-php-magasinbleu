@@ -11,7 +11,6 @@
 namespace App\Controller;
 
 use App\Model\BrandManager;
-use App\Model\ProductManager;
 
 class AdminBrandController extends AbstractController
 {
