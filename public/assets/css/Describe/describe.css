@@ -1,0 +1,25 @@
+@import "../Home/nav.css";
+@import "../Home/footer.css";
+
+.describeProduct{
+    pointer-events: none;
+    margin: 9rem;
+    border-radius: 1rem;
+    padding: 15px;
+    position: relative;
+}
+
+.descriptionTitle{
+    overflow:hidden;
+}
+
+.sizeInfo
+{
+    font-size: 18px;
+    font-weight:normal;
+}
+
+.sizeDescribe
+{
+    font-size:16px;
+}

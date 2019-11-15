@@ -10,18 +10,29 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/product/indexUniverse/train">Train</a>
+                    <a class="nav-link {% if universe is defined  and universe == 'train' %}selectedUniverse{% endif %}"
+                       href="/product/indexUniverse/train">Train</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product/indexUniverse/maquette">Maquette</a>
+                    <a class="nav-link {% if universe is defined  and universe == 'maquette' %}selectedUniverse{% endif %}"
+                       href="/product/indexUniverse/maquette">Maquette</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/product/indexUniverse/jouet">Jouet</a>
+                    <a class="nav-link {% if universe is defined  and universe == 'jouet' %}selectedUniverse{% endif %}"
+                       href="/product/indexUniverse/jouet">Jouet</a>
                 </li>
 
             </ul>
+
             <div class="list-inline-item-nav">
-                <a href="#!" class="btn btn-primary btn-ripple btn-lg">Contact</a>
+                <a href="/Contact/contact" class="btn btn-primary btn-ripple btn-lg">Contact</a>
+            </div>
+
+            <div class="search">
+                <input type="text" class="search" placeholder="Chercher un produit">
+                <button type="submit" class="searchButton" name="search" value="search">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
         </div>
     </nav>

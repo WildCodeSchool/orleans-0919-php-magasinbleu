@@ -1,6 +1,9 @@
+@import "Describe/describe.css";
+@import "Contact/contact.css";
+
 :root {
     --color-light: #e3eaf2;
-    --color-light-blue: #a2c9ff;
+    --color-light-blue: rgba(0, 102, 204, 0.11);
     --color-md-blue: #60adf3;
     --color-primary: #0066cc;
     --color-somber: #00264D;
@@ -22,8 +25,7 @@
     font-size: var(--size-font-primary);
 }
 
-.blue_rails {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
+body {
+    background-image: url("/assets/images/interlaced.png");
+    z-index: -1;
 }
