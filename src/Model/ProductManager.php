@@ -7,7 +7,7 @@ use App\Model\BrandManager;
 
 class ProductManager extends AbstractManager
 {
-    const NB_LAST_PRODUCTS = 3;
+    const NB_LAST_PRODUCTS = 5;
     const TABLE = 'product';
 
     /**
@@ -107,6 +107,14 @@ class ProductManager extends AbstractManager
         $statement->bindValue('brand', $data['brand'], \PDO::PARAM_INT);
         $statement->bindValue('category', $data['category'], \PDO::PARAM_INT);
         $statement->bindValue('id', $data['id'], \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function delete(int $id)
+    {
+        $query = 'DELETE from ' . self::TABLE . ' WHERE id=:id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
 
