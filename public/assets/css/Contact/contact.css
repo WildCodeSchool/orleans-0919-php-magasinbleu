@@ -1,0 +1,6 @@
+@import "../Home/nav.css";
+@import "../Home/footer.css";
+
+.contactForm {
+    margin:80px;
+}
