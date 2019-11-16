@@ -135,4 +135,59 @@ class ProductManager extends AbstractManager
         $statement->bindValue('category', $data['category'], \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function countSearchedProducts(string $searchTerm, array $filterPage): int
+    {
+        $queryJoin = 'SELECT COUNT(p.id) AS count FROM ' . self::TABLE . ' p 
+                    JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
+                    JOIN ' . BrandManager::TABLE . ' b ON p.brand_id = b.id 
+                    JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
+        if (isset($filterPage['available'])) {
+            $queryFilter =
+                'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
+        } else {
+            $queryFilter = 'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category';
+        }
+        $querySearch = 'AND (p.name LIKE :search OR p.reference LIKE :search)';
+
+        $statement = $this->pdo->prepare($queryJoin . ' ' . $queryFilter . ' ' . $querySearch);
+        $statement->bindValue('universe', $filterPage['universe'] ?? '%', \PDO::PARAM_STR);
+        $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
+        $statement->bindValue('category', $filterPage['category'] ?? '%', \PDO::PARAM_STR);
+        $statement->bindValue('search', '%' . $searchTerm . '%', \PDO::PARAM_STR);
+        $statement->execute();
+        return (int)$statement->fetch()['count'];
+    }
+
+    public function searchProducts(array $filterPage, string $searchTerm, int $page, int $productByPage): array
+    {
+        $queryJoin = 'SELECT p.*, u.name AS universe_name, b.name AS brand_name, c.name AS category_name 
+                    FROM ' . self::TABLE . ' p 
+                    JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
+                    JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
+                    JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
+        $queryOrder = 'ORDER BY p.id ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
+        if (isset($filterPage['available'])) {
+            $queryFilter =
+                'WHERE u.name LIKE :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
+        } else {
+            $queryFilter = 'WHERE u.name LIKE :universe AND b.name LIKE :brand AND c.name LIKE :category';
+        }
+        $querySearch = 'AND (p.name LIKE :search OR p.reference LIKE :search)';
+
+        $query = $queryJoin . ' ' . $queryFilter . ' ' . $querySearch . ' ' . $queryOrder;
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('universe', $filterPage['universe'] ?? '%', \PDO::PARAM_STR);
+        $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
+        $statement->bindValue('category', $filterPage['category'] ?? '%', \PDO::PARAM_STR);
+        $statement->bindValue('search', $searchTerm, \PDO::PARAM_STR);
+        if (($searchTerm[0] == '\'' && substr($searchTerm, -1) == '\'')
+            || ($searchTerm[0] == '"' && substr($searchTerm, -1) == '"')) {
+            $statement->bindValue('search', substr($searchTerm, 1, strlen($searchTerm)-2), \PDO::PARAM_STR);
+        } else {
+            $statement->bindValue('search', '%' . $searchTerm . '%', \PDO::PARAM_STR);
+        }
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }
