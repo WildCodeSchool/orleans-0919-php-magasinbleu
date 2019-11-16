@@ -39,7 +39,7 @@ class ProductManager extends AbstractManager
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
-        $queryOrder = 'ORDER BY p.id ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
+        $queryOrder = 'ORDER BY p.name ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
         if (isset($filterPage['available'])) {
             $queryFilter =
                 'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
@@ -142,11 +142,9 @@ class ProductManager extends AbstractManager
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE . ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
+        $queryFilter = 'WHERE u.name LIKE :universe AND b.name LIKE :brand AND c.name LIKE :category';
         if (isset($filterPage['available'])) {
-            $queryFilter =
-                'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
-        } else {
-            $queryFilter = 'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category';
+            $queryFilter .= ' AND availability ';
         }
         $querySearch = 'AND (p.name LIKE :search OR p.reference LIKE :search)';
 
@@ -154,7 +152,14 @@ class ProductManager extends AbstractManager
         $statement->bindValue('universe', $filterPage['universe'] ?? '%', \PDO::PARAM_STR);
         $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
         $statement->bindValue('category', $filterPage['category'] ?? '%', \PDO::PARAM_STR);
-        $statement->bindValue('search', '%' . $searchTerm . '%', \PDO::PARAM_STR);
+        if (strlen($searchTerm) > 0) {
+            if (($searchTerm[0] == '\'' && substr($searchTerm, -1) == '\'')
+                || ($searchTerm[0] == '"' && substr($searchTerm, -1) == '"')) {
+                $statement->bindValue('search', substr($searchTerm, 1, strlen($searchTerm)-2), \PDO::PARAM_STR);
+            } else {
+                $statement->bindValue('search', '%' . $searchTerm . '%', \PDO::PARAM_STR);
+            }
+        }
         $statement->execute();
         return (int)$statement->fetch()['count'];
     }
@@ -166,7 +171,7 @@ class ProductManager extends AbstractManager
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
-        $queryOrder = 'ORDER BY p.id ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
+        $queryOrder = 'ORDER BY p.name ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
         if (isset($filterPage['available'])) {
             $queryFilter =
                 'WHERE u.name LIKE :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
@@ -181,11 +186,13 @@ class ProductManager extends AbstractManager
         $statement->bindValue('brand', $filterPage['brand'] ?? '%', \PDO::PARAM_STR);
         $statement->bindValue('category', $filterPage['category'] ?? '%', \PDO::PARAM_STR);
         $statement->bindValue('search', $searchTerm, \PDO::PARAM_STR);
-        if (($searchTerm[0] == '\'' && substr($searchTerm, -1) == '\'')
-            || ($searchTerm[0] == '"' && substr($searchTerm, -1) == '"')) {
-            $statement->bindValue('search', substr($searchTerm, 1, strlen($searchTerm)-2), \PDO::PARAM_STR);
-        } else {
-            $statement->bindValue('search', '%' . $searchTerm . '%', \PDO::PARAM_STR);
+        if (strlen($searchTerm) > 0) {
+            if (($searchTerm[0] == '\'' && substr($searchTerm, -1) == '\'')
+                || ($searchTerm[0] == '"' && substr($searchTerm, -1) == '"')) {
+                $statement->bindValue('search', substr($searchTerm, 1, strlen($searchTerm)-2), \PDO::PARAM_STR);
+            } else {
+                $statement->bindValue('search', '%' . $searchTerm . '%', \PDO::PARAM_STR);
+            }
         }
         $statement->execute();
         return $statement->fetchAll();

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\BrandManager;
 use App\Model\CategoryManager;
 use App\Model\ProductManager;
+use App\Model\UniverseManager;
 
 class ProductController extends AbstractController
 {
@@ -54,6 +55,7 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $brandManager = new BrandManager();
         $categoryManager = new CategoryManager();
+        $universeManager = new UniverseManager();
 
         $searchTerm = $_GET['search'] ?? null;
         $filterPage['brand'] = $_GET['brand'] ?? null;
@@ -67,14 +69,15 @@ class ProductController extends AbstractController
 
         $brands = $brandManager->selectAll();
         $categories = $categoryManager->selectAll();
+        $universes = $universeManager->selectAll();
         $products = $productManager->searchProducts($filterPage, $searchTerm, $pageNumber, self::PRODUCTS_BY_PAGES);
-
-        return $this->twig->render('Product/index.html.twig', ['products' => $products,
+        return $this->twig->render('Product/search.html.twig', ['products' => $products,
             'page' => $pageNumber,
             'countPages' => $countPages,
             'countProducts' => $countProducts,
             'brands' => $brands,
             'categories' => $categories,
+            'universes' => $universes,
             'actualFilter' => $filterPage,
             'searchTerm' => $searchTerm,
         ]);
