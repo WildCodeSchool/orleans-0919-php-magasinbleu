@@ -38,7 +38,6 @@ class AdminBrandController extends AbstractController
 
     private function validate(array $data) :array
     {
-        // verif coté serveur
         if (empty($data['name'])) {
             $errors['name'] = 'Un nom de marque est requise';
         } elseif (strlen($data['name']) > 150) {
@@ -63,5 +62,27 @@ class AdminBrandController extends AbstractController
         $brands = $brandManager->selectAll();
 
         return $this->twig->render('AdminBrand/index.html.twig', ['brands' => $brands]);
+    }
+
+    public function add(): string
+    {
+        $errors = [];
+
+        $brandManager = new BrandManager();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = array_map('trim', $_POST);
+            $errors = $this->validate($data);
+            if (empty($errors)) {
+                // insert en bdd si pas d'erreur
+                $brandManager->insert($data);
+                // redirection en GET
+                header('Location: /adminBrand/index');
+            }
+        }
+        return $this->twig->render('AdminBrand/add.html.twig', [
+            'data'  => $data ?? [],
+            'errors' => $errors,
+        ]);
     }
 }
