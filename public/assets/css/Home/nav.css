@@ -1,3 +1,7 @@
+.container-fluid {
+    padding: 0;
+}
+
 .navbar {
     background-color: var(--color-primary);
     border-radius: 0;
