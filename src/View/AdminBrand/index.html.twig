@@ -1,0 +1,31 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Admin/index.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'AdminProduct/nav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <div class="title">
+        <h1>Marques</h1>
+        <a class="btn btn-primary" href="/AdminBrand/add">Ajouter</a>
+    </div>
+    <div class="column">
+        {% for brand in brands %}
+            <div class="product">
+                <div class="product-infos">{{ brand.name }}</div>
+
+                <div class="buttons">
+                    <a class="btn btn-success" href="/AdminBrand/edit/{{ brand.id }}">Modifier</a>
+                    <form method="POST" action="/adminBrand/delete/{{ brand.id }}">
+                        <input type="submit" name="delete" value="Supprimer" class="btn btn-danger"
+                               OnClick="return confirm('Supprimer la marque {{ brand.name }} entraînera la suppression de tous les articles de cette marque');">
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
