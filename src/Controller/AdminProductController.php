@@ -38,7 +38,7 @@ class AdminProductController extends AbstractController
                 // update en bdd si pas d'erreur
                 $productManager->update($data);
                 // redirection en GET
-                header('Location: /adminProduct/edit/' . $id);
+                header('Location: /adminProduct/index');
             }
         }
         return $this->twig->render('AdminProduct/edit.html.twig', [
