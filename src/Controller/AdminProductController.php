@@ -8,6 +8,9 @@ use App\Model\CategoryManager;
 
 class AdminProductController extends AbstractController
 {
+    const MAX_SIZE = 200000;
+    const AUTHORIZED_FORMATS = ['image/jpeg', 'image/png'];
+
     public function index()
     {
         $productManager = new ProductManager();
@@ -71,7 +74,23 @@ class AdminProductController extends AbstractController
                 // redirection en GET
                 header('Location: /adminProduct/index');
             }
+
+            if (!empty($_FILES['path']['name'])) {
+                $path = $_FILES['path'];
+                if ($path['error'] !== 0) {
+                    $errors[] = 'Upload error';
+                }
+                // size du fichier
+                if ($path['size'] > self::MAX_SIZE) {
+                    $errors[] = 'The file size should be < ' . (self::MAX_SIZE / 1000) . ' ko';
+                }
+                // type mime autorisés
+                if (!in_array($path['type'], self::AUTHORIZED_FORMATS)) {
+                    $errors[] = 'Wrong type mime, the allowed mimes are ' . implode(', ', self::AUTHORIZED_FORMATS);
+                }
+            }
         }
+
         return $this->twig->render('AdminProduct/add.html.twig', [
              'data'  => $data ?? [],
              'errors' => $errors,
