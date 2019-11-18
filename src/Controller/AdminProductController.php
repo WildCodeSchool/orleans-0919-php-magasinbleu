@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Model\ProductManager;
@@ -67,16 +68,13 @@ class AdminProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
+            $data['image'] = uniqid() . '.' . pathinfo($_FILES['path']['name'], PATHINFO_EXTENSION);
+
             $errors = $this->validate($data);
-            if (empty($errors)) {
-                // insert en bdd si pas d'erreur
-                $productManager->insert($data);
-                // redirection en GET
-                header('Location: /adminProduct/index');
-            }
 
             if (!empty($_FILES['path']['name'])) {
                 $path = $_FILES['path'];
+
                 if ($path['error'] !== 0) {
                     $errors[] = 'Upload error';
                 }
@@ -88,19 +86,33 @@ class AdminProductController extends AbstractController
                 if (!in_array($path['type'], self::AUTHORIZED_FORMATS)) {
                     $errors[] = 'Wrong type mime, the allowed mimes are ' . implode(', ', self::AUTHORIZED_FORMATS);
                 }
+
+                if (empty($errors)) {
+                    // finalisation de l'upload en déplacant le fichier dans le dossier upload
+                    if (!empty($path)) {
+                        $fileName = uniqid() . '.' . pathinfo($path['name'], PATHINFO_EXTENSION);
+                        move_uploaded_file($path['tmp_name'], 'assets/uploads/' . $fileName);
+                        $data['image'] = $fileName;
+
+                        // insert en bdd si pas d'erreur
+                        $productManager->insert($data);
+                        // redirection en GET
+                        header('Location: /adminProduct/index');
+                    }
+                }
             }
         }
-
         return $this->twig->render('AdminProduct/add.html.twig', [
-             'data'  => $data ?? [],
-             'errors' => $errors,
-             'brands' => $brand,
-             'categories' => $categories,
-             'universes' => $universe,
+            'data' => $data ?? [],
+            'errors' => $errors,
+            'brands' => $brand,
+            'categories' => $categories,
+            'universes' => $universe,
         ]);
+
     }
 
-    private function validate(array $data) :array
+    private function validate(array $data): array
     {
         // verif coté serveur
         if (empty($data['name'])) {
@@ -123,6 +135,7 @@ class AdminProductController extends AbstractController
         } elseif ($data['price'] < 0) {
             $errors['price'] = 'Le prix doit être positif';
         }
+
         return $errors ?? [];
     }
 
