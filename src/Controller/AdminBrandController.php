@@ -26,7 +26,7 @@ class AdminBrandController extends AbstractController
                 // update en bdd si pas d'erreur
                 $brandManager->update($data);
                 // redirection en GET
-                header('Location: /AdminBrand/edit/' . $id);
+                header('Location: /AdminBrand/index');
             }
         }
         return $this->twig->render('AdminBrand/edit.html.twig', [
