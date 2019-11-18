@@ -41,6 +41,13 @@ class CategoryManager extends AbstractManager
         $query = 'DELETE from ' . self::TABLE . ' WHERE id=:id';
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
+    }
+
+    public function insert(array $data)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "
+               (name) VALUES (:name)");
+        $statement->bindValue('name', $data['name'], \PDO::PARAM_STR);
         $statement->execute();
     }
 }
