@@ -121,8 +121,8 @@ class ProductManager extends AbstractManager
     public function insert(array $data)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "
-               (name, reference, price, description, availability, universe_id, brand_id, category_id, path)
-               VALUES (:name, :reference, :price, :description, :availability, :universe, :brand, :category, :path)
+               (name, reference, price, description, availability, universe_id, brand_id, category_id, image)
+               VALUES (:name, :reference, :price, :description, :availability, :universe, :brand, :category, :image)
            ");
         $statement->bindValue('name', $data['name'], \PDO::PARAM_STR);
         $statement->bindValue('reference', $data['reference'], \PDO::PARAM_STR);
@@ -132,7 +132,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue('universe', $data['universe'], \PDO::PARAM_INT);
         $statement->bindValue('brand', $data['brand'], \PDO::PARAM_INT);
         $statement->bindValue('category', $data['category'], \PDO::PARAM_INT);
-        $statement->bindValue('path', $data['image'], \PDO::PARAM_STR);
+        $statement->bindValue('image', $data['image'], \PDO::PARAM_STR);
         $statement->execute();
     }
 }
