@@ -33,13 +33,13 @@ class ProductController extends AbstractController
         $products = $productManager->selectUniverse($filterPage, $pageNumber, self::PRODUCTS_BY_PAGES);
 
         return $this->twig->render('Product/index.html.twig', ['products' => $products,
-                                                                        'page' => $pageNumber,
-                                                                        'countPages' => $countPages,
-                                                                        'countProducts' => $countProducts,
-                                                                        'brands' => $brands,
-                                                                        'categories' => $categories,
-                                                                        'actualFilter' => $filterPage,
-                                                                    ]);
+            'page' => $pageNumber,
+            'countPages' => $countPages,
+            'countProducts' => $countProducts,
+            'brands' => $brands,
+            'categories' => $categories,
+            'actualFilter' => $filterPage,
+            ]);
     }
 
     public function describe(int $id): string

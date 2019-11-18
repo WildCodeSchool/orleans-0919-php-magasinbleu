@@ -21,20 +21,20 @@
                     <a class="nav-link {% if universe == 'jouet' %}selectedUniverse{% endif %}"
                        href="/product/indexUniverse/jouet">Jouet</a>
                 </li>
-
             </ul>
-
             <div class="list-inline-item-nav">
+                <form method="GET" action="/product/search/1/" autocomplete="on" class="formAutocomplete">
+                    <div class="autocompleteSearch">
+                        <input type="search" name="search" class="search form-control" placeholder="Chercher un produit">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
                 <a href="/adminProduct/index" class="btn btn-primary btn-ripple btn-lg">Administration</a>
                 <a href="/Contact/contact" target="_blank" class="btn btn-primary btn-ripple btn-lg">Contact</a>
             </div>
-
-            <form method="GET" action="/product/search/1/" class="search">
-                <input type="search" name="search" class="search" placeholder="Chercher un produit">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
         </div>
+
     </nav>
 {% endblock %}

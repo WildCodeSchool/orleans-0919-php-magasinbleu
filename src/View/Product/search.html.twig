@@ -19,17 +19,11 @@
     <p class="avail">
         {{ countProducts }} produits disponible
     </p>
-    <ul class="avail">
-        {% for error in errors %}
-        <li>{{ error }}</li>>
-        {% endfor %}
-    </ul>
-
 
     <div class="productDisplay">
         <div class="filterMenu bg-white">
             <a href="
-            "{{- urlStart ~ '1/?search=' ~ searchTerm -}}
+            {{- urlStart ~ '1/?search=' ~ searchTerm -}}
             {%- if actualFilter.brand is not null -%}
                 {{- '&brand=' ~ actualFilter.brand -}}
             {%- endif -%}
@@ -208,6 +202,8 @@
             </nav>
         </div>
     </div>
+
+
 
 {% endblock %}
 

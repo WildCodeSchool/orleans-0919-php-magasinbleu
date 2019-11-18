@@ -116,4 +116,14 @@ class AdminProductController extends AbstractController
             header('Location:/adminProduct/index');
         }
     }
+
+    public function adminSearch()
+    {
+        $productManager = new ProductManager();
+        $searchTerm = $_GET['search'] ?? null;
+        $products = $productManager->searchProducts([], $searchTerm, 1, 99);
+        return $this->twig->render('AdminProduct/search.html.twig', ['products' => $products,
+            'searchTerm' => htmlentities($searchTerm),
+        ]);
+    }
 }
