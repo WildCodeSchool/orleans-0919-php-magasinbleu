@@ -26,7 +26,7 @@ class AdminCategoryController extends AbstractController
                 // update en bdd si pas d'erreur
                 $categoryManager->update($data);
                 // redirection en GET
-                header('Location: /AdminCategory/edit/' . $id);
+                header('Location: /AdminCategory/index');
             }
         }
         return $this->twig->render('AdminCategory/edit.html.twig', [
