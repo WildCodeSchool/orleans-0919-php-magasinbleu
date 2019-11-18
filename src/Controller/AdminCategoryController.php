@@ -46,4 +46,22 @@ class AdminCategoryController extends AbstractController
         }
         return $errors ?? [];
     }
+
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $categoryManager = new CategoryManager();
+            $categoryManager->delete($id);
+
+            header('Location:/adminCategory/index');
+        }
+    }
+
+    public function index()
+    {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+
+        return $this->twig->render('AdminCategory/index.html.twig', ['categories' => $categories]);
+    }
 }
