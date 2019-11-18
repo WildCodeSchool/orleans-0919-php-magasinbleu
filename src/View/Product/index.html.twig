@@ -68,6 +68,17 @@
                 {% endfor %}
             </ul>
             <a href="{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
+                {%- if actualFilter.brand is not null -%}
+                    {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
+                {%- endif -%}
+                {%- if actualFilter.category is not null -%}
+                    {{- 'category=' ~ actualFilter.category ~ '&' -}}
+                {%- endif -%}
+                ">
+                <h2 class="filterMenuTitle">Disponibilité</h2>
+            </a>
+            <ul>
+                <a href="{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
                 {%- if actualFilter.available is null and actualFilter|length >= 1 %}
                     {{- 'available=' ~ 'true&' -}}
                 {%- endif -%}
@@ -77,13 +88,21 @@
                 {%- if actualFilter.category is not null -%}
                     {{- 'category=' ~ actualFilter.category ~ '&' -}}
                 {%- endif -%}
-                ">
-                <h2 class="filterMenuTitle">
-                    {%- if actualFilter.available is null -%}Produits en stock
-                    {%- else -%}Tous les produits
-                    {%- endif -%}
-                </h2>
-            </a>
+                " class="filterLinks">
+                    <li>En stock</li>
+                </a>
+                <a href="{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
+                {%- if actualFilter.brand is not null -%}
+                    {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
+                {%- endif -%}
+                {%- if actualFilter.category is not null -%}
+                    {{- 'category=' ~ actualFilter.category ~ '&' -}}
+                {%- endif -%}
+                " class="filterLinks">
+                    <li>Tous</li>
+                </a>
+            </ul>
+
         </div>
 
         <div class="container-fluid">

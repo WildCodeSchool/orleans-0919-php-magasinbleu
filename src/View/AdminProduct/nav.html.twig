@@ -1,12 +1,36 @@
-{% extends 'layoutAdmin.html.twig' %}
-
 {% block navbar %}
-    <div class="nav">
-        <ul>
-            <li><a href="/Home/index">Au p'tit magasin bleu</a></li>
-            <li><a href="#">Univers</a></li>
-            <li><a href="#">Catégories et marques</a></li>
-            <li><a href="#">Produits</a></li>
-        </ul>
+    <div class="container-fluid container-admin-nav">
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="/">Au p'tit magasin bleu</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/adminProduct/index">Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/adminBrand/index">Marques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/adminCategory/index">Categories</a>
+                    </li>
+
+                </ul>
+
+                <form class="search" method="POST" action="#">
+                    <input type="search" class="search" placeholder="Chercher un produit">
+                    <button type="submit" class="searchButton" name="search" value="search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </nav>
     </div>
 {% endblock %}
