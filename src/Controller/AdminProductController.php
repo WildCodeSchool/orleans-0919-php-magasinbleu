@@ -131,9 +131,13 @@ class AdminProductController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productManager = new ProductManager();
-            $productManager->delete($id);
-
+            $product = $productManager->selectOneById($id);
+            if ($product) {
+                unlink(UPLOAD_PATH . $product['image']);
+                $productManager->delete($id);
+            }
             header('Location:/adminProduct/index');
         }
     }
+
 }
