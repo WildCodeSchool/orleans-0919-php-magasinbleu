@@ -139,5 +139,4 @@ class AdminProductController extends AbstractController
             header('Location:/adminProduct/index');
         }
     }
-
 }
