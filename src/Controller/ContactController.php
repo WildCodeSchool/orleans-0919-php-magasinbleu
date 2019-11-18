@@ -9,9 +9,8 @@ class ContactController extends AbstractController
 
     public function contact()
     {
-        $name = $email = $phone = $message = '';
+        $name = $email = $subject = $message = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //$data = $this->cleanInput($_POST);
             $data = array_map('trim', $_POST);
             $errors = [];
 
@@ -32,6 +31,12 @@ class ContactController extends AbstractController
                 $email = $data['email'];
             }
 
+            if (empty($data['subject'])) {
+                $errors['subject'][] = "Veuillez indiquer l'objet de votre message";
+            } else {
+                $subject = $data['subject'];
+            }
+
             if (empty($data['message'])) {
                 $errors['message'][] = "Veuillez indiquer votre message";
             } else {
@@ -41,14 +46,16 @@ class ContactController extends AbstractController
             if (empty($errors)) {
                 $name = $data['name'];
                 $email = $data['email'];
-                $phone = $data['phone'];
+                $subject = $data['subject'];
                 $message = $data['message'];
-                header('location: /Contact/contact');
+                header('location: /Contact/contact/?success=ok');
             }
         }
         {
             return $this->twig->render('Contact/contact.html.twig', [
-                'errors' => $errors ?? []]);
+                'errors' => $errors ?? [],
+                'success' => $_GET['success'] ?? null
+            ]);
         }
     }
 }
