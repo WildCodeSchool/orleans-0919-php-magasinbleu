@@ -1,19 +1,22 @@
+h1{
+    font-family: var(--font-title);
+    color: var(--color-primary);
+}
 *{
     margin: 0 20px;
-    background-color: var(--color-light);
     color: var(--color-somber);
 }
-
 .backButton{
-    margin-left: 1em;
-    margin-top: 100px;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
-.validationButton{
-    width: 100px;
+.validation-btn{
+    margin-top:2%;
+    width:50%;
 }
 
-.titleAdminEdit{
+.titleAdmin{
     margin-bottom: 80px;
     text-align: center;
 }

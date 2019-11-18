@@ -1,4 +1,4 @@
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="form-row">
         <input type="hidden" name="id" value="{{ product.id }}">
         <div class="form-group col-md-4 col-md-offset-1">
@@ -10,7 +10,7 @@
         </div>
         <div class="form-group col-md-4 col-md-offset-1">
             <label for="image">Image :</label>
-            <input type="text" class="form-control" name="image" value="{{ data.image ?? product.image }}">
+            <input id="image" type="file" name="path" value="{{ data.image ?? product.image }}">
         {% if errors.image is defined %}
             {{ errors.image }}
         {% endif %}
@@ -79,14 +79,13 @@
     <div class="form-row">
         <div class="form-group col-md-4 col-md-offset-1">
             <label for="description">Description :</label>
-            <textarea class="form-control" name="description" id="description">
-                {{ data.description ?? product.description }}
-            </textarea>
+            <textarea class="form-control" name="description" id="description">{{ data.description ?? product.description }}</textarea>
+        </div>
+        <div class="form-group col-4">
+            <input type="submit" value="Valider" class="float-right btn btn-primary btn-lg validation-btn">
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-8">
-            <input type="submit" value="Valider" class="float-right btn btn-primary">
-        </div>
+
     </div>
 </form>
