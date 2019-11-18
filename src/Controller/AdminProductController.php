@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Model\ProductManager;
@@ -8,6 +9,9 @@ use App\Model\CategoryManager;
 
 class AdminProductController extends AbstractController
 {
+    const MAX_SIZE = 200000;
+    const AUTHORIZED_FORMATS = ['image/jpeg', 'image/png'];
+
     public function index()
     {
         $productManager = new ProductManager();
@@ -34,7 +38,7 @@ class AdminProductController extends AbstractController
                 // update en bdd si pas d'erreur
                 $productManager->update($data);
                 // redirection en GET
-                header('Location: /adminProduct/edit/' . $id);
+                header('Location: /adminProduct/index');
             }
         }
         return $this->twig->render('AdminProduct/edit.html.twig', [
@@ -64,35 +68,50 @@ class AdminProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
+            $data['image'] = uniqid() . '.' . pathinfo($_FILES['path']['name'], PATHINFO_EXTENSION);
+
             $errors = $this->validate($data);
-            if (empty($errors)) {
-                // insert en bdd si pas d'erreur
-                $productManager->insert($data);
-                // redirection en GET
-                header('Location: /adminProduct/index');
+
+            if (!empty($_FILES['path']['name'])) {
+                $path = $_FILES['path'];
+
+                if ($path['error'] !== 0) {
+                    $errors['image'] = 'L\'image n\'a pas été hébergée.';
+                } elseif ($path['size'] > self::MAX_SIZE) {
+                    $errors['image'] = 'La taille du fichier doit être inférieure à ' . (self::MAX_SIZE / 1000) .
+                                       ' ko.';
+                } elseif (!in_array($path['type'], self::AUTHORIZED_FORMATS)) {
+                    $errors['image'] = 'Seules les images au format ' .
+                        implode(', ', self::AUTHORIZED_FORMATS) . ' sont acceptées.';
+                }
+
+                if (empty($errors)) {
+                    if (!empty($path)) {
+                        $fileName = $data['image'];
+                        move_uploaded_file($path['tmp_name'], UPLOAD_PATH . $fileName);
+                        $data['image'] = $fileName;
+
+                        $productManager->insert($data);
+                        header('Location: /adminProduct/index');
+                    }
+                }
             }
         }
-        return $this->twig->render('AdminProduct/add.html.twig', [
-             'data'  => $data ?? [],
-             'errors' => $errors,
-             'brands' => $brand,
-             'categories' => $categories,
-             'universes' => $universe,
-        ]);
+
+        return $this->twig->render('AdminProduct/add.html.twig', ['data' => $data ?? [],
+            'errors' => $errors,
+            'brands' => $brand,
+            'categories' => $categories,
+            'universes' => $universe,]);
     }
 
-    private function validate(array $data) :array
+    private function validate(array $data): array
     {
         // verif coté serveur
         if (empty($data['name'])) {
             $errors['name'] = 'Le nom du produit est requis';
         } elseif (strlen($data['name']) > 150) {
             $errors['name'] = 'Le nom du produit est trop long';
-        }
-        if (empty($data['image'])) {
-            $errors['image'] = 'Une image est requise';
-        } elseif (strlen($data['image']) > 255) {
-            $errors['image'] = 'Le lien  de l\'image est trop long';
         }
         if (empty($data['reference'])) {
             $errors['reference'] = 'Une référence est requise';
@@ -104,6 +123,7 @@ class AdminProductController extends AbstractController
         } elseif ($data['price'] < 0) {
             $errors['price'] = 'Le prix doit être positif';
         }
+
         return $errors ?? [];
     }
 

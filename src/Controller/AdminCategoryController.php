@@ -26,7 +26,7 @@ class AdminCategoryController extends AbstractController
                 // update en bdd si pas d'erreur
                 $categoryManager->update($data);
                 // redirection en GET
-                header('Location: /AdminCategory/edit/' . $id);
+                header('Location: /AdminCategory/index');
             }
         }
         return $this->twig->render('AdminCategory/edit.html.twig', [
@@ -45,5 +45,46 @@ class AdminCategoryController extends AbstractController
             $errors['name'] = 'Le nom de la catégorie est trop long';
         }
         return $errors ?? [];
+    }
+
+
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $categoryManager = new CategoryManager();
+            $categoryManager->delete($id);
+
+            header('Location:/adminCategory/index');
+        }
+    }
+
+    public function index()
+    {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+
+        return $this->twig->render('AdminCategory/index.html.twig', ['categories' => $categories]);
+    }
+
+    public function add(): string
+    {
+        $errors = [];
+
+        $categoryManager = new CategoryManager();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = array_map('trim', $_POST);
+            $errors = $this->validate($data);
+            if (empty($errors)) {
+                // insert en bdd si pas d'erreur
+                $categoryManager->insert($data);
+                // redirection en GET
+                header('Location: /adminCategory/index');
+            }
+        }
+        return $this->twig->render('AdminCategory/add.html.twig', [
+            'data'  => $data ?? [],
+            'errors' => $errors,
+        ]);
     }
 }

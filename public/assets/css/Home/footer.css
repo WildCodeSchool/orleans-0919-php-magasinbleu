@@ -17,6 +17,14 @@ h2{
     overflow:hidden;
 }
 
-.btn.btn-primary.btn-ripple {
-    padding-bottom: 8px;
+.btn-ripple{
+    background-color: var(--color-primary);
+    border-color: var(--color-light);
 }
+
+.btn-ripple:hover{
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
