@@ -11,8 +11,8 @@
         <div class="form-group col-md-4 col-md-offset-1">
             <label for="image">Image :</label>
             <input id="image" type="file" name="path" value="{{ data.image ?? product.path }}">
-        {% if errors.path is defined %}
-            {{ errors.path }}
+        {% if errors.image is defined %}
+            {{ errors.image }}
         {% endif %}
         </div>
     </div>

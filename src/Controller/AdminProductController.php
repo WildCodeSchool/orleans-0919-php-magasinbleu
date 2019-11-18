@@ -76,15 +76,15 @@ class AdminProductController extends AbstractController
                 $path = $_FILES['path'];
 
                 if ($path['error'] !== 0) {
-                    $errors[] = 'Upload error';
+                    $errors['image'] = 'L\'image n\'a pas été hébergée.';
                 }
                 // size du fichier
                 if ($path['size'] > self::MAX_SIZE) {
-                    $errors[] = 'The file size should be < ' . (self::MAX_SIZE / 1000) . ' ko';
+                    $errors['image'] = 'La taille du fichier doit être inférieure à ' . (self::MAX_SIZE / 1000) . ' ko.';
                 }
                 // type mime autorisés
                 if (!in_array($path['type'], self::AUTHORIZED_FORMATS)) {
-                    $errors[] = 'Wrong type mime, the allowed mimes are ' . implode(', ', self::AUTHORIZED_FORMATS);
+                    $errors['image'] = 'Seules les images au format ' . implode(', ', self::AUTHORIZED_FORMATS) . ' sont acceptées.';
                 }
 
                 if (empty($errors)) {
@@ -109,7 +109,6 @@ class AdminProductController extends AbstractController
             'categories' => $categories,
             'universes' => $universe,
         ]);
-
     }
 
     private function validate(array $data): array
