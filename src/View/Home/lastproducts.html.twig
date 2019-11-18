@@ -1,21 +1,18 @@
-<div class="row card-deck card_deck_last">
+<div class="row card-deck">
     <div class="col-12 title"><h2>Nos derniers produits</h2></div>
     {% for product in products %}
-        <a href="/Product/describe/{{ product.id }}" class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4 productimage">
-                    <img src={{ '/assets/uploads/' ~ product.image }} class="card-img" alt="...">
+        <div class="col-xl-2 col-l-3">
+            <a href="/Product/describe/{{ product.id }}" class="card card-last-products">
+                <div class="row no-gutters img-product">
+                    <img src={{ '/assets/uploads/' ~ product.image }} class="card-img-top" alt="...">
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.category_name }}<br>
-                            {{ product.brand_name }}<br>
-                            {{ product.price }} €</p>
-                        <p class="card-text"><small class="text-muted">En savoir plus...</small></p>
-                    </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.price }} €<br>
+                        {{ product.category_name }}<br>
+                        {{ product.brand_name }}</p>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
     {% endfor %}
 </div>

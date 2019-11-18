@@ -69,11 +69,11 @@
         </div>
         <div class="form-group col-md-2 col-md-offset-1">
             <label for="availability">En stock :</label>
-            <input type="radio" class="form-control" name="availability" id="availability" value="1" checked>
+            <input type="radio" class="form-control check" name="availability" id="availability" value="1" checked>
         </div>
         <div class="form-group col-md-2">
             <label for="availability">Rupture de stock</label>
-            <input type="radio" class="form-control" name="availability" id="availability" value="0">
+            <input type="radio" class="form-control check" name="availability" id="availability" value="0">
         </div>
     </div>
     <div class="form-row">
@@ -81,10 +81,11 @@
             <label for="description">Description :</label>
             <textarea class="form-control" name="description" id="description">{{ data.description ?? product.description }}</textarea>
         </div>
+        <div class="form-group col-4">
+            <input type="submit" value="Valider" class="float-right btn btn-primary btn-lg validation-btn">
+        </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-8">
-            <input type="submit" value="Valider" class="float-right btn btn-primary">
-        </div>
+
     </div>
 </form>

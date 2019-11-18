@@ -4,15 +4,16 @@ h1{
 }
 *{
     margin: 0 20px;
-    background-color: var(--color-light);
     color: var(--color-somber);
 }
 .backButton{
-    margin-left: 20em;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
-.validationButton{
-    width: 100px;
+.validation-btn{
+    margin-top:2%;
+    width:50%;
 }
 
 .titleAdmin{
