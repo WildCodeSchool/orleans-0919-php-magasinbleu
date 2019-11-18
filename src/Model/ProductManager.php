@@ -204,7 +204,6 @@ class ProductManager extends AbstractManager
         } else {
             $statement->bindValue('search', '%', \PDO::PARAM_STR);
         }
-
         $statement->execute();
         return $statement->fetchAll();
     }

@@ -79,7 +79,7 @@ class ProductController extends AbstractController
             'categories' => $categories,
             'universes' => $universes,
             'actualFilter' => $filterPage,
-            'searchTerm' => $searchTerm,
+            'searchTerm' => htmlentities($searchTerm),
         ]);
     }
 }
