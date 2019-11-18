@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Admin/product.css">
+{% endblock %}
+
+{% block content %}
+    <h1>Ajouter une nouvelle catégorie</h1>
+    {% include 'AdminCategory/_form.html.twig' %}
+{% endblock %}
