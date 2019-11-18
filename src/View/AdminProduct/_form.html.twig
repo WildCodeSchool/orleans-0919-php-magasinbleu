@@ -79,14 +79,13 @@
     <div class="form-row">
         <div class="form-group col-md-4 col-md-offset-1">
             <label for="description">Description :</label>
-            <textarea class="form-control" name="description" id="description">
-                {{ data.description ?? product.description }}
-            </textarea>
+            <textarea class="form-control" name="description" id="description">{{ data.description ?? product.description }}</textarea>
+        </div>
+        <div class="form-group col-4">
+            <input type="submit" value="Valider" class="float-right btn btn-primary btn-lg validation-btn">
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-8">
-            <input type="submit" value="Valider" class="float-right btn btn-primary">
-        </div>
+
     </div>
 </form>

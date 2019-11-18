@@ -1,6 +1,18 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Admin/product.css">
+{% endblock %}
+
 {% block content %}
-    <h1>Ajouter un nouveau produit</h1>
-    {% include 'AdminProduct/_form.html.twig' %}
+    <div class="row ">
+        <button class="btn btn-primary backButton btn-lg"><a href="/AdminProduct/index">Retour</a></button>
+        <h1 class="col-12 titleAdmin">Ajouter un nouveau produit</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            {% include 'AdminProduct/_form.html.twig' %}
+        </div>
+    </div>
 {% endblock %}
