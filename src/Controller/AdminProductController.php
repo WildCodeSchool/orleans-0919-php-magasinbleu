@@ -98,7 +98,6 @@ class AdminProductController extends AbstractController
                 }
             }
         }
-
         return $this->twig->render('AdminProduct/add.html.twig', ['data' => $data ?? [],
             'errors' => $errors,
             'brands' => $brand,

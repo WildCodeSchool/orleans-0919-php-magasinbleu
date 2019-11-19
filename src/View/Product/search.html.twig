@@ -2,7 +2,7 @@
 
 {% block title %}
     Au p'tit magasin bleu - Recherche produits
-{%  endblock %}
+{% endblock %}
 
 {% block stylesheet %}
     <link rel="stylesheet" href="/assets/css/Product/index.css">
@@ -22,74 +22,70 @@
 
     <div class="productDisplay">
         <div class="filterMenu bg-white">
-            <a href="
-            {{- urlStart ~ '1/?search=' ~ searchTerm -}}
-            {%- if actualFilter.brand is not null -%}
-                {{- '&brand=' ~ actualFilter.brand -}}
-            {%- endif -%}
-            {%- if actualFilter.category is not null -%}
-                {{- '&category=' ~ actualFilter.category -}}
-            {%- endif -%}">
-
-            <h2 class="filterMenuTitle">Univers :</h2>
+            <a href=
+               "{{- urlStart ~ '1/?' -}}
+                {%- for filterKey, filterValue in actualFilter -%}
+                {%- if filterValue is not null and filterKey != 'universe' -%}
+                    {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                {% endif %}
+                {%- endfor -%}">
+                <h2 class="filterMenuTitle">Univers :</h2>
             </a>
             <ul>
                 {% for universe in universes %}
                     <li><a href=
-                        "{{- urlStart ~ '1/?universe=' ~ universe.name -}}
+                           "{{- urlStart ~ '1/?universe=' ~ universe.name -}}
                         {%- for filterKey, filterValue in actualFilter -%}
                         {%- if filterValue is not null and filterKey != 'universe' -%}
                             {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                         {% endif %}
                         {%- endfor -%}"
-                       class="filterLinks">{{ universe.name }}</a>
+                           class="filterLinks">{{ universe.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
 
             <a href=
-               "{{- urlStart ~ '1/?search=' ~ searchTerm -}}
-                {%- if actualFilter.universe is not null -%}
-                {{- '&universe=' ~ actualFilter.universe -}}
-                {%- endif -%}
-                {%- if actualFilter.category is not null -%}
-                {{- '&category=' ~ actualFilter.category -}}
-                {%- endif -%}">
+               "{{- urlStart ~ '1/?' -}}
+                {%- for filterKey, filterValue in actualFilter -%}
+                    {%- if filterValue is not null and filterKey != 'brand' -%}
+                        {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                    {% endif %}
+                {%- endfor -%}">
                 <h2 class="filterMenuTitle">Marques :</h2>
             </a>
             <ul>
                 {% for brand in brands %}
                     <li><a href=
-                        "{{- urlStart ~ '1/?brand=' ~ brand.name -}}
+                           "{{- urlStart ~ '1/?brand=' ~ brand.name -}}
                         {%- for filterKey, filterValue in actualFilter -%}
                             {%- if filterValue is not null and filterKey != 'brand' -%}
                                 {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                             {% endif %}
                         {%- endfor -%}"
-                       class="filterLinks">{{ brand.name }}</a>
+                           class="filterLinks">{{ brand.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
             <a href=
-               "{{- urlStart ~ '1/?search=' ~ searchTerm -}}
-                {%- if actualFilter.universe is not null -%}
-                {{- '&universe=' ~ actualFilter.universe -}}
-                {%- endif -%}
-                {%- if actualFilter.brand is not null -%}
-                {{- '&brand=' ~ actualFilter.brand -}}
-                {%- endif -%}">
+               "{{- urlStart ~ '1/?' -}}
+                {%- for filterKey, filterValue in actualFilter -%}
+                    {%- if filterValue is not null and filterKey != 'category' -%}
+                        {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                    {% endif %}
+                {%- endfor -%}">
                 <h2 class="filterMenuTitle">Categories :</h2>
             </a>
             <ul>
                 {% for category in categories %}
                     <li><a href=
-                        "{{- urlStart ~ '1/?category=' ~ category.name -}}
+                           "{{- urlStart ~ '1/?category=' ~ category.name -}}
                         {%- for filterKey, filterValue in actualFilter -%}
                             {%- if filterValue is not null and filterKey != 'category' -%}
                                 {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                             {% endif %}
                         {%- endfor -%}"
-                        class="filterLinks">{{ category.name }}</a>
+                           class="filterLinks">{{ category.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -105,7 +101,7 @@
             </a>
             <ul>
                 <li><a href=
-                   "{{- urlStart ~ '1/?' -}}
+                       "{{- urlStart ~ '1/?' -}}
                    {%- if actualFilter.available is null -%}
                     {{- 'available=' ~ 'true' -}}
                     {%- endif -%}
@@ -117,13 +113,13 @@
                        class="filterLinks">En stock</a>
                 </li>
                 <li><a href=
-                    "{{- urlStart ~ '1/?' -}}
+                       "{{- urlStart ~ '1/?' -}}
                     {%- for filterKey, filterValue in actualFilter -%}
                         {%- if filterValue is not null and filterKey != 'available' -%}
                             {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                         {% endif %}
                     {%- endfor -%}"
-                    class="filterLinks">Tout</a>
+                       class="filterLinks">Tout</a>
                 </li>
             </ul>
         </div>
@@ -136,7 +132,7 @@
                             <div class="card">
                                 <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ product.name|capitalize}}</h4>
+                                    <h4 class="card-title">{{ product.name|capitalize }}</h4>
                                     <p class="card-text">{{ product.price }} €</p>
                                     <p class="card-text">Catégorie: {{ product.category_name }}</p>
                                     <p class="card-text">Marque: {{ product.brand_name }}</p>
@@ -155,10 +151,10 @@
             </div>
             <nav aria-label="Page navigation example" class="navPage">
                 <ul class="pagination">
-                    {%  for i in 1..countPages %}
+                    {% for i in 1..countPages %}
                         <li class="page-item">
                             <a class="page-link" href=
-                                "{{- urlStart ~ i ~ '/?' -}}
+                            "{{- urlStart ~ i ~ '/?' -}}
                                 {%- for filterKey, filterValue in actualFilter -%}
                                     {%- if filterValue is not null and filterKey != 'available' -%}
                                         {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
