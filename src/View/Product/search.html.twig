@@ -1,0 +1,175 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Au p'tit magasin bleu - Recherche produits
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Product/index.css">
+{% endblock %}
+
+{% set urlStart = '/product/search/' %}
+
+{% block navbar %}
+    {% include 'Home/nav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="titleProductUniverse">Résultat de la recherche : {{ searchTerm | replace({'&quot;': '"'}) }}</h1>
+    <p class="avail">
+        {{ countProducts }} produits disponible
+    </p>
+
+    <div class="productDisplay">
+        <div class="filterMenu bg-white">
+            <a href=
+               "{{- urlStart ~ '1/?' -}}
+                {%- for filterKey, filterValue in actualFilter -%}
+                {%- if filterValue is not null and filterKey != 'universe' -%}
+                    {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                {% endif %}
+                {%- endfor -%}">
+                <h2 class="filterMenuTitle">Univers :</h2>
+            </a>
+            <ul>
+                {% for universe in universes %}
+                    <li><a href=
+                           "{{- urlStart ~ '1/?universe=' ~ universe.name -}}
+                        {%- for filterKey, filterValue in actualFilter -%}
+                        {%- if filterValue is not null and filterKey != 'universe' -%}
+                            {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                        {% endif %}
+                        {%- endfor -%}"
+                           class="filterLinks">{{ universe.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <a href=
+               "{{- urlStart ~ '1/?' -}}
+                {%- for filterKey, filterValue in actualFilter -%}
+                    {%- if filterValue is not null and filterKey != 'brand' -%}
+                        {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                    {% endif %}
+                {%- endfor -%}">
+                <h2 class="filterMenuTitle">Marques :</h2>
+            </a>
+            <ul>
+                {% for brand in brands %}
+                    <li><a href=
+                           "{{- urlStart ~ '1/?brand=' ~ brand.name -}}
+                        {%- for filterKey, filterValue in actualFilter -%}
+                            {%- if filterValue is not null and filterKey != 'brand' -%}
+                                {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                            {% endif %}
+                        {%- endfor -%}"
+                           class="filterLinks">{{ brand.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href=
+               "{{- urlStart ~ '1/?' -}}
+                {%- for filterKey, filterValue in actualFilter -%}
+                    {%- if filterValue is not null and filterKey != 'category' -%}
+                        {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                    {% endif %}
+                {%- endfor -%}">
+                <h2 class="filterMenuTitle">Categories :</h2>
+            </a>
+            <ul>
+                {% for category in categories %}
+                    <li><a href=
+                           "{{- urlStart ~ '1/?category=' ~ category.name -}}
+                        {%- for filterKey, filterValue in actualFilter -%}
+                            {%- if filterValue is not null and filterKey != 'category' -%}
+                                {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                            {% endif %}
+                        {%- endfor -%}"
+                           class="filterLinks">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <a href=
+               "{{- urlStart ~ '1/?' -}}
+                    {%- for filterKey, filterValue in actualFilter -%}
+                        {%- if filterValue is not null and filterKey != 'available' -%}
+                            {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                        {% endif %}
+                    {%- endfor -%}">
+                <h2 class="filterMenuTitle">Disponibilité :</h2>
+            </a>
+            <ul>
+                <li><a href=
+                       "{{- urlStart ~ '1/?' -}}
+                   {%- if actualFilter.available is null -%}
+                    {{- 'available=' ~ 'true' -}}
+                    {%- endif -%}
+                    {%- for filterKey, filterValue in actualFilter -%}
+                        {%- if filterValue is not null and filterKey != 'available' -%}
+                            {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                        {% endif %}
+                    {%- endfor -%}"
+                       class="filterLinks">En stock</a>
+                </li>
+                <li><a href=
+                       "{{- urlStart ~ '1/?' -}}
+                    {%- for filterKey, filterValue in actualFilter -%}
+                        {%- if filterValue is not null and filterKey != 'available' -%}
+                            {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                        {% endif %}
+                    {%- endfor -%}"
+                       class="filterLinks">Tout</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container-fluid">
+            <div class="card-deck">
+                {% for product in products %}
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 flex-wrap">
+                        <a class="cardLink" href="/Product/describe/{{ product.id }}">
+                            <div class="card">
+                                <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ product.name|capitalize }}</h4>
+                                    <p class="card-text">{{ product.price }} €</p>
+                                    <p class="card-text">Catégorie: {{ product.category_name }}</p>
+                                    <p class="card-text">Marque: {{ product.brand_name }}</p>
+                                    <p class="card-text inStock">
+                                        {% if product.availability == 0 %}
+                                            Rupture de stock
+                                        {% else %}
+                                            Disponible
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="Page navigation example" class="navPage">
+                <ul class="pagination">
+                    {% for i in 1..countPages %}
+                        <li class="page-item">
+                            <a class="page-link" href=
+                            "{{- urlStart ~ i ~ '/?' -}}
+                                {%- for filterKey, filterValue in actualFilter -%}
+                                    {%- if filterValue is not null and filterKey != 'available' -%}
+                                        {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                                    {% endif %}
+                                {%- endfor -%}">{{ i }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {% include "/Home/footer.html.twig" %}
+{% endblock %}

@@ -23,13 +23,16 @@
                     </li>
 
                 </ul>
-
-                <form class="search" method="POST" action="#">
-                    <input type="search" class="search" placeholder="Chercher un produit">
-                    <button type="submit" class="searchButton" name="search" value="search">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
+                <div class="list-inline-item-nav">
+                    <form method="GET" action="/adminProduct/adminSearch/" autocomplete="on" class="formAutocomplete">
+                        <div class="autocompleteSearch">
+                            <input type="search" name="search" class="search form-control" placeholder="Chercher un produit">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </nav>
     </div>
