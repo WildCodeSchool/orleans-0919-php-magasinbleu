@@ -40,7 +40,9 @@
                             {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                         {% endif %}
                         {%- endfor -%}"
-                           class="filterLinks">{{ universe.name }}</a>
+                           class="filterLinks
+                                {% if universe.name == actualFilter.universe %} filterSelected {% endif %}
+                            ">{{ universe.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -63,7 +65,9 @@
                                 {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                             {% endif %}
                         {%- endfor -%}"
-                           class="filterLinks">{{ brand.name }}</a>
+                           class="filterLinks
+                                {% if brand.name == actualFilter.brand %} filterSelected {% endif %}
+                            ">{{ brand.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -85,7 +89,9 @@
                                 {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                             {% endif %}
                         {%- endfor -%}"
-                           class="filterLinks">{{ category.name }}</a>
+                           class="filterLinks
+                                {% if category.name == actualFilter.category %} filterSelected {% endif %}
+                            ">{{ category.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -110,7 +116,9 @@
                             {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                         {% endif %}
                     {%- endfor -%}"
-                       class="filterLinks">En stock</a>
+                       class="filterLinks
+                            {% if actualFilter.available %} filterSelected {% endif %}
+                        ">En stock</a>
                 </li>
                 <li><a href=
                        "{{- urlStart ~ '1/?' -}}
