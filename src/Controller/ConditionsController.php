@@ -3,9 +3,6 @@
 
 namespace App\Controller;
 
-
-
-
 use App\Model\ProductManager;
 
 class ConditionsController extends AbstractController

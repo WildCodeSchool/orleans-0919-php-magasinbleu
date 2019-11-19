@@ -6,7 +6,7 @@
     background: var(--color-filter-image);
     width: 100%;
     text-align: center;
-    margin-bottom: 10vh;
+    margin-bottom: 6vh;
 }
 
 .carousel {
@@ -17,7 +17,7 @@
 }
 
 .view {
-    height: 80vh;
+    height: 94vh;
     display: flex;
     justify-content: center;
 }

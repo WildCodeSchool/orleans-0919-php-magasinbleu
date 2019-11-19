@@ -1,0 +1,31 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Admin/index.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'AdminProduct/nav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <div class="title">
+        <h1>Catégories</h1>
+        <a class="btn btn-primary" href="/AdminCategory/add">Ajouter</a>
+    </div>
+    <div class="column">
+        {% for category in categories %}
+            <div class="product">
+                <div class="product-infos">{{ category.name }}</div>
+
+                <div class="buttons">
+                    <a class="btn btn-success" href="/AdminCategory/edit/{{ category.id }}">Modifier</a>
+                    <form method="POST" action="/adminCategory/delete/{{ category.id }}">
+                        <input type="submit" name="delete" value="Supprimer" class="btn btn-danger"
+                               OnClick="return confirm('Supprimer la catégorie {{ category.name }} entraînera la suppression de tous les articles de cette catégorie');">
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

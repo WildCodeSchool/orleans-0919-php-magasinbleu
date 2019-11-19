@@ -1,3 +1,7 @@
+.container-fluid {
+    padding: 0;
+}
+
 .navbar {
     background-color: var(--color-primary);
     border-radius: 0;
@@ -82,4 +86,15 @@
     .list-inline-item-nav {
         margin-bottom: 2rem;
     }
+}
+
+.btn-ripple{
+    background-color: var(--color-primary);
+    border-color: var(--color-light);
+}
+
+.btn-ripple:hover{
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 }

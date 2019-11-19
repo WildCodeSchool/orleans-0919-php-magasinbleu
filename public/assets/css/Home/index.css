@@ -11,13 +11,3 @@
     display: flex;
     flex-direction: column;
 }
-
-.btn-ripple{
-    background-color: var(--color-primary);
-    border-color: var(--color-light);
-}
-.btn-ripple:hover{
-    background-color: var(--color-light);
-    color: var(--color-primary);
-    border-color: var(--color-primary);
-}
