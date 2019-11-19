@@ -28,3 +28,12 @@ h2{
     border-color: var(--color-primary);
 }
 
+.contactUs {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.contactUs .btn {
+    margin: 1rem;
+}
