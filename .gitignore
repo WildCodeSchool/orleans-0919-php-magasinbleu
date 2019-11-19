@@ -9,4 +9,4 @@ db.php
 /public/assets/images/interlaced.svg
 /public/assets/uploads/
 !/public/assets/uploads/.gitkeep
-/public/assets/script/autocomplete.js
+/public/assets/script/
