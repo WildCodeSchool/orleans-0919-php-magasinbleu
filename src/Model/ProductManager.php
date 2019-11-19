@@ -39,7 +39,7 @@ class ProductManager extends AbstractManager
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
-        $queryOrder = 'ORDER BY p.id ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
+        $queryOrder = 'ORDER BY p.name ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
         if (isset($filterPage['available'])) {
             $queryFilter =
                 'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
