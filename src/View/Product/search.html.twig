@@ -107,7 +107,7 @@
                 <li><a href=
                    "{{- urlStart ~ '1/?' -}}
                    {%- if actualFilter.available is null -%}
-                    {{- 'available=' ~ 'true&' -}}
+                    {{- 'available=' ~ 'true' -}}
                     {%- endif -%}
                     {%- for filterKey, filterValue in actualFilter -%}
                         {%- if filterValue is not null and filterKey != 'available' -%}

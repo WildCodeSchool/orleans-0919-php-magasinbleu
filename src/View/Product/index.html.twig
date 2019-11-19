@@ -32,8 +32,8 @@
             </a>
             <ul>
                 {% for brand in brands %}
-                    <a href=
-                       "{{- urlStart ~ actualFilter.universe ~ '/1/' ~ '?brand=' ~ brand.brand_name -}}
+                    <li><a href=
+                       "{{- urlStart ~ actualFilter.universe ~ '/1/?brand=' ~ brand.brand_name -}}
                         {%- if actualFilter.category is not null -%}
                         {{- '&category=' ~ actualFilter.category -}}
                         {%- endif -%}
@@ -41,7 +41,7 @@
                         {{- '&available=' ~ actualFilter.available -}}
                         {%- endif -%}"
                        class="filterLinks">
-                        <li>{{ brand.brand_name }}</li>
+                        {{ brand.brand_name }}</li>
                     </a>
                 {% endfor %}
             </ul>
@@ -54,8 +54,8 @@
             </a>
             <ul>
                 {% for category in categories %}
-                    <a href=
-                       "{{- urlStart ~ actualFilter.universe ~ '/1/' ~ '?category=' ~ category.category_name -}}
+                    <li><a href=
+                       "{{- urlStart ~ actualFilter.universe ~ '/1/?category=' ~ category.category_name -}}
                         {%- if actualFilter.brand  is not null -%}
                         {{- '&brand=' ~ actualFilter.brand -}}
                         {%- endif -%}
@@ -63,7 +63,7 @@
                         {{- '&available=' ~ actualFilter.available -}}
                         {%- endif -%}"
                        class="filterLinks">
-                        <li>{{ category.category_name }}</li>
+                        {{ category.category_name }}</li>
                     </a>
                 {% endfor %}
             </ul>
@@ -78,29 +78,27 @@
                 <h2 class="filterMenuTitle">Disponibilité</h2>
             </a>
             <ul>
-                <a href="{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
-                {%- if actualFilter.available is null and actualFilter|length >= 1 %}
-                    {{- 'available=' ~ 'true&' -}}
-                {%- endif -%}
-                {%- if actualFilter.brand is not null -%}
-                    {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
-                {%- endif -%}
-                {%- if actualFilter.category is not null -%}
-                    {{- 'category=' ~ actualFilter.category ~ '&' -}}
-                {%- endif -%}
-                " class="filterLinks">
-                    <li>En stock</li>
-                </a>
-                <a href="{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
-                {%- if actualFilter.brand is not null -%}
-                    {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
-                {%- endif -%}
-                {%- if actualFilter.category is not null -%}
-                    {{- 'category=' ~ actualFilter.category ~ '&' -}}
-                {%- endif -%}
-                " class="filterLinks">
-                    <li>Tous</li>
-                </a>
+                <li><a href=
+                       "{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
+                        {%- if actualFilter.available is null -%}
+                        {{- 'available=' ~ 'true' -}}
+                        {%- endif -%}
+                        {%- for filterKey, filterValue in actualFilter -%}
+                            {%- if filterValue is not null and filterKey != 'available' -%}
+                                {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                            {% endif %}
+                        {%- endfor -%}"
+                       class="filterLinks">En stock</a>
+                </li>
+                <li><a href=
+                       "{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
+                        {%- for filterKey, filterValue in actualFilter -%}
+                            {%- if filterValue is not null and filterKey != 'available' -%}
+                                {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                            {% endif %}
+                        {%- endfor -%}"
+                       class="filterLinks">Tout</a>
+                </li>
             </ul>
 
         </div>
@@ -138,19 +136,12 @@
                         {%  for i in 1..countPages %}
                             <li class="page-item">
                                 <a class="page-link" href=
-                                "{{- urlStart ~ universe ~ '/' ~ i ~ '/' -}}
-                                {%- if actualFilter|length > 1 %}
-                                    {{- '?' -}}
-                                    {%- if actualFilter.brand is not null -%}
-                                        {{- 'brand=' ~ actualFilter.brand ~ '&' -}}
-                                    {%- endif -%}
-                                    {%- if actualFilter.category is not null -%}
-                                        {{- 'category=' ~ actualFilter.category ~ '&' -}}
-                                    {%- endif -%}
-                                    {%- if actualFilter.available is not null -%}
-                                        {{- 'available=' ~ actualFilter.available ~ '&' -}}
-                                    {%- endif -%}
-                                {%- endif -%}">{{ i }}
+                                "{{- urlStart ~ actualFilter.universe ~ '/' ~ i ~ '/?' -}}
+                                {%- for filterKey, filterValue in actualFilter -%}
+                                    {%- if filterValue is not null and filterKey != 'available' -%}
+                                        {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
+                                    {% endif %}
+                                {%- endfor -%}">{{ i }}
                                 </a>
                             </li>
                         {% endfor %}

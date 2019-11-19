@@ -30,6 +30,7 @@ ul {
 .filterLinks {
     text-decoration: none;
     color: var(--color-somber);
+    font-size: var(--size-font-primary);
 }
 
 .filterLinks:hover {

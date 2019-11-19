@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\BrandManager;
 use App\Model\CategoryManager;
 use App\Model\ProductManager;
+use App\Model\SearchManager;
 use App\Model\UniverseManager;
 
 class ProductController extends AbstractController
@@ -52,7 +53,7 @@ class ProductController extends AbstractController
     public function search(string $page = '1')
     {
 
-        $productManager = new ProductManager();
+        $searchManager = new SearchManager();
         $brandManager = new BrandManager();
         $categoryManager = new CategoryManager();
         $universeManager = new UniverseManager();
@@ -60,18 +61,18 @@ class ProductController extends AbstractController
         $categories = $categoryManager->selectAll();
         $universes = $universeManager->selectAll();
 
-        $searchTerm = $_GET['search'] ?? null;
+        $searchTerm = trim($_GET['search']) ?? null;
         $filterPage['brand'] = $_GET['brand'] ?? null;
         $filterPage['category'] = $_GET['category'] ?? null;
         $filterPage['available'] = $_GET['available'] ?? null;
         $filterPage['universe'] = $_GET['universe'] ?? null;
 
         $pageNumber = (int)$page;
-        $countProducts = $productManager->countSearchedProducts($searchTerm, $filterPage);
+        $countProducts = $searchManager->countSearchedProducts($searchTerm, $filterPage);
         $countPages = (int)($countProducts/self::PRODUCTS_BY_PAGES+1);
 
 
-        $products = $productManager->searchProducts($filterPage, $searchTerm, $pageNumber, self::PRODUCTS_BY_PAGES);
+        $products = $searchManager->searchProducts($filterPage, $searchTerm, $pageNumber, self::PRODUCTS_BY_PAGES);
 
         $filterPage['search'] = htmlentities($searchTerm);
         return $this->twig->render('Product/search.html.twig', ['products' => $products,

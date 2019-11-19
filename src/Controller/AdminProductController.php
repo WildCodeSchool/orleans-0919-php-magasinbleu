@@ -6,6 +6,7 @@ use App\Model\ProductManager;
 use App\Model\UniverseManager;
 use App\Model\BrandManager;
 use App\Model\CategoryManager;
+use App\Model\SearchManager;
 
 class AdminProductController extends AbstractController
 {
@@ -139,9 +140,9 @@ class AdminProductController extends AbstractController
 
     public function adminSearch()
     {
-        $productManager = new ProductManager();
-        $searchTerm = $_GET['search'] ?? null;
-        $products = $productManager->searchProducts([], $searchTerm, 1, 99);
+        $productManager = new SearchManager();
+        $searchTerm = trim($_GET['search']) ?? null;
+        $products = $productManager->searchAdminProducts($searchTerm);
         return $this->twig->render('AdminProduct/search.html.twig', ['products' => $products,
             'searchTerm' => htmlentities($searchTerm),
         ]);
