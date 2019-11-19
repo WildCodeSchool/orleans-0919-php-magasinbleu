@@ -38,6 +38,14 @@
     margin-left: 2rem;
 }
 
+.list-inline-item-nav a {
+    margin-right: 1rem;
+}
+
+.list-inline-item-nav form {
+    margin-right: 1rem;
+}
+
 .navbar-dark .navbar-nav .selectedUniverse {
     color: var(--color-light);
     border-style: solid;
@@ -48,7 +56,6 @@
 }
 
 .formAutocomplete {
-    width: 20vw;
     height: 40px;
 }
 
