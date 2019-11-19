@@ -4,7 +4,7 @@
 @import "mapHours.css";
 @import "lastproducts.css";
 @import "footer.css";
-@import "../Conditions/conditions.css";
+@import "condition.css";
 
 
 .flexbox {

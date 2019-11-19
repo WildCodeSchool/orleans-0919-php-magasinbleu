@@ -1,12 +1,8 @@
-@import "../Home/nav.css";
-@import "../Home/footer.css";
-
 .conditionsTitle
 {
     text-align:center;
     font-size:var(--size-font-title);
     text-decoration: underline;
-
 }
 
 .conditionsPart
