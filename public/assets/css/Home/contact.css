@@ -1,0 +1,16 @@
+.contactForm {
+    margin:80px;
+}
+
+.h1-responsive{
+    overflow:hidden;
+}
+
+.form-control{
+    margin-bottom: 1%;
+}
+
+.form-contact{
+    display: flex;
+    justify-content: center;
+}
