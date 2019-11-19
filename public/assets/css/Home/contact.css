@@ -4,6 +4,8 @@
 
 .h1-responsive{
     overflow:hidden;
+    font-family: var(--font-title);
+    color: var(--color-primary);
 }
 
 .form-control{
