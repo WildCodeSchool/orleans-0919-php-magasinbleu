@@ -1,11 +1,18 @@
-{% extends 'Home/index.html.twig' %}
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Home/condition.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'Home/nav.html.twig' %}
+{% endblock %}
 
 {% block content %}
 
     <section>
+        <h1 class="conditionsTitle">Conditions Générales de Vente</h1>
         <article id="ancre1">
-
-            <h1 class="conditionsTitle">Conditions Générales de Vente</h1>
             <h2 class="conditionsPart">La commande</h2>
             <ul>
                 <li class="conditionsList">- Toute commande donne lieu à confirmation par e-mail.</li>
@@ -107,4 +114,8 @@
 
     </section>
 
+{% endblock %}
+
+{% block footer %}
+    {% include "/Home/footer.html.twig" %}
 {% endblock %}
