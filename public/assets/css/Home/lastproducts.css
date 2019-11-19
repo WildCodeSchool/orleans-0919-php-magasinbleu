@@ -6,6 +6,7 @@
 .card-last-products {
     height: 50vh;
     margin: 0;
+    overflow-x: hidden;
 }
 
 .title {
@@ -34,7 +35,7 @@
     position:absolute;
     height: 12em;
     width: auto;
-    clip:rect(0px,500px,200px,0px)
+    clip:rect(0px,500px,200px,0px);
 }
 
 .lastproducts .card-body {

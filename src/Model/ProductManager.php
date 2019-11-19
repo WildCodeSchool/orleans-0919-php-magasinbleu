@@ -7,7 +7,7 @@ use App\Model\BrandManager;
 
 class ProductManager extends AbstractManager
 {
-    const NB_LAST_PRODUCTS = 5;
+    const NB_LAST_PRODUCTS = 3;
     const TABLE = 'product';
 
     /**
