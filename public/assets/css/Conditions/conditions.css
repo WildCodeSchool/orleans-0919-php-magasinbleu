@@ -1,0 +1,23 @@
+@import "../Home/nav.css";
+@import "../Home/footer.css";
+
+.conditionsTitle
+{
+    text-align:center;
+    font-size:30px;
+    text-decoration: underline;
+}
+
+.conditionsPart
+{
+    font-size:22px;
+    text-decoration:underline;
+    margin-left: 27px;
+    margin-top:10px;
+}
+
+.conditionsList
+{
+    margin-top:5px;
+    margin-left:50px;
+}
