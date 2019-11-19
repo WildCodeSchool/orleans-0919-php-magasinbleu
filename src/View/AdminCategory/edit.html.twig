@@ -5,19 +5,17 @@
 {% endblock %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/Admin/updateproduct.css">
+    <link rel="stylesheet" href="/assets/css/Admin/product.css">
 {% endblock %}
 
 {% block content %}
     <div class="row">
-        <h1 class="col-12 titleAdminEdit">Modifier le nom de : <br> {{ category.name }} </h1>
+        <a href="/AdminCategory/index" class="backButton"><button class="btn btn-primary btn-lg">Retour</button></a>
+        <h1 class="col-12 titleAdmin">Modifier le nom de :</br> {{ category.name }}</h1>
     </div>
     <div class="row">
         <div class="col-12">
             {% include 'AdminCategory/_form.html.twig' %}
         </div>
-    </div>
-    <div class="row">
-        <button class="btn btn-primary backButton"><a href="/AdminCategory/index">Retour</a></button>
     </div>
 {% endblock %}
