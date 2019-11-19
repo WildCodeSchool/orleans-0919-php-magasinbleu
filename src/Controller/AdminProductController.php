@@ -36,16 +36,13 @@ class AdminProductController extends AbstractController
         $universeManager = new UniverseManager();
         $universes = $universeManager->selectAll();
 
-        $oldFileName = new ProductManager();
-        $newFileName = $oldFileName->selectOneById($id);
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
             $data['image'] = uniqid() . '.' . pathinfo($_FILES['path']['name'], PATHINFO_EXTENSION);
             $errors = $this->validate($data);
 
             if (empty($data['image'])) {
-                $data['image'] = $newFileName['image'];
+                $data['image'] = $product['image'];
             }
 
             if (!empty($_FILES['path']['name'])) {
