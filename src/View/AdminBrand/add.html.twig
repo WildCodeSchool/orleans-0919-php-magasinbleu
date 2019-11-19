@@ -1,10 +1,22 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Au p'tit magasin bleu ajouot de marque
+    Au p'tit magasin bleu ajout de marque
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Admin/product.css">
 {% endblock %}
 
 {% block content %}
-    <h1>Ajouter une nouvelle marque</h1>
-    {% include 'AdminBrand/_form.html.twig' %}
+    <div class="row ">
+        <a href="/AdminBrand/index" class="backButton"><button class="btn btn-primary btn-lg">Retour</button></a>
+        <h1 class="col-12 titleAdmin">Ajouter une nouvelle marque</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            {% include 'AdminBrand/_form.html.twig' %}
+        </div>
+    </div>
 {% endblock %}
