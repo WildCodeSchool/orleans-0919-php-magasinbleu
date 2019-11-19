@@ -3,6 +3,10 @@
 namespace App\Controller;
 
 use App\Model\AbstractManager;
+use Symfony\Component\Mailer\Bridge\Google\Smtp\GmailTransport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mime\Email;
 
 class ContactController extends AbstractController
 {
@@ -48,6 +52,18 @@ class ContactController extends AbstractController
                 $email = $data['email'];
                 $subject = $data['subject'];
                 $message = $data['message'];
+
+                $transport = Transport::fromDsn(MAIL_DSN);
+                $mailer = new Mailer($transport);
+                $email = (new Email())
+                    ->from(MAIL_FROM)
+                    ->to(MAIL_TO)
+                    ->subject($subject)
+                    ->html($this->twig->render('Email/index.html.twig', [
+                        'data' => $data,
+                    ]));
+                $mailer->send($email);
+
                 header('location: /Contact/contact/?success=ok');
             }
         }
