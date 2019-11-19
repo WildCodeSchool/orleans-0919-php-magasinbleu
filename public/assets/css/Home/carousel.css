@@ -10,10 +10,10 @@
 }
 
 .carousel {
-    background: url("../../images/background_carousel.jpg") center;
+    background: url("../../images/background_carousel.webp") center;
     background-size: cover;
     width: 100%;
-    margin-top: -20px;
+    margin-top: 60px;
 }
 
 .view {
