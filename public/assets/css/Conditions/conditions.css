@@ -4,13 +4,13 @@
 .conditionsTitle
 {
     text-align:center;
-    font-size:30px;
+    font-size:var(--size-font-title);
     text-decoration: underline;
 }
 
 .conditionsPart
 {
-    font-size:22px;
+    font-size:var(--size-font-primary);
     text-decoration:underline;
     margin-left: 27px;
     margin-top:10px;
