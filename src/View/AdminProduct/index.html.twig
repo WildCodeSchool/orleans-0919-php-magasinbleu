@@ -1,0 +1,40 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}
+    Au p'tit magasin bleu administration
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/Admin/index.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'AdminProduct/nav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <div class="title">
+        <h1>Produits</h1>
+        <a class="btn btn-primary" href="/AdminProduct/add">Ajouter</a>
+    </div>
+
+    <div class="column">
+        {% for product in products %}
+            <div class="product">
+                <div class="product-infos">{{ product.name }}<br>{{ product.reference }}</div>
+
+                <div class="buttons">
+                    <a class="btn btn-success" href="/AdminProduct/edit/{{ product.id }}">Modifier</a>
+
+                    <form method="POST" action="/adminProduct/delete/{{ product.id }}">
+                        <input type="submit" name="delete" value="Supprimer" class="btn btn-danger"
+                               OnClick="return confirm('Souhaitez-vous vraiment supprimer {{ product.name }} ?');">
+                    </form>
+
+                </div>
+            </div>
+        {% else %}
+            <li>Nothing to display</li>
+
+        {% endfor %}</div>
+{% endblock %}

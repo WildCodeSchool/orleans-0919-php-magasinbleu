@@ -1,0 +1,45 @@
+@import "/public/assets/css/Home/nav.css";
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title h1 {
+    overflow: hidden;
+    font-family: var(--font-title);
+}
+
+.column {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.product {
+    background-color: var(--color-light);
+    border: solid 1px var(--color-light-blue);
+    padding: 1em;
+    margin: 1em;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+}
+
+.btn {
+    margin-right: 2em;
+}

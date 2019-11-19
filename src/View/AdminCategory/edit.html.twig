@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Au p'tit magasin bleu édition de produit
+    Au p'tit magasin bleu édition de catégories
 {% endblock %}
 
 {% block stylesheet %}
@@ -10,12 +10,12 @@
 
 {% block content %}
     <div class="row">
-        <a href="/AdminProduct/index" class="backButton"><button class="btn btn-primary btn-lg">Retour</button></a>
-        <h1 class="col-12 titleAdmin">Modifier les informations de :</br> {{ product.name }}</h1>
+        <a href="/AdminCategory/index" class="backButton"><button class="btn btn-primary btn-lg">Retour</button></a>
+        <h1 class="col-12 titleAdmin">Modifier le nom de :</br> {{ category.name }}</h1>
     </div>
     <div class="row">
         <div class="col-12">
-            {% include 'AdminProduct/_form.html.twig' %}
+            {% include 'AdminCategory/_form.html.twig' %}
         </div>
     </div>
 {% endblock %}

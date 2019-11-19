@@ -39,7 +39,7 @@ class ProductManager extends AbstractManager
                     JOIN ' . UniverseManager::TABLE . ' u ON p.universe_id = u.id 
                     JOIN ' . BrandManager::TABLE. ' b ON p.brand_id = b.id 
                     JOIN ' . CategoryManager::TABLE . ' c ON p.category_id = c.id';
-        $queryOrder = 'ORDER BY p.id ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
+        $queryOrder = 'ORDER BY p.name ASC LIMIT ' . $productByPage . ' OFFSET ' . $productByPage*($page-1);
         if (isset($filterPage['available'])) {
             $queryFilter =
                 'WHERE u.name = :universe AND b.name LIKE :brand AND c.name LIKE :category AND availability ';
@@ -110,14 +110,21 @@ class ProductManager extends AbstractManager
         $statement->execute();
     }
 
+    public function delete(int $id)
+    {
+        $query = 'DELETE from ' . self::TABLE . ' WHERE id=:id';
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
     public function insert(array $data)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . "
-               (name, image, reference, price, description, availability, universe_id, brand_id, category_id)
-               VALUES (:name, :image, :reference, :price, :description, :availability, :universe, :brand, :category)
+               (name, reference, price, description, availability, universe_id, brand_id, category_id, image)
+               VALUES (:name, :reference, :price, :description, :availability, :universe, :brand, :category, :image)
            ");
         $statement->bindValue('name', $data['name'], \PDO::PARAM_STR);
-        $statement->bindValue('image', $data['image'], \PDO::PARAM_STR);
         $statement->bindValue('reference', $data['reference'], \PDO::PARAM_STR);
         $statement->bindValue('price', $data['price'], \PDO::PARAM_INT);
         $statement->bindValue('description', $data['description'], \PDO::PARAM_STR);
@@ -125,6 +132,7 @@ class ProductManager extends AbstractManager
         $statement->bindValue('universe', $data['universe'], \PDO::PARAM_INT);
         $statement->bindValue('brand', $data['brand'], \PDO::PARAM_INT);
         $statement->bindValue('category', $data['category'], \PDO::PARAM_INT);
+        $statement->bindValue('image', $data['image'], \PDO::PARAM_STR);
         $statement->execute();
     }
 }

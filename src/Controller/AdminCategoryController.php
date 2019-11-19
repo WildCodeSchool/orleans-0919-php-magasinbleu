@@ -10,27 +10,27 @@
 
 namespace App\Controller;
 
-use App\Model\BrandManager;
+use App\Model\CategoryManager;
 
-class AdminBrandController extends AbstractController
+class AdminCategoryController extends AbstractController
 {
     public function edit(int $id): string
     {
         $errors = [];
-        $brandManager = new BrandManager();
-        $brand = $brandManager->selectOneById($id);
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->selectOneById($id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
             $errors = $this->validate($data);
             if (empty($errors)) {
                 // update en bdd si pas d'erreur
-                $brandManager->update($data);
+                $categoryManager->update($data);
                 // redirection en GET
-                header('Location: /AdminBrand/index');
+                header('Location: /AdminCategory/index');
             }
         }
-        return $this->twig->render('AdminBrand/edit.html.twig', [
-            'brand'  => $brand,
+        return $this->twig->render('AdminCategory/edit.html.twig', [
+            'category'  => $category,
             'data'  => $data ?? [],
             'errors' => $errors,
         ]);
@@ -38,49 +38,51 @@ class AdminBrandController extends AbstractController
 
     private function validate(array $data) :array
     {
+        // verif coté serveur
         if (empty($data['name'])) {
-            $errors['name'] = 'Un nom de marque est requise';
+            $errors['name'] = 'Un nom de catégorie est requise';
         } elseif (strlen($data['name']) > 150) {
-            $errors['name'] = 'Le nom de la marque est trop long';
+            $errors['name'] = 'Le nom de la catégorie est trop long';
         }
         return $errors ?? [];
     }
 
+
     public function delete($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $brandManager = new BrandManager();
-            $brandManager->delete($id);
+            $categoryManager = new CategoryManager();
+            $categoryManager->delete($id);
 
-            header('Location:/adminBrand/index');
+            header('Location:/adminCategory/index');
         }
     }
 
     public function index()
     {
-        $brandManager = new BrandManager();
-        $brands = $brandManager->selectAll();
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
 
-        return $this->twig->render('AdminBrand/index.html.twig', ['brands' => $brands]);
+        return $this->twig->render('AdminCategory/index.html.twig', ['categories' => $categories]);
     }
 
     public function add(): string
     {
         $errors = [];
 
-        $brandManager = new BrandManager();
+        $categoryManager = new CategoryManager();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
             $errors = $this->validate($data);
             if (empty($errors)) {
                 // insert en bdd si pas d'erreur
-                $brandManager->insert($data);
+                $categoryManager->insert($data);
                 // redirection en GET
-                header('Location: /adminBrand/index');
+                header('Location: /adminCategory/index');
             }
         }
-        return $this->twig->render('AdminBrand/add.html.twig', [
+        return $this->twig->render('AdminCategory/add.html.twig', [
             'data'  => $data ?? [],
             'errors' => $errors,
         ]);

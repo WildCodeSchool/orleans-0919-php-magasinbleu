@@ -1,5 +1,5 @@
 @import "Describe/describe.css";
-@import "Contact/contact.css";
+@import "Home/contact.css";
 
 :root {
     --color-light: #e3eaf2;
@@ -19,8 +19,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: auto;
-    overflow-x: hidden;
     font-family: var(--font-primary);
     font-size: var(--size-font-primary);
 }
@@ -28,4 +26,8 @@
 body {
     background-image: url("/assets/images/interlaced.png");
     z-index: -1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    overflow: hidden;
 }

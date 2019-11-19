@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Au p'tit magasin bleu ajout de produit
+    Au p'tit magasin bleu ajout de catégorie
 {% endblock %}
 
 {% block stylesheet %}
@@ -10,13 +10,13 @@
 
 {% block content %}
     <div class="row ">
-        <a href="/AdminProduct/index" class="backButton"><button class="btn btn-primary btn-lg">Retour</button></a>
-        <h1 class="col-12 titleAdmin">Ajouter un nouveau produit</h1>
+        <a href="/AdminCategory/index" class="backButton"><button class="btn btn-primary btn-lg">Retour</button></a>
+        <h1 class="col-12 titleAdmin">Ajouter une nouvelle catégorie</h1>
     </div>
 
     <div class="row">
         <div class="col-12">
-            {% include 'AdminProduct/_form.html.twig' %}
+            {% include 'AdminCategory/_form.html.twig' %}
         </div>
     </div>
 {% endblock %}

@@ -1,0 +1,39 @@
+{% block navbar %}
+    <div class="container-fluid container-admin-nav">
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="/">Au p'tit magasin bleu</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/adminProduct/index">Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/adminBrand/index">Marques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/adminCategory/index">Categories</a>
+                    </li>
+
+                </ul>
+                <div class="list-inline-item-nav">
+                    <form method="GET" action="/adminProduct/adminSearch/" autocomplete="on" class="formAutocomplete">
+                        <div class="autocompleteSearch">
+                            <input type="search" name="search" class="search form-control" placeholder="Chercher un produit">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+{% endblock %}
