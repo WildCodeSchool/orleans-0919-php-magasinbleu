@@ -1,3 +1,7 @@
+.universes {
+    width: 95%;
+}
+
 .tltleDeck {
     text-align: center;
     padding: 20px;
@@ -19,7 +23,6 @@
 .card {
     border-color: var(--color-primary);
     height: 50vh;
-    border-radius: 1rem;
     transition: box-shadow .3s ease-in-out;
 }
 
