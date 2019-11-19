@@ -10,31 +10,31 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link {% if universe is defined  and universe == 'train' %}selectedUniverse{% endif %}"
+                    <a class="nav-link {% if universe == 'train' %}selectedUniverse{% endif %}"
                        href="/product/indexUniverse/train">Train</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if universe is defined  and universe == 'maquette' %}selectedUniverse{% endif %}"
+                    <a class="nav-link {% if universe == 'maquette' %}selectedUniverse{% endif %}"
                        href="/product/indexUniverse/maquette">Maquette</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if universe is defined  and universe == 'jouet' %}selectedUniverse{% endif %}"
+                    <a class="nav-link {% if universe == 'jouet' %}selectedUniverse{% endif %}"
                        href="/product/indexUniverse/jouet">Jouet</a>
                 </li>
-
             </ul>
-
             <div class="list-inline-item-nav">
+                <form method="GET" action="/product/search/1/" autocomplete="on" class="formAutocomplete">
+                    <div class="autocompleteSearch">
+                        <input type="search" name="search" class="search form-control" placeholder="Chercher un produit">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
                 <a href="/adminProduct/index" class="btn btn-primary btn-ripple btn-lg">Administration</a>
                 <a href="/Contact/contact" target="_blank" class="btn btn-primary btn-ripple btn-lg">Contact</a>
             </div>
-
-            <div class="search">
-                <input type="text" class="search" placeholder="Chercher un produit">
-                <button type="submit" class="searchButton" name="search" value="search">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
         </div>
+
     </nav>
 {% endblock %}

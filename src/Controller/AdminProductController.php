@@ -6,6 +6,7 @@ use App\Model\ProductManager;
 use App\Model\UniverseManager;
 use App\Model\BrandManager;
 use App\Model\CategoryManager;
+use App\Model\SearchManager;
 
 class AdminProductController extends AbstractController
 {
@@ -23,19 +24,50 @@ class AdminProductController extends AbstractController
     public function edit($id): string
     {
         $errors = [];
+
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
+
         $brandManager = new BrandManager();
         $brands = $brandManager->selectAll();
+
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
+
         $universeManager = new UniverseManager();
         $universes = $universeManager->selectAll();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
+            $data['image'] = uniqid() . '.' . pathinfo($_FILES['path']['name'], PATHINFO_EXTENSION);
             $errors = $this->validate($data);
+
+            if (empty($data['image'])) {
+                $data['image'] = $product['image'];
+            }
+
+            if (!empty($_FILES['path']['name'])) {
+                $path = $_FILES['path'];
+
+                if ($path['error'] !== 0) {
+                    $errors['image'] = 'L\'image n\'a pas été hébergée.';
+                } elseif ($path['size'] > self::MAX_SIZE) {
+                    $errors['image'] = 'La taille du fichier doit être inférieure à ' . (self::MAX_SIZE / 1000) .
+                        ' ko.';
+                } elseif (!in_array($path['type'], self::AUTHORIZED_FORMATS)) {
+                    $errors['image'] = 'Seules les images au format ' .
+                        implode(', ', self::AUTHORIZED_FORMATS) . ' sont acceptées.';
+                } elseif ($product) {
+                    unlink(UPLOAD_PATH . $product['image']);
+                }
+            }
+
             if (empty($errors)) {
+                $path = $_FILES['path'];
                 // update en bdd si pas d'erreur
+                $fileName = $data['image'];
+                move_uploaded_file($path['tmp_name'], UPLOAD_PATH . $fileName);
+                $data['image'] = $fileName;
                 $productManager->update($data);
                 // redirection en GET
                 header('Location: /adminProduct/index');
@@ -97,7 +129,6 @@ class AdminProductController extends AbstractController
                 }
             }
         }
-
         return $this->twig->render('AdminProduct/add.html.twig', ['data' => $data ?? [],
             'errors' => $errors,
             'brands' => $brand,
@@ -138,5 +169,15 @@ class AdminProductController extends AbstractController
             }
             header('Location:/adminProduct/index');
         }
+    }
+
+    public function adminSearch()
+    {
+        $productManager = new SearchManager();
+        $searchTerm = trim($_GET['search']) ?? null;
+        $products = $productManager->searchAdminProducts($searchTerm);
+        return $this->twig->render('AdminProduct/search.html.twig', ['products' => $products,
+            'searchTerm' => htmlentities($searchTerm),
+        ]);
     }
 }
