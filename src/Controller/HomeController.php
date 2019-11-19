@@ -57,5 +57,4 @@ class HomeController extends AbstractController
 
         return $errors ?? [];
     }
-
 }
