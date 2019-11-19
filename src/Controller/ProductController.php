@@ -70,7 +70,10 @@ class ProductController extends AbstractController
         $countProducts = $productManager->countSearchedProducts($searchTerm, $filterPage);
         $countPages = (int)($countProducts/self::PRODUCTS_BY_PAGES+1);
 
+
         $products = $productManager->searchProducts($filterPage, $searchTerm, $pageNumber, self::PRODUCTS_BY_PAGES);
+
+        $filterPage['search'] = htmlentities($searchTerm);
         return $this->twig->render('Product/search.html.twig', ['products' => $products,
             'page' => $pageNumber,
             'countPages' => $countPages,
