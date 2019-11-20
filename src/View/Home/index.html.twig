@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Au p'tit magasin bleu
+    Au p'tit magasin bleu accueil
 {% endblock %}
 
 {% block stylesheet %}
@@ -16,19 +16,21 @@
     {% include '/Home/_carousel.html.twig' %}
 
     <div class="flexbox">
-    <div class="container-fluid universes">
-        {% include '/Home/_universe.html.twig' %}
+        <div class="container-fluid universes">
+            {% include '/Home/_universe.html.twig' %}
+        </div>
+
+        <div class="container-fluid lastproducts">
+            {% include '/Home/lastproducts.html.twig' %}
+        </div>
+
+        <div class="container container-map-hours">
+            {% include '/Home/mapHours.html.twig' %}
+        </div>
     </div>
 
-    <div class="container-fluid lastproducts">
-        {% include '/Home/lastproducts.html.twig' %}
-    </div>
+    {% include '/Home/contact.html.twig' %}
 
-    <div class="container container-map-hours">
-    {% include '/Home/mapHours.html.twig' %}
-    </div>
-    
-    </div>
 {% endblock %}
 
 {% block footer %}

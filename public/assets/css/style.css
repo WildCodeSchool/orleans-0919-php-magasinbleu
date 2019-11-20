@@ -1,5 +1,5 @@
 @import "Describe/describe.css";
-@import "Contact/contact.css";
+@import "Home/contact.css";
 
 :root {
     --color-light: #e3eaf2;
@@ -9,7 +9,6 @@
     --color-somber: #00264D;
     --color-filter-image: rgba(0, 0, 0, .4);
     --font-primary: 'Lato', sans-serif;
-    --font-secondary: 'Roboto', sans-serif;
     --font-title: 'Spicy Rice', cursive;
     --size-font-primary: 2rem;
     --size-font-title: 4rem;

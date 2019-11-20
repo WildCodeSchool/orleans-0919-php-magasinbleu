@@ -35,8 +35,14 @@ ul {
 
 .filterLinks:hover {
     text-decoration: none;
+    color: var(--color-light-blue);
+}
+
+.filterSelected {
     color: var(--color-md-blue);
 }
+
+
 .container-fluid {
     padding: 0;
 }
