@@ -10,3 +10,5 @@ db.php
 /public/assets/uploads/
 !/public/assets/uploads/.gitkeep
 /public/assets/script/
+db_magbleu.zip
+db_magbleu/
