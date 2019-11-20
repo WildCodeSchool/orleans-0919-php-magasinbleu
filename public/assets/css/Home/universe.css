@@ -24,27 +24,15 @@
     border-color: var(--color-primary);
     height: 30vh;
     width: 30vw;
-    transition: box-shadow .3s ease-in-out;
     border-radius:0;
 }
 
-.card:hover {
-    cursor: pointer;
-    background-color: var(--color-light);
-    box-shadow: 0 0 1px 1px var(--color-somber);
-}
-
 .universes .card-img-top {
-    clip:rect(0px,800px,285px,0px);
     position: absolute;
     border-radius: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
-}
-
-.card-img-top:hover {
-    opacity: 0.5;
 }
 
 .card-body {
@@ -54,16 +42,18 @@
     padding: 0;
 }
 
+.card-body:hover {
+    background-color: var(--color-filter-light);
+}
+
 .card-title {
     font-family: var(--font-title);
     font-size: var(--size-font-title);
     text-align: center;
     overflow: visible;
     height: auto;
-    z-index: 99;
-}
-.card-text {
-    color: var(--color-somber);
+    margin-top: 2.7em;
+    text-shadow: 0 0 5px var(--color-light);
 }
 
 .cardLink:link {
