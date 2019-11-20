@@ -40,20 +40,27 @@
     overflow: visible;
     z-index: 2;
     padding: 0;
+    background-color: var(--color-filter-light)
 }
 
 .universes .card-body:hover {
-    background-color: var(--color-filter-light);
+    background-color: transparent;
 }
 
 .card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     font-family: var(--font-title);
     font-size: var(--size-font-title);
     text-align: center;
     overflow: visible;
-    height: auto;
-    margin-top: 2.7em;
-    text-shadow: 0 0 5px var(--color-light);
+    text-shadow: 0px 0px 5px var(--color-light);
+}
+
+.card-title:hover {
+    display:  none;
 }
 
 .cardLink:link {
