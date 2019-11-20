@@ -2,18 +2,9 @@
     padding-bottom: 3em;
 }
 
-.card-last-products {
-    height: 50vh;
-    margin: 0;
-    overflow-x: hidden;
-}
-
-.title {
+.tltleDeck {
     text-align: center;
     padding: 20px;
-}
-
-.lastproducts h2 {
     display: block;
     font-family: var(--font-title);
     font-size: var(--size-font-title);
@@ -21,13 +12,18 @@
     overflow: hidden;
 }
 
-.lastproducts h5 {
-    font-size: 30px;
+.avail {
+    color: var(--color-somber);
+    margin-left: 4vw;
 }
 
-.lastproducts .img-product {
+.card-deck {
     justify-content: center;
-    height: 200px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 0;
+    padding: 10px;
+    position: relative;
 }
 
 .lastproducts .card-img-top {
@@ -40,53 +36,78 @@
     max-height: 10em;
 }
 
-.lastproducts a {
-    text-decoration: none;
+.flex-wrap {
+    margin: 0;
+    padding: 0;
 }
 
-.price {
-    font-weight: bold;
-    text-align: center;
+.card-deck .card {
+    border-color: var(--color-primary);
+    margin: 2rem;
+    border-radius: 0;
+    transition: box-shadow .3s ease-in-out;
+}
+
+.card:hover {
+    cursor: pointer;
+    background-color: var(--color-light);
+    box-shadow: 0 0 1px 1px var(--color-somber);
+}
+
+.card-img-top {
+    height: 20vh;
+    width: 100%;
+    object-fit: cover;
 }
 
 .lastproducts .card-text {
     text-align: center;
     margin-top: 2em;
-    color:var(--color-somber);
+    color: var(--color-somber);
 }
 
-/* MOBILE VERSION */
-@media screen and (max-width: 768px) {
+.card-body {
+    color: var(--color-somber);
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
 
-    .lastproducts {
-        order:-1;
-    }
+.card-body span {
+    width: 60%;
+    height: 3rem;
+    text-align: center;
+}
 
-    .lastproducts .card-deck {
-        align-items: center;
-    }
+.card-title-last {
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 3rem;
+    text-align: center;
+    overflow: visible;
+    word-spacing: 0.3rem;
 
-    .lastproducts .card-body {
-        margin-top:0;
-    }
+}
+.card-price {
+    font-size: 2.8rem;
+    font-weight: bolder;
+    color: var(--color-somber);
+    margin: 0;
 
-    .img-product {
-        order:2;
-        text-align: center;
-    }
+}
 
-    .lastproducts .card-img-top {
-        clip:unset;
-        height: 30vh;
-        width: auto;
-    }
+.inStock {
+    font-weight: bolder;
+    font-style: oblique;
+}
 
-    .lastproducts h5 {
-        text-align: center;
-    }
+.badge-primary {
+    background-color: var(--color-light-blue);
+    color: var(--color-somber);
+}
 
-    .lastproducts p {
-        text-align: center;
-    }
-
+.badge-success {
+    background-color: var(--color-md-blue);
 }

@@ -1,6 +1,11 @@
 @import "../Home/nav.css";
 @import "../Home/footer.css";
 
+
+.blockTitle {
+    margin-top: 10rem;
+}
+
 .productDisplay {
     display: flex;
     flex-direction: row;
@@ -18,6 +23,8 @@ ul {
     border-style: solid;
     border-color: var(--color-somber);
     border-radius: 1rem;
+    position: sticky;
+    top: 10vh;
 }
 
 .filterMenuTitle {
@@ -42,7 +49,6 @@ ul {
     color: var(--color-md-blue);
 }
 
-
 .container-fluid {
     padding: 0;
 }
@@ -52,8 +58,14 @@ ul {
     font-family: var(--font-title);
     font-size: var(--size-font-title);
     margin-left: 4vw;
-    overflow: visible;
     word-spacing: 0.3rem;
+}
+
+.imgUniverse {
+    margin-top: 4rem;
+    height: 60vh;
+    width: 100%;
+    object-fit: cover;
 }
 
 .avail {
@@ -90,7 +102,8 @@ ul {
 
 .card-img-top {
     height: 20vh;
-    object-fit: contain;
+    width: 100%;
+    object-fit: cover;
 }
 
 .card-body {
@@ -99,6 +112,13 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
+}
+
+.card-body span {
+    width: 60%;
+    height: 3rem;
+    text-align: center;
 }
 
 .card-title {
@@ -110,8 +130,11 @@ ul {
     word-spacing: 0.3rem;
 
 }
-.card-text {
+.card-price {
+    font-size: 2.8rem;
+    font-weight: bolder;
     color: var(--color-somber);
+    margin: 0;
 
 }
 
@@ -123,6 +146,15 @@ ul {
 .inStock {
     font-weight: bolder;
     font-style: oblique;
+}
+
+.badge-primary {
+    background-color: var(--color-light-blue);
+    color: var(--color-somber);
+}
+
+.badge-success {
+    background-color: var(--color-md-blue);
 }
 
 @media only screen and (max-width: 768px) {
