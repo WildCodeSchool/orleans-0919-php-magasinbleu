@@ -75,15 +75,28 @@ class ProductController extends AbstractController
         $products = $searchManager->searchProducts($filterPage, $searchTerm, $pageNumber, self::PRODUCTS_BY_PAGES);
 
         $filterPage['search'] = htmlentities($searchTerm);
-        return $this->twig->render('Product/search.html.twig', ['products' => $products,
-            'page' => $pageNumber,
-            'countPages' => $countPages,
-            'countProducts' => $countProducts,
-            'brands' => $brands,
-            'categories' => $categories,
-            'universes' => $universes,
-            'actualFilter' => $filterPage,
-            'searchTerm' => htmlentities($searchTerm),
-        ]);
+        if (count($products) == 1) {
+            return $this->twig->render('Product/describe.html.twig', ['product' => $products[0],
+                'page' => $pageNumber,
+                'countPages' => $countPages,
+                'countProducts' => $countProducts,
+                'brands' => $brands,
+                'categories' => $categories,
+                'universes' => $universes,
+                'actualFilter' => $filterPage,
+                'searchTerm' => htmlentities($searchTerm),
+            ]);
+        } else {
+            return $this->twig->render('Product/search.html.twig', ['products' => $products,
+                'page' => $pageNumber,
+                'countPages' => $countPages,
+                'countProducts' => $countProducts,
+                'brands' => $brands,
+                'categories' => $categories,
+                'universes' => $universes,
+                'actualFilter' => $filterPage,
+                'searchTerm' => htmlentities($searchTerm),
+            ]);
+        }
     }
 }
