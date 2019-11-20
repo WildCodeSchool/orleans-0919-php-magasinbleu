@@ -11,27 +11,27 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link {% if actualFilter.universe|lower == 'train' %}selectedUniverse{% endif %}"
-                       href="/product/indexUniverse/train">Train</a>
+                       href="/product/indexUniverse/train">Trains</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if actualFilter.universe|lower == 'maquette' %}selectedUniverse{% endif %}"
-                       href="/product/indexUniverse/maquette">Maquette</a>
+                       href="/product/indexUniverse/maquette">Maquettes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if actualFilter.universe|lower == 'jouet' %}selectedUniverse{% endif %}"
-                       href="/product/indexUniverse/jouet">Jouet</a>
+                       href="/product/indexUniverse/jouet">Jouets</a>
                 </li>
             </ul>
             <div class="list-inline-item-nav">
                 <form method="GET" action="/product/search/1/" autocomplete="on" class="formAutocomplete">
                     <div class="autocompleteSearch">
                         <input type="search" name="search" class="search form-control" placeholder="Chercher un produit">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <a href="/#contact" class="btn btn-primary btn-ripple btn-lg">Contact</a>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-ripple btn-lg">
-                        <i class="fa fa-search"></i>
-                    </button>
                 </form>
-                <a href="/adminProduct/index" class="btn btn-primary btn-ripple btn-lg">Administration</a>
             </div>
         </div>
 

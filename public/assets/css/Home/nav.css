@@ -16,6 +16,7 @@
 
 .collapse navbar-collapse{
     display: flex;
+    height: 100%;
 }
 
 .navbar-nav{
@@ -31,41 +32,40 @@
     font-family: var(--font-title);
 }
 
-.list-inline-item-nav{
+.list-inline-item-nav {
     display: flex;
-    flex-wrap: nowrap;
     justify-content: end;
-    margin-left: 2rem;
-}
-
-.list-inline-item-nav a {
-    margin-right: 1rem;
-}
-
-.list-inline-item-nav form {
-    margin-right: 1rem;
-    height: 100%;
-}
-
-.navbar-dark .navbar-nav .selectedUniverse {
-    color: var(--color-light);
-    border-style: solid;
-    border-color: var(--color-md-blue);
-    border-radius: 1rem;
-    width: max-content;
-    height: max-content;
-}
-
-.formAutocomplete {
-    height: 40px;
+    height: 50px;
 }
 
 .autocompleteSearch {
     position: relative;
-    display: inline-block;
-    padding: 4px;
-    outline: none;
+    display: flex;
+}
+
+.form-control {
+    margin: 0;
+}
+
+.formAutocomplete {
+    display: flex;
+    align-content: center;
+}
+
+.search {
+    width: 100%;
+    border: 3px solid var(--color-md-blue);
+    border-right: none;
+    padding: 5px;
     height: 100%;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: var(--color-light-blue);
+    font-size: 2rem;
+}
+
+.search:focus{
+    color: var(--color-md-blue);
 }
 
 .btn-ripple{
@@ -79,9 +79,27 @@
     border-color: var(--color-primary);
 }
 
+.searchButton {
+    width: 90px;
+    height: 50px;
+    border: 1px solid var(--color-md-blue);
+    background: var(--color-md-blue);
+    text-align: center;
+    color: var(--color-light);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 4rem;
+}
+
+.formAutocomplete a {
+    margin-right: 2rem;
+    display: inline;
+    vertical-align: middle;
+}
 
 .selectedUniverse {
-    border-color: var(--color-md-blue);
+    border-color: var(--color-primary);
     border-radius: 1rem;
     border-style: solid;
     border-width: 2px;
@@ -89,17 +107,17 @@
 
 @media only screen and (max-width: 768px) {
     .list-inline-item-nav {
-    margin-bottom: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-}
+        margin-bottom: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+    }
 
     .formAutocomplete {
         width: 100%;
     }
 
-    .list-inline-item-nav a {
+    .autocompleteSearch a {
         display: none;
     }
 }
