@@ -32,9 +32,8 @@
 
 .lastproducts .card-img-top {
     position:absolute;
-    height: 12em;
-    width: auto;
-    clip:rect(0px,500px,200px,0px);
+    height: 14em;
+    object-fit: cover;
 }
 
 .lastproducts .card-body {
@@ -54,7 +53,7 @@
 .lastproducts .card-text {
     text-align: center;
     margin-top: 2em;
-
+    color:var(--color-somber);
 }
 
 /* MOBILE VERSION */
