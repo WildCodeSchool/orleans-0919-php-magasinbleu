@@ -6,6 +6,7 @@
     margin: 10rem 0 6rem;
     border-radius: 1rem;
     position: relative;
+    min-height: 65vh;
 }
 
 .descriptionTitle{
@@ -13,20 +14,17 @@
     font-family: var(--font-title);
     font-size: var(--size-font-title);
     color: var(--color-primary);
+    margin-bottom: 20px;
 }
 
 .sizeDescribe{
     font-size: 15px;
-}
-
-.sizeDescribe span{
-    margin: -3px 5px 0 30px;
+    margin-right: 30px;
 }
 
 .productImage{
     width: auto;
     height: auto;
-    margin-top: 40px;
     max-height: 400px;
     max-width: 100%;
 }
@@ -58,8 +56,4 @@
 
 .blocPrice{
     align-self: center;
-}
-
-.badge-primary{
-    background-color: var(--color-primary);
 }
