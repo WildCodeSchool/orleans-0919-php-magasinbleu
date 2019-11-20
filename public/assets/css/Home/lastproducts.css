@@ -31,13 +31,12 @@
 }
 
 .lastproducts .card-img-top {
-    position:absolute;
     height: 14em;
     object-fit: cover;
+    clip-path: inset(0px 0px 40px 0px);
 }
 
 .lastproducts .card-body {
-    margin-top: 0em;
     max-height: 10em;
 }
 
