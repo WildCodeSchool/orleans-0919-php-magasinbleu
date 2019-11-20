@@ -10,15 +10,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link {% if actualFilter.universe == 'train' %}selectedUniverse{% endif %}"
+                    <a class="nav-link {% if actualFilter.universe|lower == 'train' %}selectedUniverse{% endif %}"
                        href="/product/indexUniverse/train">Train</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if actualFilter.universe == 'maquette' %}selectedUniverse{% endif %}"
+                    <a class="nav-link {% if actualFilter.universe|lower == 'maquette' %}selectedUniverse{% endif %}"
                        href="/product/indexUniverse/maquette">Maquette</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if actualFilter.universe == 'jouet' %}selectedUniverse{% endif %}"
+                    <a class="nav-link {% if actualFilter.universe|lower == 'jouet' %}selectedUniverse{% endif %}"
                        href="/product/indexUniverse/jouet">Jouet</a>
                 </li>
             </ul>

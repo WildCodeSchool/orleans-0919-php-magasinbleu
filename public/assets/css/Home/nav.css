@@ -79,6 +79,14 @@
     border-color: var(--color-primary);
 }
 
+
+.selectedUniverse {
+    border-color: var(--color-md-blue);
+    border-radius: 1rem;
+    border-style: solid;
+    border-width: 2px;
+}
+
 @media only screen and (max-width: 768px) {
     .list-inline-item-nav {
     margin-bottom: 2rem;
