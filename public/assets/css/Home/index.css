@@ -1,11 +1,11 @@
 @import "nav.css";
 @import "carousel.css";
 @import 'universe.css';
+@import "intermediary.css";
 @import "mapHours.css";
 @import "lastproducts.css";
 @import "footer.css";
 @import "condition.css";
-
 
 .flexbox {
     display: flex;
