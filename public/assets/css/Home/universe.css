@@ -1,3 +1,7 @@
+.universes {
+    width: 95%;
+}
+
 .tltleDeck {
     text-align: center;
     padding: 20px;
@@ -16,38 +20,47 @@
     position: relative;
 }
 
-.card {
+.universes .card {
     border-color: var(--color-primary);
-    height: 50vh;
-    border-radius: 1rem;
-    transition: box-shadow .3s ease-in-out;
-}
-
-.card:hover {
-    cursor: pointer;
-    background-color: var(--color-light);
-    box-shadow: 0 0 1px 1px var(--color-somber);
-}
-
-.card-img-top {
     height: 30vh;
+    width: 30vw;
+    border-radius:0;
+}
+
+.universes .card-img-top {
+    position: absolute;
+    border-radius: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .card-body {
     color: var(--color-primary);
     overflow: visible;
     z-index: 2;
+    padding: 0;
+    background-color: var(--color-filter-light)
+}
+
+.universes .card-body:hover {
+    background-color: transparent;
 }
 
 .card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     font-family: var(--font-title);
     font-size: var(--size-font-title);
     text-align: center;
     overflow: visible;
-
+    text-shadow: 0px 0px 5px var(--color-light);
 }
-.card-text {
-    color: var(--color-somber);
+
+.card-title:hover {
+    display:  none;
 }
 
 .cardLink:link {
@@ -55,20 +68,7 @@
     margin: 16px;
 }
 
-.steam_train_img {
-    width: 16rem;
-    height: 16rem;
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
-    z-index: 1;
-}
-
 @media only screen and (max-width: 768px) {
-    .steam_train_img {
-        display: none;
-    }
-
     .card-img-top {
         height: 400px;
     }

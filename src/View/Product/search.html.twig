@@ -15,10 +15,12 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="titleProductUniverse">Résultat de la recherche : {{ searchTerm | replace({'&quot;': '"'}) }}</h1>
-    <p class="avail">
-        {{ countProducts }} produits disponible
-    </p>
+    <div class="blockTitle">
+        <h1 class="titleProductUniverse">Résultat de la recherche : {{ searchTerm | replace({'&quot;': '"'}) }}</h1>
+        <p class="avail">
+            {{ countProducts }} produits disponible
+        </p>
+    </div>
 
     <div class="productDisplay">
         <div class="filterMenu bg-white">
