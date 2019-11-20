@@ -42,8 +42,7 @@
                         {%- endif -%}"
                        class="filterLinks
                             {% if brand.brand_name == actualFilter.brand %} filterSelected {% endif %}">
-                        {{ brand.brand_name }}</li>
-                    </a>
+                        {{ brand.brand_name }}</a></li>
                 {% endfor %}
             </ul>
             <a href=
@@ -65,8 +64,7 @@
                         {%- endif -%}"
                        class="filterLinks
                             {% if category.category_name == actualFilter.category %} filterSelected {% endif %}">
-                        {{ category.category_name }}</li>
-                    </a>
+                        {{ category.category_name }}</a></li>
                 {% endfor %}
             </ul>
             <a href="{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
