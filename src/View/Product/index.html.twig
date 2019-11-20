@@ -16,12 +16,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="blockTitle">
-        <h1 class="titleProductUniverse">Les différents produits : {{ universe }}</h1>
-        <p class="avail">
-            {{ countProducts }} produits disponible
-        </p>
-    </div>
+
+    <img src="/assets/images/universe_{{- actualFilter.universe -}}.webp" class="imgUniverse" alt={{ actualFilter.universe }}>
+    <h1 class="titleProductUniverse">Les différents produits : {{ universe }}</h1>
+    <p class="avail">
+        {{ countProducts }} produits disponible
+    </p>
 
     <div class="productDisplay">
         <div class="filterMenu bg-white">
@@ -115,14 +115,15 @@
                                 <img src="{{ '/assets/uploads/' ~ product.image }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ product.name|capitalize}}</h4>
-                                    <p class="card-text">{{ product.price }} €</p>
-                                    <p class="card-text">Catégorie: {{ product.category_name }}</p>
-                                    <p class="card-text">Marque: {{ product.brand_name }}</p>
-                                    <p class="card-text inStock">
+                                    <p class="card-price">{{ product.price }} €</p>
+                                    <span class="badge-pill badge-primary">{{ product.category_name }}</span>
+                                    <span class="badge-pill badge-primary">{{ product.brand_name }}</span>
                                         {% if product.availability == 0 %}
-                                            Rupture de stock
+                                        <span class="badge-pill badge-secondary inStock">
+                                            Rupture</span>
                                         {% else %}
-                                            Disponible
+                                        <span class="badge-pill badge-success inStock">
+                                            Disponible</span>
                                         {% endif %}
                                     </p>
                                 </div>
