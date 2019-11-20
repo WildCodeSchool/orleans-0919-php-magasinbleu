@@ -8,6 +8,7 @@
     --color-primary: #0066cc;
     --color-somber: #00264D;
     --color-filter-image: rgba(0, 0, 0, .4);
+    --color-filter-light: rgba(255, 255, 255, 0.4);
     --font-primary: 'Lato', sans-serif;
     --font-title: 'Spicy Rice', cursive;
     --size-font-primary: 2rem;
