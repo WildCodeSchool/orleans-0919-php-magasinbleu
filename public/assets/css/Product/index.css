@@ -1,6 +1,11 @@
 @import "../Home/nav.css";
 @import "../Home/footer.css";
 
+
+.blockTitle {
+    margin-top: 10rem;
+}
+
 .productDisplay {
     display: flex;
     flex-direction: row;
@@ -41,7 +46,6 @@ ul {
 .filterSelected {
     color: var(--color-md-blue);
 }
-
 
 .container-fluid {
     padding: 0;
