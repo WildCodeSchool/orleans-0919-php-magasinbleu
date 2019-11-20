@@ -6,23 +6,28 @@
     <section class="describeProduct">
         <div class="container-fluid">
             <div class="row justify-content-around">
-                <div class="col-lg-3 align-self-center">
-                    <img src="{{ '/assets/uploads/' ~ product.image }}" alt="image qui représente le produit sélectionné" class="img-thumbnail">
+                <div class="col-lg-4 col-xs-12 align-self-center text-center">
+                    <img src="/assets/uploads/{{ product.image }}" alt="image qui représente le produit sélectionné"
+                         class="img-thumbnail productImage">
                 </div>
-                <div class="col-lg-6">
-                     <div class="card h-auto p-4">
-                        <div class="card-body">
-                            <div class="cardDescribe">
-                                <h1 class="descriptionTitle">{{ product.name }}</h1>
+                <div class="col-lg-8 col-xs-12 align-self-center blocText">
+                     <div class="p-4">
+                        <div class="blocTop">
+                            <div class="blocInfo col-9">
+                                <div class="titleProduct">
+                                    <h1 class="descriptionTitle">{{ product.name }}</h1>
+                                </div>
+                                <div class="sizeInfo">
+                                    <p class="sizeDescribe"><span class="badge badge-primary">Marque</span> {{ product.brand_name }}</p>
+                                    <p class="sizeDescribe"><span class="badge badge-primary">Catégorie</span> {{ product.category_name }}</p>
+                                    <p class="sizeDescribe"><span class="badge badge-primary">Référence</span> {{ product.reference }}</p>
+                                </div>
                             </div>
-                            <p>{{ product.description }}</p>
-                            <div class="sizeInfo">
-                                <h2 class="sizeDescribe">Marque : {{ product.brand_name }}</h2>
-                                <h2 class="sizeDescribe">Catégorie : {{ product.category_name }}</h2>
-                                <h2 class="sizeDescribe">Référence : {{ product.reference }}</h2>
-                                <h2 class="sizeDescribe">Prix : {{ product.price }} €</h2>
+                            <div class="blocPrice col-3">
+                                <p class="productPrice text-center">{{ product.price }} €</p>
                             </div>
                         </div>
+                        <p class="productDescription">{{ product.description }}</p>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,14 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Ajouter une nouvelle catégorie</h1>
-    {% include 'AdminCategory/_form.html.twig' %}
+    <div class="row ">
+        <a href="/AdminCategory/index" class="backButton"><button class="btn btn-primary btn-lg">Retour</button></a>
+        <h1 class="col-12 titleAdmin">Ajouter une nouvelle catégorie</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            {% include 'AdminCategory/_form.html.twig' %}
+        </div>
+    </div>
 {% endblock %}

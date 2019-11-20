@@ -40,7 +40,8 @@
                         {%- if actualFilter.available  is not null -%}
                         {{- '&available=' ~ actualFilter.available -}}
                         {%- endif -%}"
-                       class="filterLinks">
+                       class="filterLinks
+                            {% if brand.brand_name == actualFilter.brand %} filterSelected {% endif %}">
                         {{ brand.brand_name }}</li>
                     </a>
                 {% endfor %}
@@ -62,7 +63,8 @@
                         {%- if actualFilter.available  is not null -%}
                         {{- '&available=' ~ actualFilter.available -}}
                         {%- endif -%}"
-                       class="filterLinks">
+                       class="filterLinks
+                            {% if category.category_name == actualFilter.category %} filterSelected {% endif %}">
                         {{ category.category_name }}</li>
                     </a>
                 {% endfor %}
@@ -88,7 +90,8 @@
                                 {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                             {% endif %}
                         {%- endfor -%}"
-                       class="filterLinks">En stock</a>
+                       class="filterLinks
+                            {% if actualFilter.available %} filterSelected {% endif %}">En stock</a>
                 </li>
                 <li><a href=
                        "{{- urlStart ~ actualFilter.universe ~ '/1/?' -}}
@@ -97,7 +100,7 @@
                                 {{- '&' ~ filterKey ~ '=' ~ filterValue ?? '' -}}
                             {% endif %}
                         {%- endfor -%}"
-                       class="filterLinks">Tout</a>
+                       class="filterLinks ">Tout</a>
                 </li>
             </ul>
 
