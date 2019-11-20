@@ -2,16 +2,6 @@
     background-color: var(--color-light-blue);
 }
 
-.tltleDeck {
-    text-align: center;
-    padding: 20px;
-    display: block;
-    font-family: var(--font-title);
-    font-size: var(--size-font-title);
-    color: var(--color-primary);
-    overflow: hidden;
-}
-
 .avail {
     color: var(--color-somber);
     margin-left: 4vw;
