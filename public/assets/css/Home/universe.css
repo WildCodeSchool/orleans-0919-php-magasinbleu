@@ -2,16 +2,6 @@
     width: 95%;
 }
 
-.tltleDeck {
-    text-align: center;
-    padding: 20px;
-    display: block;
-    font-family: var(--font-title);
-    font-size: var(--size-font-title);
-    color: var(--color-primary);
-    overflow: hidden;
-}
-
 .card-deck {
     justify-content: center;
     margin-top: 2rem;
