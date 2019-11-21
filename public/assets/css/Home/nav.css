@@ -105,10 +105,12 @@
     border-width: 2px;
 }
 
-.fa
+.fa-facebook
 {
     padding-left: 10px;
     padding-top:7px;
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
 
 @media only screen and (max-width: 768px) {
