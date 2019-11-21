@@ -21,7 +21,6 @@
 }
 
 .card-deck .card {
-    border-color: var(--color-primary);
     margin: 2rem;
     border-radius: 0;
     transition: box-shadow .3s ease-in-out;
