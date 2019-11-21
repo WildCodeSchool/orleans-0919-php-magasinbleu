@@ -8,7 +8,7 @@
 }
 
 .navbar-brand{
-    font-size: 2rem ;
+    font-size: 2.5rem ;
     margin-left: 10px;
     margin-right: 30px;
     font-family: var(--font-title);
@@ -30,6 +30,7 @@
 
 .nav-link{
     font-family: var(--font-title);
+    font-size: 2.5rem;
 }
 
 .list-inline-item-nav {
@@ -105,10 +106,12 @@
     border-width: 2px;
 }
 
-.fa
+.fa-facebook
 {
     padding-left: 10px;
     padding-top:7px;
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
 
 @media only screen and (max-width: 768px) {
