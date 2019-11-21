@@ -51,4 +51,9 @@ class BrandManager extends AbstractManager
         $statement->bindValue('name', $data['name'], \PDO::PARAM_STR);
         $statement->execute();
     }
+
+    public function selectAll(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY name')->fetchAll();
+    }
 }
