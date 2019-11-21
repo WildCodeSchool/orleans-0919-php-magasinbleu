@@ -32,12 +32,15 @@
 
 .card-hours:hover{
     background-color: var(--color-light);
-    box-shadow: 0 0 0px 0px var(--color-somber);
+    box-shadow: 0 0 0px 0px ;
+    border: 1px solid var(--color-primary);
+
 }
 
 .card-body-hours{
     display: flex;
     height: 100%;
+    width: 100%;
     justify-content: center;
     flex-direction: column;;
 }
