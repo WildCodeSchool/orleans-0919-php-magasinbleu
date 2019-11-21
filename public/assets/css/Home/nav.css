@@ -105,6 +105,12 @@
     border-width: 2px;
 }
 
+.fa
+{
+    padding-left: 10px;
+    padding-top:7px;
+}
+
 @media only screen and (max-width: 768px) {
     .list-inline-item-nav {
         margin-bottom: 2rem;
