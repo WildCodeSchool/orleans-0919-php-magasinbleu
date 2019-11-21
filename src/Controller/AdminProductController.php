@@ -38,6 +38,7 @@ class AdminProductController extends AbstractController
         $universes = $universeManager->selectAll();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $path = $_FILES['path'];
             $data = array_map('trim', $_POST);
 
             if (empty($data['image'])) {
