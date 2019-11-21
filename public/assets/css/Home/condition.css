@@ -1,20 +1,22 @@
-.conditionsTitle
+.tltleDeck
 {
-    text-align:center;
-    font-size:var(--size-font-title);
-    text-decoration: underline;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
 }
 
 .conditionsPart
 {
-    font-size:var(--size-font-primary);
-    text-decoration:underline;
-    margin-left: 27px;
-    margin-top:10px;
+    font-family:var(--font-title);
+    font-size:1.5em;
+    text-align: center;
+    margin:1.5em;
 }
 
 .conditionsList
 {
-    margin-top:5px;
-    margin-left:50px;
+    margin:10px;
+}
+
+.container {
+    margin-bottom: 1.5em;
 }

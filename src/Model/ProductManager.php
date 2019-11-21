@@ -135,4 +135,9 @@ class ProductManager extends AbstractManager
         $statement->bindValue('image', $data['image'], \PDO::PARAM_STR);
         $statement->execute();
     }
+
+    public function selectAll(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . $this->table . ' ORDER BY name')->fetchAll();
+    }
 }

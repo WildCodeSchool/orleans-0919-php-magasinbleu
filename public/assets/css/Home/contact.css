@@ -1,18 +1,25 @@
 .contactForm {
-    margin:80px;
+    margin:60px;
 }
 
-.h1-responsive{
+.h2-responsive{
     overflow:hidden;
     font-family: var(--font-title);
     color: var(--color-primary);
+    font-size: var(--size-font-title);
 }
 
-.form-control{
-    margin-bottom: 1%;
-}
 
 .form-contact{
     display: flex;
     justify-content: center;
+}
+
+.sendValidation{
+    margin-top: 20px;
+    background-color: var(--color-primary);
+}
+
+.formLabel{
+    margin-top: 20px;
 }

@@ -8,31 +8,27 @@
     <link rel="stylesheet" href="/assets/css/Home/index.css">
 {% endblock %}
 
-{% block navbar %}
-    {% include 'Home/nav.html.twig' %}
-{% endblock %}
-
 {% block content %}
     {% include '/Home/_carousel.html.twig' %}
 
     <div class="flexbox">
-        <div class="container-fluid">
+        <div class="container-fluid universes">
             {% include '/Home/_universe.html.twig' %}
+        </div>
+
+        <div class="container-fluid">
+            <img src="/assets/images/intermediary_train1.jpg" class="intermediary">
         </div>
 
         <div class="container-fluid lastproducts">
             {% include '/Home/lastproducts.html.twig' %}
         </div>
 
-        <div class="container container-map-hours">
+        <div class="container-fluid container-map-hours">
             {% include '/Home/mapHours.html.twig' %}
         </div>
     </div>
 
     {% include '/Home/contact.html.twig' %}
 
-{% endblock %}
-
-{% block footer %}
-    {% include "/Home/footer.html.twig" %}
 {% endblock %}
