@@ -39,12 +39,14 @@ class AdminProductController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
-            $data['image'] = uniqid() . '.' . pathinfo($_FILES['path']['name'], PATHINFO_EXTENSION);
-            $errors = $this->validate($data);
 
             if (empty($data['image'])) {
-                $data['image'] = $product['image'];
+                $fileName = $product['image'];
+            } else {
+                $fileName = uniqid() . '.' . pathinfo($path['name'], PATHINFO_EXTENSION);
             }
+
+            $errors = $this->validate($data);
 
             if (!empty($_FILES['path']['name'])) {
                 $path = $_FILES['path'];
@@ -65,7 +67,7 @@ class AdminProductController extends AbstractController
             if (empty($errors)) {
                 $path = $_FILES['path'];
                 // update en bdd si pas d'erreur
-                $fileName = $data['image'];
+
                 move_uploaded_file($path['tmp_name'], UPLOAD_PATH . $fileName);
                 $data['image'] = $fileName;
                 $productManager->update($data);
@@ -73,6 +75,7 @@ class AdminProductController extends AbstractController
                 header('Location: /adminProduct/index');
             }
         }
+
         return $this->twig->render('AdminProduct/edit.html.twig', [
             'product' => $product,
             'data' => $data ?? [],
