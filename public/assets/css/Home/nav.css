@@ -99,7 +99,7 @@
 }
 
 .selectedUniverse {
-    border-color: var(--color-primary);
+    border-color: var(--color-md-blue);
     border-radius: 1rem;
     border-style: solid;
     border-width: 2px;
